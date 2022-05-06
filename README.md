@@ -11,11 +11,11 @@ npm install @pbsc/react-native-ui-components
 ## Usage
 
 ```js
-import { multiply } from "@pbsc/react-native-ui-components";
+import { TextInput } from '@pbsc/react-native-ui-components';
 
 // ...
 
-const result = await multiply(3, 7);
+<TextInput />;
 ```
 
 ## Contributing
