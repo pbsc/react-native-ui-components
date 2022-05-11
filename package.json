@@ -1,6 +1,6 @@
 {
   "name": "@pbsc/react-native-ui-components",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "UI components for CycleFinder app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -143,5 +143,9 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "react-native-paper": "^4.12.1",
+    "react-native-vector-icons": "^9.1.0"
   }
 }

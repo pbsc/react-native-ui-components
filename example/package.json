@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "react": "16.13.1",
-    "react-native": "0.63.4"
+    "react-native": "0.63.4",
+    "react-native-masked-text": "^1.13.0",
+    "react-native-paper": "^4.12.1",
+    "react-native-vector-icons": "^9.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
