@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Switch = () => {
+const PBSCSwitch = () => {
   return (
     <View>
       <Text>This is Switch</Text>
@@ -9,4 +9,4 @@ const Switch = () => {
   );
 };
 
-export default Switch;
+export default PBSCSwitch;

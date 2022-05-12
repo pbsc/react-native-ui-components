@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import {
   Checkbox,
@@ -10,7 +10,19 @@ import {
 } from '@pbsc/react-native-ui-components';
 
 export default function App() {
-  const handleChange = (value) => {
+  const [checked, setChecked] = useState(false);
+  const [isOn, setIsOn] = useState(false);
+
+  const handleCheckboxChanged = (value) => {
+    setChecked(value);
+    console.log(`Checked: ${value}`);
+  };
+
+  const handleToggleChange = (value) => {
+    setIsOn(value);
+  };
+
+  const handleTextFieldChange = (value) => {
     console.log(`Text input: ${value}`);
   };
 
@@ -20,19 +32,23 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Checkbox />
+      <Checkbox
+        label="Checkbox"
+        checked={checked}
+        onChange={handleCheckboxChanged}
+      />
       <DateTimePicker />
       <Dropdown />
       <StrengthIndicator />
-      <Switch />
-      <TextField label="Multiline Text field" multiLine />
+      <Switch label="Label" isOn={isOn} onChange={handleToggleChange} />
+      <TextField disabled label="Multiline Text field" multiLine />
       <TextField
         label="Email"
         placeholder="Your email address"
         keyboardType="email-address"
         autoCapitalize="none"
         helperText="Helper text"
-        onChangeText={handleChange}
+        onChangeText={handleTextFieldChange}
         onSubmitEditing={handleSubmit}
       />
       <TextField

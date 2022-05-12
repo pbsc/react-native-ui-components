@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const StrengthIndicator = () => {
+const PBSCStrengthIndicator = () => {
   return (
     <View>
       <Text>This is StrengthIndicator</Text>
@@ -9,4 +9,4 @@ const StrengthIndicator = () => {
   );
 };
 
-export default StrengthIndicator;
+export default PBSCStrengthIndicator;

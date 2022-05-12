@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Checkbox = () => {
+const PBSCDateTimePicker = () => {
   return (
     <View>
-      <Text>This is Checkbox</Text>
+      <Text>This is DateTimePicker</Text>
     </View>
   );
 };
 
-export default Checkbox;
+export default PBSCDateTimePicker;

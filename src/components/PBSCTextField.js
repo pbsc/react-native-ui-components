@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { TextInput, HelperText } from 'react-native-paper';
 
-const TextField = (props) => {
+import { COLOR } from '../constants/Colors';
+
+const PBSCTextField = (props) => {
   const {
     id,
     label,
@@ -13,9 +15,9 @@ const TextField = (props) => {
     editable = true,
     maxLength,
     multiLine = false,
-    activeColor = '#9a9a9a',
-    inactiveColor = '#9a9a9a',
-    backgroundColor = '#ffffff',
+    activeColor = COLOR.GRAY_LIGHT,
+    inactiveColor = COLOR.GRAY_LIGHT,
+    backgroundColor = COLOR.WHITE,
     hasError = false,
     helperText,
     keyboardType = 'default',
@@ -64,8 +66,8 @@ const TextField = (props) => {
         editable={editable}
         maxLength={maxLength}
         multiline={multiLine}
-        outlineColor={activeColor}
-        activeOutlineColor={inactiveColor}
+        outlineColor={inactiveColor}
+        activeOutlineColor={activeColor}
         error={hasError}
         secureTextEntry={secureTextEntry}
         keyboardType={password == true ? 'default' : keyboardType}
@@ -76,7 +78,11 @@ const TextField = (props) => {
         onSubmitEditing={onSubmitEditing}
         onBlur={onBlur}
         onFocus={onFocus}
-        style={{ backgroundColor: backgroundColor, ...textInputStyle }}
+        style={{
+          height: 48,
+          backgroundColor: backgroundColor,
+          ...textInputStyle,
+        }}
       />
       <HelperText
         type={hasError ? 'error' : 'info'}
@@ -89,4 +95,4 @@ const TextField = (props) => {
   );
 };
 
-export default TextField;
+export default PBSCTextField;

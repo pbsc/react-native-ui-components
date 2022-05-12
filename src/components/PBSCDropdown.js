@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const DateTimePicker = () => {
+const PBSCDropdown = () => {
   return (
     <View>
-      <Text>This is DateTimePicker</Text>
+      <Text>This is Dropdown</Text>
     </View>
   );
 };
 
-export default DateTimePicker;
+export default PBSCDropdown;

@@ -1,0 +1,17 @@
+export const COLOR = {
+  BLACK: '#000',
+  BORDER: 'lightgray',
+  BORDER_PALE: '#f9f9f9',
+  GRAY: 'gray',
+  GRAY_LIGHT: '#9a9a9a',
+  GRAY_PALE: '#ebebeb',
+  INACTIVE: '#e3e5e6',
+  DISABLED: '#bdbdbd',
+  SCREEN_BACKGROUND: '#f8f8f8',
+  STRIP_BACKGROUND: '#fafafa',
+  WHITE: '#fff',
+  PBSCGREEN: '#76BC21',
+  MEDIUMGREY: '#9B9B9B',
+  RED: '#DC2619',
+  PURPLE_LIGHT: '#7A81FF',
+};
