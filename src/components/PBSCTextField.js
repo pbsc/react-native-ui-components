@@ -15,6 +15,7 @@ const PBSCTextField = (props) => {
     editable = true,
     maxLength,
     multiLine = false,
+    fieldHeight = 48,
     activeColor = COLOR.GRAY_LIGHT,
     inactiveColor = COLOR.GRAY_LIGHT,
     backgroundColor = COLOR.WHITE,
@@ -79,7 +80,7 @@ const PBSCTextField = (props) => {
         onBlur={onBlur}
         onFocus={onFocus}
         style={{
-          height: 48,
+          height: fieldHeight,
           backgroundColor: backgroundColor,
           ...textInputStyle,
         }}

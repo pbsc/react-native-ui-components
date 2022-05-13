@@ -42,7 +42,7 @@ export default function App() {
       <Dropdown />
       <StrengthIndicator />
       <Switch label="Switch" isOn={isOn} onChange={handleToggleChange} />
-      <TextField disabled label="Multiline Text field" multiLine />
+      <TextField label="Multiline Text field" multiLine fieldHeight={100} />
       <TextField
         label="Email"
         placeholder="Your email address"
@@ -57,6 +57,11 @@ export default function App() {
         password={true}
         hasError={true}
         helperText="Invalid password!"
+      />
+      <TextField
+        label="Disabled Text field"
+        value="This field is disabled"
+        disabled
       />
     </View>
   );
