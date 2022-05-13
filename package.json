@@ -1,6 +1,6 @@
 {
   "name": "@pbsc/react-native-ui-components",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "UI components for CycleFinder app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -46,6 +46,11 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "dependencies": {
+    "react-native-paper": "^4.0.1",
+    "react-native-reanimated": "^2.3.1",
+    "react-native-vector-icons": "^9.0.0"
+  },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
@@ -69,10 +74,7 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*",
-    "react-native-paper": "^4.0.1",
-    "react-native-reanimated": "^2.3.1",
-    "react-native-vector-icons": "^9.0.0"
+    "react-native": "*"
   },
   "jest": {
     "preset": "react-native",
