@@ -8,6 +8,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { HelperText } from 'react-native-paper';
 
 import { COLOR } from '../constants/Colors';
 
@@ -17,16 +18,18 @@ const PBSCSwitch = (props) => {
     label,
     isOn,
     onChange,
+    helperText,
     disabled = false,
     size = 36,
+    labelColor = COLOR.BLACK,
     onColor = COLOR.PURPLE_LIGHT,
     offColor = COLOR.GRAY_PALE,
     wheelColor = COLOR.WHITE,
-    textColor = COLOR.BLACK,
     iconForOn = 'checkmark-sharp',
     iconForOff = 'close',
     style,
-    textStyle,
+    labelStyle,
+    helperTextStyle,
   } = props;
 
   const progress = useDerivedValue(() => {
@@ -59,50 +62,58 @@ const PBSCSwitch = (props) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Pressable id={id} disabled={disabled} onPress={onSwitchPress}>
-        <Animated.View
-          style={[
-            {
-              width: (size * 5) / 3,
-              height: size,
-              borderRadius: size / 2,
-              justifyContent: 'center',
-            },
-            style,
-            animatedColorStyle,
-          ]}
-        >
+    <View style={{ width: '80%', ...style }}>
+      <View style={styles.container}>
+        <Pressable id={id} disabled={disabled} onPress={onSwitchPress}>
           <Animated.View
             style={[
-              styles.toggleWheelStyle,
               {
-                width: size - 5,
-                height: size - 5,
-                backgroundColor: disabled ? COLOR.WHITE : wheelColor,
-                borderRadius: (size - 5) / 2,
+                width: (size * 5) / 3,
+                height: size,
+                borderRadius: size / 2,
+                justifyContent: 'center',
               },
-              animatedMarginStyle,
+              animatedColorStyle,
             ]}
           >
-            {isOn ? (
-              <WheelIcon name={iconForOn} size={size} disabled={disabled} />
-            ) : (
-              <WheelIcon name={iconForOff} size={size} disabled={disabled} />
-            )}
+            <Animated.View
+              style={[
+                styles.toggleWheelStyle,
+                {
+                  width: size - 5,
+                  height: size - 5,
+                  backgroundColor: disabled ? COLOR.WHITE : wheelColor,
+                  borderRadius: (size - 5) / 2,
+                },
+                animatedMarginStyle,
+              ]}
+            >
+              {isOn ? (
+                <WheelIcon name={iconForOn} size={size} disabled={disabled} />
+              ) : (
+                <WheelIcon name={iconForOff} size={size} disabled={disabled} />
+              )}
+            </Animated.View>
           </Animated.View>
-        </Animated.View>
-      </Pressable>
-      <Text
-        style={{
-          marginStart: 10,
-          fontSize: 16,
-          color: disabled ? COLOR.DISABLED : textColor,
-          ...textStyle,
-        }}
+        </Pressable>
+        <Text
+          style={{
+            marginStart: 10,
+            fontSize: 16,
+            color: disabled ? COLOR.DISABLED : labelColor,
+            ...labelStyle,
+          }}
+        >
+          {label}
+        </Text>
+      </View>
+      <HelperText
+        type="info"
+        visible={helperText}
+        style={{ marginStart: (size * 5) / 3 - 2, ...helperTextStyle }}
       >
-        {label}
-      </Text>
+        {helperText}
+      </HelperText>
     </View>
   );
 };
@@ -130,7 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '80%',
-    marginVertical: 10,
+    marginTop: 10,
   },
   toggleWheelStyle: {
     shadowColor: '#000',

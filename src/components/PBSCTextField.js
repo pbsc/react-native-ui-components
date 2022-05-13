@@ -11,14 +11,6 @@ const PBSCTextField = (props) => {
     value,
     placeholder,
     password,
-    disabled = false,
-    editable = true,
-    maxLength,
-    multiLine = false,
-    fieldHeight = 48,
-    activeColor = COLOR.GRAY_LIGHT,
-    inactiveColor = COLOR.GRAY_LIGHT,
-    backgroundColor = COLOR.WHITE,
     hasError = false,
     helperText,
     keyboardType = 'default',
@@ -28,6 +20,14 @@ const PBSCTextField = (props) => {
     onSubmitEditing,
     onBlur,
     onFocus,
+    disabled = false,
+    editable = true,
+    maxLength,
+    multiLine = false,
+    fieldHeight = 48,
+    activeColor = COLOR.GRAY_LIGHT,
+    inactiveColor = COLOR.GRAY_LIGHT,
+    backgroundColor = COLOR.WHITE,
     style,
     textInputStyle,
     helperTextStyle,
@@ -88,7 +88,7 @@ const PBSCTextField = (props) => {
       <HelperText
         type={hasError ? 'error' : 'info'}
         visible={helperText}
-        style={helperTextStyle}
+        style={{ marginStart: -14, ...helperTextStyle }}
       >
         {helperText}
       </HelperText>
