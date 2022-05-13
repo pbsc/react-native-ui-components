@@ -16,7 +16,7 @@ const PBSCCheckbox = (props) => {
     borderColor = COLOR.PURPLE_LIGHT,
     backgroundColorUnchecked = COLOR.GRAY_PALE,
     backgroundColorChecked = COLOR.PURPLE_LIGHT,
-    disabledColor = COLOR.DISABLED,
+    checkmarkColor = COLOR.WHITE,
     textColor = COLOR.BLACK,
     textStyle,
   } = props;
@@ -35,12 +35,12 @@ const PBSCCheckbox = (props) => {
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: borderWidth,
-    borderColor: disabled ? disabledColor : borderColor,
+    borderColor: disabled ? COLOR.DISABLED : borderColor,
     backgroundColor: backgroundColorUnchecked,
   };
 
   const checkboxCheckedStyle = {
-    backgroundColor: disabled ? disabledColor : backgroundColorChecked,
+    backgroundColor: disabled ? COLOR.DISABLED : backgroundColorChecked,
   };
 
   return (
@@ -55,8 +55,12 @@ const PBSCCheckbox = (props) => {
           <Icon
             name="checkmark-sharp"
             size={size}
-            color="white"
-            style={{ position: 'absolute', left: iconSift(), top: iconSift() }}
+            color={disabled ? COLOR.WHITE : checkmarkColor}
+            style={{
+              position: 'absolute',
+              left: (-1 * size) / 16,
+              top: (-1 * size) / 16,
+            }}
           />
         )}
       </Pressable>
@@ -64,7 +68,7 @@ const PBSCCheckbox = (props) => {
         style={{
           marginStart: 10,
           fontSize: 16,
-          color: disabled ? disabledColor : textColor,
+          color: disabled ? COLOR.DISABLED : textColor,
           ...textStyle,
         }}
       >

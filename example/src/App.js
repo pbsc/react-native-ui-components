@@ -20,6 +20,7 @@ export default function App() {
 
   const handleToggleChange = (value) => {
     setIsOn(value);
+    console.log(`IsOn: ${value}`);
   };
 
   const handleTextFieldChange = (value) => {
@@ -40,7 +41,7 @@ export default function App() {
       <DateTimePicker />
       <Dropdown />
       <StrengthIndicator />
-      <Switch label="Label" isOn={isOn} onChange={handleToggleChange} />
+      <Switch label="Switch" isOn={isOn} onChange={handleToggleChange} />
       <TextField disabled label="Multiline Text field" multiLine />
       <TextField
         label="Email"
