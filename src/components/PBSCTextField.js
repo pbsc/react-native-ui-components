@@ -24,7 +24,8 @@ const PBSCTextField = (props) => {
     editable = true,
     maxLength,
     multiLine = false,
-    fieldHeight = 48,
+    width = ' 80%',
+    height = 48,
     activeColor = COLOR.GRAY_LIGHT,
     inactiveColor = COLOR.GRAY_LIGHT,
     backgroundColor = COLOR.WHITE,
@@ -56,7 +57,7 @@ const PBSCTextField = (props) => {
   };
 
   return (
-    <View style={{ width: '80%', ...style }}>
+    <View style={{ width: width, ...style }}>
       <TextInput
         mode="outlined"
         id={id}
@@ -80,10 +81,11 @@ const PBSCTextField = (props) => {
         onBlur={onBlur}
         onFocus={onFocus}
         style={{
-          height: fieldHeight,
+          height: height,
           backgroundColor: backgroundColor,
           ...textInputStyle,
         }}
+        theme={{ colors: { text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK } }}
       />
       <HelperText
         type={hasError ? 'error' : 'info'}

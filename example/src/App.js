@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import {
   Checkbox,
   DateTimePicker,
@@ -12,6 +12,18 @@ import {
 export default function App() {
   const [checked, setChecked] = useState(false);
   const [isOn, setIsOn] = useState(false);
+  const [dropdownSelected, setDropdownSelected] = useState(undefined);
+
+  const dropdownData = [
+    {
+      label: 'One - This is very very very very very very long selection',
+      value: '1',
+    },
+    { label: 'Two', value: '2' },
+    { label: 'Three', value: '3' },
+    { label: 'Four', value: '4' },
+    { label: 'Five', value: '5' },
+  ];
 
   const handleTextFieldChange = (value) => {
     console.log(`Text input: ${value}`);
@@ -34,7 +46,7 @@ export default function App() {
   return (
     <ScrollView
       contentContainerStyle={{
-        marginTop: 48,
+        paddingVertical: 48,
       }}
     >
       <View style={styles.container}>
@@ -59,7 +71,12 @@ export default function App() {
           value="This field is disabled."
           disabled
         />
-        <Dropdown />
+        <Dropdown
+          label="This is dropdown"
+          data={dropdownData}
+          onSelect={setDropdownSelected}
+          helperText="This is helper text for dropdown"
+        />
         <DateTimePicker />
         <StrengthIndicator />
         <Checkbox
