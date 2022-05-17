@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {
   Dimensions,
+  StatusBar,
   FlatList,
   Modal,
   Pressable,
@@ -31,6 +32,8 @@ const PBSCDropdown = (props) => {
     helperTextStyle,
   } = props;
   const windowHeight = Dimensions.get('window').height;
+  const statusBarHeight = StatusBar.statusBarHeight || 24;
+  const realWindowHeight = windowHeight - statusBarHeight;
 
   const DropdownButton = useRef();
   const [dropdownTop, setDropdownTop] = useState(0);
@@ -46,20 +49,24 @@ const PBSCDropdown = (props) => {
   };
 
   const openDropdown = () => {
+    const marginVertical = 36;
     DropdownButton.current.measure((_fx, _fy, w, h, px, py) => {
       const dropdownBottom = py + h;
-      if (windowHeight - dropdownBottom > 2 * height + 50) {
+      if (realWindowHeight - dropdownBottom > 2 * height + marginVertical) {
         const dropdownHeight =
-          windowHeight - dropdownBottom - 50 > data.length * height
+          realWindowHeight - dropdownBottom - marginVertical >
+          data.length * height
             ? data.length * height
-            : windowHeight - dropdownBottom - 50;
+            : realWindowHeight - dropdownBottom - marginVertical;
         setDropdownTop(py + h);
         setDropdownLeft(px);
         setDropdownWidth(w);
         setDropdownHeight(dropdownHeight);
       } else {
         const dropdownHeight =
-          py - 50 > data.length * height ? data.length * height : py - 50;
+          py - marginVertical > data.length * height
+            ? data.length * height
+            : py - marginVertical;
         setDropdownTop(py - dropdownHeight);
         setDropdownLeft(px);
         setDropdownWidth(w);
@@ -78,8 +85,11 @@ const PBSCDropdown = (props) => {
   const renderItem = ({ item }) => (
     <Pressable
       style={({ pressed }) => [
-        { backgroundColor: pressed ? COLOR.GRAY_PALE : COLOR.WHITE },
-        styles.item,
+        {
+          backgroundColor: pressed ? COLOR.GRAY_PALE : COLOR.WHITE,
+          height: height,
+          padding: 10,
+        },
       ]}
       onPress={() => onItemPress(item)}
     >
@@ -189,14 +199,11 @@ const styles = StyleSheet.create({
     shadowColor: '#000000',
     shadowRadius: 4,
     shadowOffset: { height: 4, width: 0 },
+    elevation: 4,
     shadowOpacity: 0.5,
   },
   overlay: {
     width: '100%',
     height: '100%',
-  },
-  item: {
-    padding: 10,
-    height: 50,
   },
 });
