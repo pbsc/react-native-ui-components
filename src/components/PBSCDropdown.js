@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import {
   Dimensions,
-  StatusBar,
   FlatList,
   Modal,
   Pressable,
@@ -32,10 +31,8 @@ const PBSCDropdown = (props) => {
     helperTextStyle,
   } = props;
   const windowHeight = Dimensions.get('window').height;
-  const statusBarHeight = StatusBar.statusBarHeight || 24;
-  const realWindowHeight = windowHeight - statusBarHeight;
 
-  const DropdownButton = useRef();
+  const DropdownPressible = useRef();
   const [dropdownTop, setDropdownTop] = useState(0);
   const [dropdownLeft, setDropdownLeft] = useState(0);
   const [dropdownWidth, setDropdownWidth] = useState(0);
@@ -50,27 +47,26 @@ const PBSCDropdown = (props) => {
 
   const openDropdown = () => {
     const marginVertical = 36;
-    DropdownButton.current.measure((_fx, _fy, w, h, px, py) => {
-      const dropdownBottom = py + h;
-      if (realWindowHeight - dropdownBottom > 2 * height + marginVertical) {
-        const dropdownHeight =
-          realWindowHeight - dropdownBottom - marginVertical >
-          data.length * height
+    DropdownPressible.current.measureInWindow((x, y, w, h) => {
+      const dropdownBottom = y + h;
+      if (windowHeight - dropdownBottom > 2 * height + marginVertical) {
+        const desiredHeight =
+          windowHeight - dropdownBottom - marginVertical > data.length * height
             ? data.length * height
-            : realWindowHeight - dropdownBottom - marginVertical;
-        setDropdownTop(py + h);
-        setDropdownLeft(px);
+            : windowHeight - dropdownBottom - marginVertical;
+        setDropdownTop(y + h);
+        setDropdownLeft(x);
         setDropdownWidth(w);
-        setDropdownHeight(dropdownHeight);
+        setDropdownHeight(desiredHeight);
       } else {
-        const dropdownHeight =
-          py - marginVertical > data.length * height
+        const desiredHeight =
+          y - marginVertical > data.length * height
             ? data.length * height
-            : py - marginVertical;
-        setDropdownTop(py - dropdownHeight);
-        setDropdownLeft(px);
+            : y - marginVertical;
+        setDropdownTop(y - desiredHeight);
+        setDropdownLeft(x);
         setDropdownWidth(w);
-        setDropdownHeight(dropdownHeight);
+        setDropdownHeight(desiredHeight);
       }
     });
     setVisible(true);
@@ -130,7 +126,7 @@ const PBSCDropdown = (props) => {
       <Pressable
         id={id}
         disabled={disabled}
-        ref={DropdownButton}
+        ref={DropdownPressible}
         style={[
           {
             height: height,

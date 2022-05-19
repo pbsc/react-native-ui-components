@@ -83,6 +83,7 @@ const HomeScreen = () => {
           data={dropdownData}
           onSelect={setDropdownSelected}
           helperText="This is helper text for dropdown"
+          isStatusbarTranslucent={true}
         />
         <DateTimePicker />
         <StrengthIndicator />
