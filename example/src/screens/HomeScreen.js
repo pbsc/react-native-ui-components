@@ -10,9 +10,12 @@ import {
 } from '@pbsc/react-native-ui-components';
 
 const HomeScreen = () => {
+  const [text, setText] = useState('');
   const [checked, setChecked] = useState(false);
   const [isOn, setIsOn] = useState(false);
   const [dropdownSelected, setDropdownSelected] = useState(undefined);
+  const [dateTimePickerSelectd, setDateTimePickerSelected] =
+    useState(undefined);
 
   const dropdownData = [
     {
@@ -26,6 +29,7 @@ const HomeScreen = () => {
   ];
 
   const handleTextFieldChange = (value) => {
+    setText(value);
     console.log(`Text input: ${value}`);
   };
 
@@ -41,6 +45,16 @@ const HomeScreen = () => {
   const handleSwitchChange = (value) => {
     setIsOn(value);
     console.log(`IsOn: ${value}`);
+  };
+
+  const handleDropdownSelect = (value) => {
+    setDropdownSelected(value);
+    console.log(`Dropdown selected: ${value.value}`);
+  };
+
+  const handleDateTimePickerConfirm = (value) => {
+    setDateTimePickerSelected(value);
+    console.log(`DatetimePicker confirmed: ${value}`);
   };
 
   return (
@@ -63,6 +77,7 @@ const HomeScreen = () => {
           keyboardType="email-address"
           autoCapitalize="none"
           helperText="This is helper text."
+          value={text}
           onChangeText={handleTextFieldChange}
           onSubmitEditing={handleSubmit}
         />
@@ -81,11 +96,19 @@ const HomeScreen = () => {
         <Dropdown
           label="This is dropdown"
           data={dropdownData}
-          onSelect={setDropdownSelected}
+          value={dropdownSelected}
+          onSelect={handleDropdownSelect}
           helperText="This is helper text for dropdown"
           isStatusbarTranslucent={true}
         />
-        <DateTimePicker />
+        <DateTimePicker
+          label="Birthday"
+          labelWithFormat
+          locale="en"
+          mode="date"
+          onConfirm={handleDateTimePickerConfirm}
+          helperText="This is helper text for date picker"
+        />
         <StrengthIndicator />
         <Checkbox
           label="This is Checkbox"

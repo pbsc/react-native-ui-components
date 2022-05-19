@@ -5,7 +5,7 @@ It includes `TextField`, `Checkbox`, `Switch`, and `Dropdown`.
 
 ## Prerequisites
 
-Before install this module, you will need `react-native-paper` (`react-native-vector-icons` as well) and `react-native-reanimated`.
+Before install this module, you will need `react-native-paper` (`react-native-vector-icons` as well), `react-native-reanimated` and `react-native-date-picker`.
 Please install them first if you don't have them in your project.
 
 ### Install react-native-paper
@@ -37,6 +37,12 @@ npm install react-native-reanimated
 After the installation, you will need to add `babel plugin`.
 For detail information, please refer <a href='https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/'>here</a>.
 
+### Install react-native-date-picker
+
+```sh
+npm install react-native-date-picker
+```
+
 ## Installation
 
 ```sh
@@ -47,18 +53,20 @@ npm install @pbsc/react-native-ui-components
 
 ```js
 import {
-  TextInput,
+  TextField,
   Checkbox,
   Switch,
   Dropdown,
+  DateTimePicker,
 } from '@pbsc/react-native-ui-components';
 
 // ...
 
-<TextInput />;
+<TextField />;
 <Checkbox />;
 <Switch />;
 <Dropdown />;
+<DateTimePicker />;
 ```
 
 ## Contributing

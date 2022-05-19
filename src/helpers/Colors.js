@@ -6,6 +6,6 @@ export const COLOR = {
   DISABLED: '#bdbdbd',
   WHITE: '#fff',
   PBSCGREEN: '#76BC21',
-  RED: '#DC2619',
+  RED: '#b00020',
   PURPLE_LIGHT: '#7A81FF',
 };

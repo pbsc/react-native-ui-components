@@ -3,7 +3,7 @@ import { Pressable, Text, View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { HelperText } from 'react-native-paper';
 
-import { COLOR } from '../constants/Colors';
+import { COLOR } from '../helpers/Colors';
 
 const PBSCCheckbox = (props) => {
   const {

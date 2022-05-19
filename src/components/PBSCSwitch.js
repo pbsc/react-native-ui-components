@@ -10,7 +10,7 @@ import Animated, {
 import Icon from 'react-native-vector-icons/Ionicons';
 import { HelperText } from 'react-native-paper';
 
-import { COLOR } from '../constants/Colors';
+import { COLOR } from '../helpers/Colors';
 
 const PBSCSwitch = (props) => {
   const {

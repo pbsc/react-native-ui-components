@@ -8,10 +8,9 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import { HelperText } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { TextInput, HelperText } from 'react-native-paper';
 
-import { COLOR } from '../constants/Colors';
+import { COLOR } from '../helpers/Colors';
 
 const PBSCDropdown = (props) => {
   const {
@@ -38,11 +37,11 @@ const PBSCDropdown = (props) => {
   const [dropdownWidth, setDropdownWidth] = useState(0);
   const [dropdownHeight, setDropdownHeight] = useState(0);
 
-  const [visible, setVisible] = useState(false);
-  const [selected, setSelected] = useState(value);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(value);
 
   const toggleDropdown = () => {
-    visible ? setVisible(false) : openDropdown();
+    isOpen ? setIsOpen(false) : openDropdown();
   };
 
   const openDropdown = () => {
@@ -69,13 +68,13 @@ const PBSCDropdown = (props) => {
         setDropdownHeight(desiredHeight);
       }
     });
-    setVisible(true);
+    setIsOpen(true);
   };
 
   const onItemPress = (item) => {
-    setSelected(item);
+    setSelectedItem(item);
     onSelect(item);
-    setVisible(false);
+    setIsOpen(false);
   };
 
   const renderItem = ({ item }) => (
@@ -97,8 +96,8 @@ const PBSCDropdown = (props) => {
 
   const renderDropdown = () => {
     return (
-      <Modal visible={visible} transparent animationType="none">
-        <Pressable style={styles.overlay} onPress={() => setVisible(false)}>
+      <Modal visible={isOpen} transparent animationType="none">
+        <Pressable style={styles.overlay} onPress={() => setIsOpen(false)}>
           <View
             style={[
               styles.dropdown,
@@ -124,40 +123,37 @@ const PBSCDropdown = (props) => {
   return (
     <View style={{ width: width, ...style }}>
       <Pressable
-        id={id}
         disabled={disabled}
         ref={DropdownPressible}
-        style={[
-          {
-            height: height,
-            backgroundColor,
-            borderColor: disabled ? COLOR.DISABLED : borderColor,
-          },
-          styles.field,
-          fieldStyle,
-        ]}
         onPress={toggleDropdown}
       >
         {renderDropdown()}
-        <Text
-          style={[
-            {
-              color: disabled
-                ? COLOR.DISABLED
-                : selected
-                ? COLOR.BLACK
-                : COLOR.GRAY_MEDIUM,
-            },
-            styles.fieldText,
-          ]}
-          numberOfLines={1}
-        >
-          {(selected && selected.label) || label}
-        </Text>
-        <Icon
-          name="chevron-down-outline"
-          size={18}
-          style={{ color: COLOR.GRAY_LIGHT }}
+        <TextInput
+          onTouchEnd={toggleDropdown}
+          mode="outlined"
+          id={id}
+          label={label}
+          value={selectedItem && selectedItem.label}
+          disabled={disabled}
+          editable={false}
+          outlineColor={borderColor}
+          selection={{ start: 0 }}
+          right={
+            <TextInput.Icon
+              name="chevron-down"
+              color={disabled ? COLOR.GRAY_LIGHT : COLOR.BLACK}
+              disabled
+              style={{ paddingTop: 10 }}
+            />
+          }
+          style={{
+            height: height,
+            backgroundColor: backgroundColor,
+            ...fieldStyle,
+          }}
+          theme={{
+            colors: { text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK },
+          }}
         />
       </Pressable>
       <HelperText
