@@ -12,6 +12,7 @@ const PBSCTextField = (props) => {
     placeholder,
     password,
     hasError = false,
+    errorColor = COLOR.RED,
     helperText,
     keyboardType = 'default',
     autoCapitalize,
@@ -71,6 +72,7 @@ const PBSCTextField = (props) => {
         outlineColor={inactiveColor}
         activeOutlineColor={activeColor}
         error={hasError}
+        errorColor={errorColor}
         secureTextEntry={secureTextEntry}
         keyboardType={password == true ? 'default' : keyboardType}
         autoCapitalize={autoCapitalize}
@@ -85,12 +87,21 @@ const PBSCTextField = (props) => {
           backgroundColor: backgroundColor,
           ...textInputStyle,
         }}
-        theme={{ colors: { text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK } }}
+        theme={{
+          colors: {
+            text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK,
+            error: errorColor,
+          },
+        }}
       />
       <HelperText
         type={hasError ? 'error' : 'info'}
         visible={helperText}
-        style={{ marginStart: -14, ...helperTextStyle }}
+        style={{
+          marginStart: -14,
+          color: hasError ? errorColor : COLOR.GRAY_MEDIUM,
+          ...helperTextStyle,
+        }}
       >
         {helperText}
       </HelperText>

@@ -15,6 +15,7 @@ const PBSCDateTimePicker = (props) => {
     onConfirm = () => {},
     onCancel = () => {},
     hasError = false,
+    errorColor = COLOR.RED,
     helperText,
     disabled = false,
     mode = 'date',
@@ -103,13 +104,17 @@ const PBSCDateTimePicker = (props) => {
             outlineColor={borderColor}
             selection={{ start: 0 }}
             error={hasError}
+            errorColor={errorColor}
             style={{
               height: height,
               backgroundColor: backgroundColor,
               ...fieldStyle,
             }}
             theme={{
-              colors: { text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK },
+              colors: {
+                text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK,
+                error: errorColor,
+              },
             }}
           />
         </View>
@@ -117,7 +122,11 @@ const PBSCDateTimePicker = (props) => {
       <HelperText
         type={hasError ? 'error' : 'info'}
         visible={helperText}
-        style={{ marginStart: -14, ...helperTextStyle }}
+        style={{
+          marginStart: -14,
+          color: hasError ? errorColor : COLOR.GRAY_MEDIUM,
+          ...helperTextStyle,
+        }}
       >
         {helperText}
       </HelperText>

@@ -4,7 +4,7 @@ import {
   Checkbox,
   DateTimePicker,
   Dropdown,
-  StrengthIndicator,
+  StepIndicator,
   Switch,
   TextField,
 } from '@pbsc/react-native-ui-components';
@@ -36,6 +36,15 @@ const HomeScreen = () => {
   const handleSubmit = (value) => {
     console.log(`Text submitted: ${value.nativeEvent.text}`);
   };
+
+  const stepsForStepIndicator = [
+    { text: 'This is 0th step' },
+    { color: '#dd2618', text: 'This is 1st step' },
+    { color: '#fea112', text: 'This is 2nd step' },
+    { color: '#76bc23', text: 'This is 3rd step' },
+    { color: '#349822', text: 'This is 4th step' },
+    { color: '#297d19', text: 'This is 5th step' },
+  ];
 
   const handleCheckboxChange = (value) => {
     setChecked(value);
@@ -82,6 +91,7 @@ const HomeScreen = () => {
           onSubmitEditing={handleSubmit}
         />
         <TextField label="Password" password />
+        <StepIndicator steps={stepsForStepIndicator} currentStepIndex={2} />
         <TextField
           label="Text field with error"
           hasError
@@ -92,6 +102,18 @@ const HomeScreen = () => {
           label="Disabled Text field"
           value="This field is disabled."
           disabled
+        />
+        <Checkbox
+          label="This is Checkbox"
+          checked={checked}
+          onChange={handleCheckboxChange}
+          helperText="This is helper text for checkbox."
+        />
+        <Switch
+          label="This is Switch"
+          isOn={isOn}
+          onChange={handleSwitchChange}
+          helperText="This is helper text for switch."
         />
         <Dropdown
           label="This is dropdown"
@@ -108,19 +130,6 @@ const HomeScreen = () => {
           mode="date"
           onConfirm={handleDateTimePickerConfirm}
           helperText="This is helper text for date picker"
-        />
-        <StrengthIndicator />
-        <Checkbox
-          label="This is Checkbox"
-          checked={checked}
-          onChange={handleCheckboxChange}
-          helperText="This is helper text for checkbox."
-        />
-        <Switch
-          label="This is Switch"
-          isOn={isOn}
-          onChange={handleSwitchChange}
-          helperText="This is helper text for switch."
         />
       </View>
     </ScrollView>
