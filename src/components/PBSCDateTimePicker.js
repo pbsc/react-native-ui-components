@@ -40,6 +40,10 @@ const PBSCDateTimePicker = (props) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
 
+  const handlePress = () => {
+    setIsOpen(true);
+  };
+
   const handleConfirm = (date) => {
     setIsOpen(false);
     setSelectedDate(date);
@@ -81,28 +85,34 @@ const PBSCDateTimePicker = (props) => {
 
   return (
     <View style={{ width: width, ...style }}>
-      <Pressable disabled={disabled} onPress={() => setIsOpen(true)}>
-        <TextInput
-          onTouchEnd={() => setIsOpen(true)}
-          mode="outlined"
-          id={id}
-          label={makeLabel()}
-          value={
-            value ? value : selected ? dateTimeString(selectedDate) : undefined
-          }
-          disabled={disabled}
-          editable={false}
-          outlineColor={borderColor}
-          error={hasError}
-          style={{
-            height: height,
-            backgroundColor: backgroundColor,
-            ...fieldStyle,
-          }}
-          theme={{
-            colors: { text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK },
-          }}
-        />
+      <Pressable disabled={disabled} onPress={handlePress}>
+        <View pointerEvents="none">
+          <TextInput
+            mode="outlined"
+            id={id}
+            label={makeLabel()}
+            value={
+              value
+                ? value
+                : selected
+                ? dateTimeString(selectedDate)
+                : undefined
+            }
+            disabled={disabled}
+            editable={false}
+            outlineColor={borderColor}
+            selection={{ start: 0 }}
+            error={hasError}
+            style={{
+              height: height,
+              backgroundColor: backgroundColor,
+              ...fieldStyle,
+            }}
+            theme={{
+              colors: { text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK },
+            }}
+          />
+        </View>
       </Pressable>
       <HelperText
         type={hasError ? 'error' : 'info'}
