@@ -58,6 +58,7 @@ import {
   Switch,
   Dropdown,
   DateTimePicker,
+  StepIndicator,
 } from '@pbsc/react-native-ui-components';
 
 // ...
@@ -67,6 +68,7 @@ import {
 <Switch />;
 <Dropdown />;
 <DateTimePicker />;
+<StepIndicator />;
 ```
 
 ## Contributing
