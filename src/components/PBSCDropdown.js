@@ -97,7 +97,7 @@ const PBSCDropdown = (props) => {
   const renderDropdown = () => {
     return (
       <Modal visible={isOpen} transparent animationType="none">
-        <Pressable style={styles.overlay} onPress={() => setIsOpen(false)}>
+        <Pressable style={styles.overlay} onPress={toggleDropdown}>
           <View
             style={[
               styles.dropdown,
@@ -128,33 +128,34 @@ const PBSCDropdown = (props) => {
         onPress={toggleDropdown}
       >
         {renderDropdown()}
-        <TextInput
-          onTouchEnd={toggleDropdown}
-          mode="outlined"
-          id={id}
-          label={label}
-          value={selectedItem && selectedItem.label}
-          disabled={disabled}
-          editable={false}
-          outlineColor={borderColor}
-          selection={{ start: 0 }}
-          right={
-            <TextInput.Icon
-              name="chevron-down"
-              color={disabled ? COLOR.GRAY_LIGHT : COLOR.BLACK}
-              disabled
-              style={{ paddingTop: 10 }}
-            />
-          }
-          style={{
-            height: height,
-            backgroundColor: backgroundColor,
-            ...fieldStyle,
-          }}
-          theme={{
-            colors: { text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK },
-          }}
-        />
+        <View pointerEvents="none">
+          <TextInput
+            mode="outlined"
+            id={id}
+            label={label}
+            value={selectedItem && selectedItem.label}
+            disabled={disabled}
+            editable={false}
+            outlineColor={borderColor}
+            selection={{ start: 0 }}
+            right={
+              <TextInput.Icon
+                name="chevron-down"
+                color={disabled ? COLOR.GRAY_LIGHT : COLOR.BLACK}
+                disabled
+                style={{ paddingTop: 10 }}
+              />
+            }
+            style={{
+              height: height,
+              backgroundColor: backgroundColor,
+              ...fieldStyle,
+            }}
+            theme={{
+              colors: { text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK },
+            }}
+          />
+        </View>
       </Pressable>
       <HelperText
         type="info"
