@@ -10,7 +10,7 @@ const PBSCCheckbox = (props) => {
     id,
     label,
     checked = false,
-    onChange,
+    onChange = () => {},
     helperText,
     disabled = false,
     size = 32,
@@ -26,7 +26,9 @@ const PBSCCheckbox = (props) => {
   } = props;
 
   const onCheckmarkPress = () => {
-    onChange(!checked);
+    if (typeof onChange === 'function') {
+      onChange(!checked);
+    }
   };
 
   const checkboxBaseStyle = {

@@ -17,7 +17,7 @@ const PBSCSwitch = (props) => {
     id,
     label,
     isOn,
-    onChange,
+    onChange = () => {},
     helperText,
     disabled = false,
     size = 36,
@@ -58,7 +58,9 @@ const PBSCSwitch = (props) => {
   });
 
   const onSwitchPress = () => {
-    onChange(!isOn);
+    if (typeof onChange === 'function') {
+      onChange(!isOn);
+    }
   };
 
   return (

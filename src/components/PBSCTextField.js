@@ -11,16 +11,18 @@ const PBSCTextField = (props) => {
     value,
     placeholder,
     password,
+    rightIconName, // material community icon
+    onPressRightIcon,
     hasError = false,
     errorColor = COLOR.RED,
     helperText,
     keyboardType = 'default',
     autoCapitalize,
     autoComplete,
-    onChangeText,
-    onSubmitEditing,
-    onBlur,
-    onFocus,
+    onChangeText = () => {},
+    onSubmitEditing = () => {},
+    onBlur = () => {},
+    onFocus = () => {},
     disabled = false,
     editable = true,
     maxLength,
@@ -30,6 +32,7 @@ const PBSCTextField = (props) => {
     activeColor = COLOR.GRAY_LIGHT,
     inactiveColor = COLOR.GRAY_LIGHT,
     backgroundColor = COLOR.WHITE,
+    textColor = COLOR.BLACK,
     style,
     textInputStyle,
     helperTextStyle,
@@ -40,7 +43,22 @@ const PBSCTextField = (props) => {
 
   const setRightIcon = () => {
     if (password == true) {
-      return <TextInput.Icon name={iconName} onPress={onPressEyeIcon} />;
+      return (
+        <TextInput.Icon
+          name={iconName}
+          onPress={onPressEyeIcon}
+          style={{ marginTop: 16 }}
+        />
+      );
+    } else if (rightIconName != undefined && rightIconName.length > 0) {
+      return (
+        <TextInput.Icon
+          name={rightIconName}
+          disabled={typeof onPressRightIcon === 'function' ? false : true}
+          onPress={onPressRightIcon}
+          style={{ marginTop: 16 }}
+        />
+      );
     } else {
       return null;
     }
@@ -89,7 +107,7 @@ const PBSCTextField = (props) => {
         }}
         theme={{
           colors: {
-            text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK,
+            text: disabled ? COLOR.GRAY_MEDIUM : textColor,
             error: errorColor,
           },
         }}

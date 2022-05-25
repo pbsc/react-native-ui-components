@@ -49,12 +49,16 @@ const PBSCDateTimePicker = (props) => {
     setIsOpen(false);
     setSelectedDate(date);
     setSelected(true);
-    onConfirm(date);
+    if (typeof onConfirm === 'function') {
+      onConfirm(date);
+    }
   };
 
   const handleCancel = () => {
     setIsOpen(false);
-    onCancel();
+    if (typeof onCancel === 'function') {
+      onCancel();
+    }
   };
 
   const dateTimeString = (date) => {

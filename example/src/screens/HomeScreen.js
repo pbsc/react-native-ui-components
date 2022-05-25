@@ -7,6 +7,7 @@ import {
   StepIndicator,
   Switch,
   TextField,
+  PhoneNumberField,
 } from '@pbsc/react-native-ui-components';
 
 const HomeScreen = () => {
@@ -16,6 +17,7 @@ const HomeScreen = () => {
   const [dropdownSelected, setDropdownSelected] = useState(undefined);
   const [dateTimePickerSelectd, setDateTimePickerSelected] =
     useState(undefined);
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   const dropdownData = [
     {
@@ -56,15 +58,29 @@ const HomeScreen = () => {
     console.log(`IsOn: ${value}`);
   };
 
-  const handleDropdownSelect = (value) => {
-    setDropdownSelected(value);
-    console.log(`Dropdown selected: ${value.value}`);
+  const handleDropdownSelect = (selectedItem) => {
+    setDropdownSelected(selectedItem);
+    console.log(`Dropdown selected: ${selectedItem.value}`);
   };
 
-  const handleDateTimePickerConfirm = (value) => {
-    setDateTimePickerSelected(value);
-    console.log(`DatetimePicker confirmed: ${value}`);
+  const handleDateTimePickerConfirm = (selectedDateTime) => {
+    setDateTimePickerSelected(selectedDateTime);
+    console.log(`DatetimePicker confirmed: ${selectedDateTime}`);
   };
+
+  const handlePhoneFieldSubmitEditting = (value) => {
+    setPhoneNumber(value);
+    console.log(`Phonenumber: ${value}`);
+  };
+
+  const prefiexesForPhoneNumber = [
+    { label: '+1', value: '+1' },
+    { label: '+7', value: '+7' },
+    { label: '+33', value: '+33' },
+    { label: '+44', value: '+44' },
+    { label: '+82', value: '+82' },
+    { label: '+672', value: '+672' },
+  ];
 
   return (
     <ScrollView
@@ -91,6 +107,7 @@ const HomeScreen = () => {
           onSubmitEditing={handleSubmit}
         />
         <TextField label="Password" password />
+        <TextField label="Card number" rightIconName="credit-card-outline" />
         <StepIndicator steps={stepsForStepIndicator} currentStepIndex={2} />
         <TextField
           label="Text field with error"
@@ -130,6 +147,12 @@ const HomeScreen = () => {
           mode="date"
           onConfirm={handleDateTimePickerConfirm}
           helperText="This is helper text for date picker"
+        />
+        <PhoneNumberField
+          label="Phone Number"
+          prefixes={prefiexesForPhoneNumber}
+          helperText="This is helper text for phone number field"
+          onSubmitEditing={handlePhoneFieldSubmitEditting}
         />
       </View>
     </ScrollView>

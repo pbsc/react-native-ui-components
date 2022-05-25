@@ -8,6 +8,8 @@ const PBSCStepIndicator = (props) => {
     currentStepIndex = -1,
     inactiveColor,
     height = 6,
+    textColor = COLOR.BLACK,
+    textSize = 12,
     style,
     stepStyle,
     textStyle,
@@ -49,8 +51,8 @@ const PBSCStepIndicator = (props) => {
       </View>
       <Text
         style={{
-          color: COLOR.BLACK,
-          fontSize: 12,
+          color: textColor,
+          fontSize: textSize,
           marginVertical: 5,
           ...textStyle,
         }}

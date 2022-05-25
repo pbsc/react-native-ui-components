@@ -18,13 +18,15 @@ const PBSCDropdown = (props) => {
     label,
     value = undefined,
     data,
-    onSelect,
+    onSelect = () => {},
     helperText,
     disabled = false,
     width = '80%',
     height = 48,
     backgroundColor = COLOR.WHITE,
     borderColor = COLOR.GRAY_LIGHT,
+    textColor = COLOR.BLACK,
+    textSize = 16,
     style,
     fieldStyle,
     helperTextStyle,
@@ -73,7 +75,9 @@ const PBSCDropdown = (props) => {
 
   const onItemPress = (item) => {
     setSelectedItem(item);
-    onSelect(item);
+    if (typeof onSelect === 'function') {
+      onSelect(item);
+    }
     setIsOpen(false);
   };
 
@@ -88,7 +92,11 @@ const PBSCDropdown = (props) => {
       ]}
       onPress={() => onItemPress(item)}
     >
-      <Text numberOfLines={2} adjustsFontSizeToFit style={{ fontSize: 16 }}>
+      <Text
+        numberOfLines={2}
+        adjustsFontSizeToFit
+        style={{ fontSize: textSize }}
+      >
         {item.label}
       </Text>
     </Pressable>
@@ -149,10 +157,11 @@ const PBSCDropdown = (props) => {
             style={{
               height: height,
               backgroundColor: backgroundColor,
+              fontSize: textSize,
               ...fieldStyle,
             }}
             theme={{
-              colors: { text: disabled ? COLOR.GRAY_MEDIUM : COLOR.BLACK },
+              colors: { text: disabled ? COLOR.GRAY_MEDIUM : textColor },
             }}
           />
         </View>
@@ -183,7 +192,6 @@ const styles = StyleSheet.create({
   fieldText: {
     flex: 1,
     textAlign: 'left',
-    fontSize: 16,
     paddingStart: 4,
   },
   dropdown: {

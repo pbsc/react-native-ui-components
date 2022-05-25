@@ -1,7 +1,7 @@
 # @pbsc/react-native-ui-components
 
 This module has been developed for UI components for CycleFinder app.
-It includes `TextField`, `Checkbox`, `Switch`, and `Dropdown`.
+It includes `TextField`, `Checkbox`, `Switch`, `Dropdown`, `DateTimePicker`, `StepIndicator`, and `PhoneNumberField`.
 
 ## Prerequisites
 
@@ -59,6 +59,7 @@ import {
   Dropdown,
   DateTimePicker,
   StepIndicator,
+  PhoneNumberField,
 } from '@pbsc/react-native-ui-components';
 
 // ...
@@ -69,6 +70,7 @@ import {
 <Dropdown />;
 <DateTimePicker />;
 <StepIndicator />;
+<PhoneNumberField />;
 ```
 
 ## Contributing
