@@ -13,6 +13,7 @@ const PBSCCheckbox = (props) => {
     onChange = () => {},
     helperText,
     disabled = false,
+    width = '80%',
     size = 32,
     borderWidth = 2,
     borderColor = COLOR.PURPLE_LIGHT,
@@ -46,7 +47,7 @@ const PBSCCheckbox = (props) => {
   };
 
   return (
-    <View style={{ width: '80%', ...style }}>
+    <View style={{ width: width, ...style }}>
       <View style={styles.container}>
         <Pressable
           id={id}

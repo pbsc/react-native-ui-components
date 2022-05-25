@@ -7,6 +7,7 @@ const PBSCStepIndicator = (props) => {
     steps,
     currentStepIndex = -1,
     inactiveColor,
+    width = '80%',
     height = 6,
     textColor = COLOR.BLACK,
     textSize = 12,
@@ -28,7 +29,7 @@ const PBSCStepIndicator = (props) => {
   const stepTexts = steps.map((step) => step.text);
 
   return (
-    <View style={{ width: '80%', ...style }}>
+    <View style={{ width: width, ...style }}>
       <View
         style={{
           flexDirection: 'row',

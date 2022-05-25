@@ -129,7 +129,7 @@ const PBSCDropdown = (props) => {
   };
 
   return (
-    <View style={{ width: width, ...style }}>
+    <View style={{ width: width, marginTop: 10, ...style }}>
       <Pressable
         disabled={disabled}
         ref={DropdownPressible}
@@ -180,20 +180,6 @@ const PBSCDropdown = (props) => {
 export default PBSCDropdown;
 
 const styles = StyleSheet.create({
-  field: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginTop: 10,
-    zIndex: 1,
-  },
-  fieldText: {
-    flex: 1,
-    textAlign: 'left',
-    paddingStart: 4,
-  },
   dropdown: {
     position: 'absolute',
     backgroundColor: '#fff',

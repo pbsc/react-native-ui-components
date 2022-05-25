@@ -109,7 +109,7 @@ const PBSCPhoneNumberField = (props) => {
   };
 
   return (
-    <View style={{ width: width, height: height, ...style }}>
+    <View style={{ width: width, height: height, marginTop: 10, ...style }}>
       <View>
         <Dropdown
           data={prefixes}

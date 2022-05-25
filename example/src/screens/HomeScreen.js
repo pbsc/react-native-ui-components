@@ -132,14 +132,6 @@ const HomeScreen = () => {
           onChange={handleSwitchChange}
           helperText="This is helper text for switch."
         />
-        <Dropdown
-          label="This is dropdown"
-          data={dropdownData}
-          value={dropdownSelected}
-          onSelect={handleDropdownSelect}
-          helperText="This is helper text for dropdown"
-          isStatusbarTranslucent={true}
-        />
         <DateTimePicker
           label="Birthday"
           labelWithFormat
@@ -147,6 +139,14 @@ const HomeScreen = () => {
           mode="date"
           onConfirm={handleDateTimePickerConfirm}
           helperText="This is helper text for date picker"
+        />
+        <Dropdown
+          label="This is dropdown"
+          data={dropdownData}
+          value={dropdownSelected}
+          onSelect={handleDropdownSelect}
+          helperText="This is helper text for dropdown"
+          isStatusbarTranslucent={true}
         />
         <PhoneNumberField
           label="Phone Number"

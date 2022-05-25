@@ -20,6 +20,7 @@ const PBSCSwitch = (props) => {
     onChange = () => {},
     helperText,
     disabled = false,
+    width = '80%',
     size = 36,
     labelColor = COLOR.BLACK,
     onColor = COLOR.PURPLE_LIGHT,
@@ -64,7 +65,7 @@ const PBSCSwitch = (props) => {
   };
 
   return (
-    <View style={{ width: '80%', ...style }}>
+    <View style={{ width: width, ...style }}>
       <View style={styles.container}>
         <Pressable id={id} disabled={disabled} onPress={onSwitchPress}>
           <Animated.View
