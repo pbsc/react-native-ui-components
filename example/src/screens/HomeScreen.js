@@ -107,7 +107,11 @@ const HomeScreen = () => {
           onSubmitEditing={handleSubmit}
         />
         <TextField label="Password" password />
-        <TextField label="Card number" rightIconName="credit-card-outline" />
+        <TextField
+          label="Card number"
+          rightIconName="credit-card-outline"
+          keyboardType="number-pad"
+        />
         <StepIndicator steps={stepsForStepIndicator} currentStepIndex={2} />
         <TextField
           label="Text field with error"
@@ -119,6 +123,7 @@ const HomeScreen = () => {
           label="Disabled Text field"
           value="This field is disabled."
           disabled
+          helperText="This is helper text for disalbed text field"
         />
         <Checkbox
           label="This is Checkbox"

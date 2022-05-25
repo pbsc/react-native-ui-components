@@ -75,6 +75,22 @@ const PBSCTextField = (props) => {
     setHideText(!hideText);
   };
 
+  const helperTextColor = () => {
+    if (hasError) {
+      if (disabled) {
+        return `${errorColor}80`; // Add alpha value 80 so that looks pale
+      } else {
+        return errorColor;
+      }
+    } else {
+      if (disabled) {
+        return COLOR.DISABLED;
+      } else {
+        return COLOR.GRAY_MEDIUM;
+      }
+    }
+  };
+
   return (
     <View style={{ width: width, ...style }}>
       <TextInput
@@ -117,7 +133,7 @@ const PBSCTextField = (props) => {
         visible={helperText}
         style={{
           marginStart: -14,
-          color: hasError ? errorColor : COLOR.GRAY_MEDIUM,
+          color: helperTextColor(),
           ...helperTextStyle,
         }}
       >
