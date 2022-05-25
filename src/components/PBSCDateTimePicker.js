@@ -5,6 +5,7 @@ import { TextInput, HelperText } from 'react-native-paper';
 
 import { COLOR } from '../helpers/Colors';
 import * as DateTimeService from '../helpers/DateTimeService';
+import { helperTextColor } from '../helpers/HelperTextColor';
 
 const PBSCDateTimePicker = (props) => {
   const {
@@ -128,7 +129,7 @@ const PBSCDateTimePicker = (props) => {
         visible={helperText}
         style={{
           marginStart: -14,
-          color: hasError ? errorColor : COLOR.GRAY_MEDIUM,
+          color: helperTextColor(hasError, disabled, errorColor),
           ...helperTextStyle,
         }}
       >

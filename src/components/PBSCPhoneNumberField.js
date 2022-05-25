@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Dimensions, View } from 'react-native';
 import { TextInput, Divider, HelperText } from 'react-native-paper';
+
 import { Dropdown } from '..';
 import { COLOR } from '../helpers/Colors';
+import { helperTextColor } from '../helpers/HelperTextColor';
 
 const PBSCPhoneNumberField = (props) => {
   const {
@@ -238,7 +240,7 @@ const PBSCPhoneNumberField = (props) => {
         visible={helperText}
         style={{
           marginStart: -14,
-          color: hasError ? errorColor : COLOR.GRAY_MEDIUM,
+          color: helperTextColor(hasError, disabled, errorColor),
           ...helperTextStyle,
         }}
       >
