@@ -58,6 +58,20 @@ const PBSCSwitch = (props) => {
     return { backgroundColor };
   });
 
+  const animatedOnIconStyle = useAnimatedStyle(() => {
+    const opacity = interpolate(progress.value, [0, 1], [0, 1]);
+    return {
+      opacity: opacity,
+    };
+  });
+
+  const animatedOffIconStyle = useAnimatedStyle(() => {
+    const opacity = interpolate(progress.value, [0, 1], [1, 0]);
+    return {
+      opacity: opacity,
+    };
+  });
+
   const onSwitchPress = () => {
     if (typeof onChange === 'function') {
       onChange(!isOn);
@@ -91,11 +105,12 @@ const PBSCSwitch = (props) => {
                 animatedMarginStyle,
               ]}
             >
-              {isOn ? (
+              <Animated.View style={animatedOnIconStyle}>
                 <WheelIcon name={iconForOn} size={size} disabled={disabled} />
-              ) : (
+              </Animated.View>
+              <Animated.View style={animatedOffIconStyle}>
                 <WheelIcon name={iconForOff} size={size} disabled={disabled} />
-              )}
+              </Animated.View>
             </Animated.View>
           </Animated.View>
         </Pressable>
