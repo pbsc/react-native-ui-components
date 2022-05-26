@@ -111,7 +111,15 @@ const PBSCPhoneNumberField = (props) => {
   };
 
   return (
-    <View style={{ width: width, height: height, marginTop: 10, ...style }}>
+    <View
+      style={{
+        width: width,
+        height: height,
+        marginTop: 10,
+        marginBottom: 30,
+        ...style,
+      }}
+    >
       <View>
         <Dropdown
           data={prefixes}
@@ -239,7 +247,7 @@ const PBSCPhoneNumberField = (props) => {
         type={hasError ? 'error' : 'info'}
         visible={helperText}
         style={{
-          marginStart: -14,
+          marginStart: -10,
           color: helperTextColor(hasError, disabled, errorColor),
           ...helperTextStyle,
         }}

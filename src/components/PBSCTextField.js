@@ -28,7 +28,7 @@ const PBSCTextField = (props) => {
     editable = true,
     maxLength,
     multiLine = false,
-    width = ' 80%',
+    width = '80%',
     height = 48,
     activeColor = COLOR.GRAY_LIGHT,
     inactiveColor = COLOR.GRAY_LIGHT,
@@ -40,13 +40,11 @@ const PBSCTextField = (props) => {
   } = props;
   const [hideText, setHideText] = useState(true);
 
-  const iconName = hideText ? 'eye' : 'eye-off';
-
   const setRightIcon = () => {
     if (password == true) {
       return (
         <TextInput.Icon
-          name={iconName}
+          name={hideText ? 'eye' : 'eye-off'}
           onPress={onPressEyeIcon}
           style={{ marginTop: 16 }}
         />
@@ -117,7 +115,7 @@ const PBSCTextField = (props) => {
         type={hasError ? 'error' : 'info'}
         visible={helperText}
         style={{
-          marginStart: -14,
+          marginStart: -10,
           color: helperTextColor(hasError, disabled, errorColor),
           ...helperTextStyle,
         }}

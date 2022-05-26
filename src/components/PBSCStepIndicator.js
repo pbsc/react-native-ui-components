@@ -55,6 +55,7 @@ const PBSCStepIndicator = (props) => {
           color: textColor,
           fontSize: textSize,
           marginVertical: 5,
+          marginStart: 2,
           ...textStyle,
         }}
       >

@@ -118,24 +118,12 @@ const HomeScreen = () => {
           hasError
           helperText="This is error text!"
         />
-        <TextField label="Multiline Text field" multiLine fieldHeight={100} />
+        <TextField label="Multiline Text field" multiLine height={100} />
         <TextField
           label="Disabled Text field"
           value="This field is disabled."
           disabled
           helperText="This is helper text for disalbed text field"
-        />
-        <Checkbox
-          label="This is Checkbox"
-          checked={checked}
-          onChange={handleCheckboxChange}
-          helperText="This is helper text for checkbox."
-        />
-        <Switch
-          label="This is Switch"
-          isOn={isOn}
-          onChange={handleSwitchChange}
-          helperText="This is helper text for switch."
         />
         <DateTimePicker
           label="Birthday"
@@ -151,13 +139,24 @@ const HomeScreen = () => {
           value={dropdownSelected}
           onSelect={handleDropdownSelect}
           helperText="This is helper text for dropdown"
-          isStatusbarTranslucent={true}
         />
         <PhoneNumberField
           label="Phone Number"
           prefixes={prefiexesForPhoneNumber}
           helperText="This is helper text for phone number field"
           onSubmitEditing={handlePhoneFieldSubmitEditting}
+        />
+        <Checkbox
+          label="This is Checkbox"
+          checked={checked}
+          onChange={handleCheckboxChange}
+          helperText="This is helper text for checkbox."
+        />
+        <Switch
+          label="This is Switch"
+          isOn={isOn}
+          onChange={handleSwitchChange}
+          helperText="This is helper text for switch."
         />
       </View>
     </ScrollView>

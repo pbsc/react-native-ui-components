@@ -128,7 +128,7 @@ const PBSCDateTimePicker = (props) => {
         type={hasError ? 'error' : 'info'}
         visible={helperText}
         style={{
-          marginStart: -14,
+          marginStart: -10,
           color: helperTextColor(hasError, disabled, errorColor),
           ...helperTextStyle,
         }}

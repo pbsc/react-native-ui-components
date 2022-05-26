@@ -169,7 +169,7 @@ const PBSCDropdown = (props) => {
       <HelperText
         type="info"
         visible={helperText}
-        style={{ marginStart: -14, ...helperTextStyle }}
+        style={{ marginStart: -10, ...helperTextStyle }}
       >
         {helperText}
       </HelperText>
