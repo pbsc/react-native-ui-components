@@ -52,7 +52,10 @@ export const getDateTimePattern = (mode, locale) => {
     // ]
   }
 
-  const formatter = new Intl.DateTimeFormat(locale, options).formatToParts();
+  const formatter = new Intl.DateTimeFormat(
+    locale.replace('_', '-'),
+    options
+  ).formatToParts();
   if (mode === 'date') {
     return formatter
       .map(function (e) {

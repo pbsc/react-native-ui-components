@@ -127,7 +127,7 @@ const PBSCPhoneNumberField = (props) => {
           disabled={disabled}
           onSelect={handlePrefixSelected}
           borderColor={hasError ? COLOR.RED : COLOR.GRAY_LIGHT}
-          textColor={hasError ? COLOR.RED : textColor}
+          textColor={textColor}
           textSize={textSize}
           style={{
             marginTop: -6,
