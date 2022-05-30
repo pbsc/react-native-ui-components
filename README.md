@@ -73,6 +73,15 @@ import {
 <PhoneNumberField />;
 ```
 
+## Documentations (or API)
+- [TextField](./docs/textfield.md)
+- [Checkbox](./docs/checkbox.md)
+- [Switch](./docs/switch.md)
+- [Dropdown](./docs/dropdown.md)
+- [DateTimePicker](./docs/datetimepicker.md)
+- [StepIndicator](./docs/stepindicator.md)
+- [PhoneNumberField](./docs/phonenumberfield.md)
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
