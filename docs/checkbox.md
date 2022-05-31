@@ -2,7 +2,7 @@
 <table >
    <tr>
       <td><img src="checkbox_unchecked.png" alt="Checkbox unchecked" /></td>
-      <td><img src="checkbox_checked.png" alt="Checkbox checked" /></td></td>
+      <td><img src="checkbox_checked.png" alt="Checkbox checked" /></td>
   </tr>
 </table>
 
@@ -22,7 +22,6 @@ const handleCheckboxChange = (value) => {
 
 // ...
 
-
 <Checkbox
     label="This is Checkbox"
     checked={checked}
@@ -34,7 +33,7 @@ const handleCheckboxChange = (value) => {
 ## Props
 ### label
 Type: string <br/>
-The text to use for the floating label.
+The text to use for the label.
 
 ### checked
 Type: boolean <br/>
@@ -59,7 +58,7 @@ Type: string/number <br/>
 Default value: '80%' <br/>
 Set the width of the Checkbox including its label
 
-### Size
+### size
 Type: number <br/>
 Default value: 32
 Set the size of the Checkbox

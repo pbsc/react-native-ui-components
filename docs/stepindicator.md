@@ -1,107 +1,71 @@
 # StepIndicator
 <table >
    <tr>
-      <td><img src="checkbox_unchecked.png" alt="Checkbox unchecked" /></td>
-      <td><img src="checkbox_checked.png" alt="Checkbox checked" /></td></td>
+      <td><img src="stepindicator_0th.png" alt="StepIndicator 0th step" /></td>
+      <td><img src="stepindicator_3rd.png" alt="StepIndicator 3rd step" /></td>
+      <td><img src="stepindicator_5th.png" alt="StepIndicator 5th step" /></td>
   </tr>
 </table>
 
 ## Usage
 
 ```js
-import React, { useState } from 'react-native';
-import { Checkbox } from '@pbsc/react-native-ui-components';
-
-const [checked, setChecked] = useState(false);
+import { StepIndicator } from '@pbsc/react-native-ui-components'
 
 // ...
 
-const handleCheckboxChange = (value) => {
-    setChecked(value);
-};
+const stepsForStepIndicator = [
+    { text: 'This is 0th step' },
+    { color: '#dd2618', text: 'This is 1st step' },
+    { color: '#fea112', text: 'This is 2nd step' },
+    { color: '#76bc23', text: 'This is 3rd step' },
+    { color: '#349822', text: 'This is 4th step' },
+    { color: '#297d19', text: 'This is 5th step' },
+];
 
 // ...
 
-
-<Checkbox
-    label="This is Checkbox"
-    checked={checked}
-    onChange={handleCheckboxChange}
-    helperText="This is helper text for checkbox."
-/>
+<StepIndicator steps={stepsForStepIndicator} currentStepIndex={4} />
 ```
 
 ## Props
-### label
-Type: string <br/>
-The text to use for the floating label.
+### steps
+Type: array of objects. (each object has `color` and `text`) <br/>
+State variable that holds the steps.
 
-### checked
-Type: boolean <br/>
-Default value: false <br/>
-Whether the Checkbox is checked or not. If `true` the Checkbox will be turned on
-
-### onChange
-Type: function <br/>
-Callback that is called when the Checkbox's status changes. (checked -> unchecked or vice versa)
-
-### helperText
-Type: string <br/>
-Text for additional info.
-
-### disabled
-Type: boolean <br/>
-Default value: false <br/>
-If `true`, user won't be able to interact with the component.
+### currentStepIndex = -1
+Type: number <br/>
+Default value: -1 <br/>
+The index of the current step.  Steps before the current step (inclusive) show up as their own colors.  Steps after the current step (exclusive) show up as gray color.
 
 ### width
 Type: string/number <br/>
 Default value: '80%' <br/>
-Set the width of the Checkbox including its label
+Set the width of the StepIndicator
 
-### Size
-Type: number <br/>
-Default value: 32
-Set the size of the Checkbox
+### height
+Type: string/number <br/>
+Default value: 6
+Set the height of the StepIndicator
 
-### borderWidth = 2,
-Type: number <br />
-Default value: 2
-Set the width of the Checkbox's border
-
-### borderColor
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #7a81ff <br/>
-Border color of the Checkbox
-
-### backgroundColorUnchecked
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #ebebeb <br/>
-Background color when the Checkbox is unchecked.
-
-### backgroundColorChecked
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #7a81ff <br/>
-Background color when the Checkbox is checked.
-
-### checkmarkColor
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #ffffff <br/>
-Checkmark's color
-
-### labelColor
+### textColor
 Type: hexColorCode (ex: #ff00ff) <br/>
 Default value: #000000 <br/>
 Label's color
 
+### textSize
+Type: number <br/>
+Default value: 12
+Label's text size (fontSize)
+
 ### style
 Type: object <br/>
-Set style of checkbox part
+Set style of container part
 
-### labelStyle
+### stepStyle
 Type: object <br/>
-Set style of label part
+Set style of each step
 
-### helperTextStyle
+### textStyle
 Type: object <br/>
-Set style of helper text part
+Set style of label text part

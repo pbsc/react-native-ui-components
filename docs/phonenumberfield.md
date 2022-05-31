@@ -1,8 +1,11 @@
 # PhoneNumberField
+
 <table >
    <tr>
-      <td><img src="checkbox_unchecked.png" alt="Checkbox unchecked" /></td>
-      <td><img src="checkbox_checked.png" alt="Checkbox checked" /></td></td>
+      <td valign="top"><img src="phonefield.png" alt="PhoneNumberField" /></td>
+      <td valign="top"><img src="phonefield_prefix_open.png" alt="PhoneNumberField when prefix dropdown is open" /></td>
+      <td valign="top"><img src="phonefield_value.png" alt="PhoneNumberField with value" /></td>
+      <td valign="top"><img src="phonefield_error.png" alt="PhoneNumberField with error" /></td>
   </tr>
 </table>
 
@@ -12,96 +15,127 @@
 import React, { useState } from 'react-native';
 import { Checkbox } from '@pbsc/react-native-ui-components';
 
-const [checked, setChecked] = useState(false);
+const [phoneNumber, setPhoneNumber] = useState('');
+const prefiexesForPhoneNumber = [
+  { label: '+1 🇨🇦', value: '+1' },
+  { label: '+33 🇫🇷', value: '+33' },
+  { label: '+44 🇬🇧', value: '+44' },
+  { label: '+82 🇰🇷', value: '+82' },
+  { label: '+672 🇳🇫', value: '+672' },
+];
 
 // ...
 
-const handleCheckboxChange = (value) => {
-    setChecked(value);
+const handlePhoneFieldSubmitEditting = (value) => {
+  setPhoneNumber(value);
+  console.log(`Phonenumber: ${value}`);
 };
 
 // ...
 
-
-<Checkbox
-    label="This is Checkbox"
-    checked={checked}
-    onChange={handleCheckboxChange}
-    helperText="This is helper text for checkbox."
-/>
+<PhoneNumberField
+  label="Phone Number"
+  prefixes={prefiexesForPhoneNumber}
+  helperText="This is helper text for phone number field"
+  onSubmitEditing={handlePhoneFieldSubmitEditting}
+/>;
 ```
 
 ## Props
+
 ### label
+
 Type: string <br/>
 The text to use for the floating label.
 
-### checked
-Type: boolean <br/>
-Default value: false <br/>
-Whether the Checkbox is checked or not. If `true` the Checkbox will be turned on
+### prefixes
 
-### onChange
-Type: function <br/>
-Callback that is called when the Checkbox's status changes. (checked -> unchecked or vice versa)
+Type: array of objects (each object has `label` and `value`)
+Internatial country calling codes for dropdown part
 
-### helperText
-Type: string <br/>
-Text for additional info.
+### onSelectPrefix
+
+Type: Function <br/>
+Callback that is called when the prefix is selected.
+
+### onChangeText
+
+Type: Function <br/>
+Callback that is called when the text in input area is changed.
+
+### onSubmitEditing
+
+Type: Function <br/>
+Callback that is called when the submit button (enter button on the keyboard) is clicked.
 
 ### disabled
+
 Type: boolean <br/>
 Default value: false <br/>
 If `true`, user won't be able to interact with the component.
 
 ### width
+
 Type: string/number <br/>
 Default value: '80%' <br/>
-Set the width of the Checkbox including its label
+Set the width of the PhoneNumberField
 
-### Size
-Type: number <br/>
-Default value: 32
-Set the size of the Checkbox
+### height
 
-### borderWidth = 2,
-Type: number <br />
-Default value: 2
-Set the width of the Checkbox's border
+Type: string/number <br/>
+Default value: 48
+Set the heigh of the PhoneNumberField
 
-### borderColor
+### hasError
+
+Type: boolean <br/>
+Default value: false <br/>
+When it is `true`, the PhoneNumberField shows up with error style. (The color of the PhoneNumberField and its helper text turns to error color)
+
+### errorColor
+
 Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #7a81ff <br/>
-Border color of the Checkbox
+Default value: #b00020 <br/>
+Color for error state
 
-### backgroundColorUnchecked
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #ebebeb <br/>
-Background color when the Checkbox is unchecked.
+### textColor
 
-### backgroundColorChecked
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #7a81ff <br/>
-Background color when the Checkbox is checked.
-
-### checkmarkColor
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #ffffff <br/>
-Checkmark's color
-
-### labelColor
 Type: hexColorCode (ex: #ff00ff) <br/>
 Default value: #000000 <br/>
 Label's color
 
-### style
-Type: object <br/>
-Set style of checkbox part
+### textSize
 
-### labelStyle
+Type: number <br/>
+Default value: 16
+Label's text size (fontSize)
+
+### helperText
+
+Type: string <br/>
+Text for additional info. Can be used to show error message with `hasError` prop.
+
+### helperText
+
+Type: string <br/>
+Text for additional info. Can be used to show error message with `hasError` prop.
+
+### style
+
 Type: object <br/>
-Set style of label part
+Set style of container part
+
+### prefixStyle
+
+Type: object <br/>
+Set style of prefix dropdown part
+
+### fieldStyle
+
+Type: object <br/>
+Set style of textfield part
 
 ### helperTextStyle
+
 Type: object <br/>
 Set style of helper text part

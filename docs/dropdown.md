@@ -1,8 +1,17 @@
 # Dropdown
+- When menu is closed
 <table >
    <tr>
-      <td><img src="checkbox_unchecked.png" alt="Checkbox unchecked" /></td>
-      <td><img src="checkbox_checked.png" alt="Checkbox checked" /></td></td>
+      <td><img src="dropdown_unselected.png" alt="Dropdown unselected" /></td>
+      <td><img src="dropdown_selected.png" alt="Dropdown selected" /></td>
+  </tr>
+</table>
+
+- When menu is open
+<table >
+   <tr>
+      <td><img src="dropdown_open_down.png" alt="Dropdown open downward" /></td>
+      <td><img src="dropdown_open_up.png" alt="Dropdown open upward" /></td></td>
   </tr>
 </table>
 
@@ -10,24 +19,35 @@
 
 ```js
 import React, { useState } from 'react-native';
-import { Checkbox } from '@pbsc/react-native-ui-components';
+import { Dropdown } from '@pbsc/react-native-ui-components';
 
-const [checked, setChecked] = useState(false);
+const [dropdownSelected, setDropdownSelected] = useState(undefined);
+const dropdownData = [
+    {
+      label: 'One - This is very very very very very very long selection',
+      value: '1',
+    },
+    { label: 'Two', value: '2' },
+    { label: 'Three', value: '3' },
+    { label: 'Four', value: '4' },
+    { label: 'Five', value: '5' },
+];
 
 // ...
 
-const handleCheckboxChange = (value) => {
-    setChecked(value);
-};
+const handleDropdownSelect = (selectedItem) => {
+    setDropdownSelected(selectedItem);
+    console.log(`Dropdown selected: ${selectedItem.value}`);
+  };
 
 // ...
 
-
-<Checkbox
-    label="This is Checkbox"
-    checked={checked}
-    onChange={handleCheckboxChange}
-    helperText="This is helper text for checkbox."
+<Dropdown
+    label="This is dropdown"
+    data={dropdownData}
+    value={dropdownSelected}
+    onSelect={handleDropdownSelect}
+    helperText="This is helper text for dropdown"
 />
 ```
 
@@ -36,14 +56,22 @@ const handleCheckboxChange = (value) => {
 Type: string <br/>
 The text to use for the floating label.
 
-### checked
-Type: boolean <br/>
-Default value: false <br/>
-Whether the Checkbox is checked or not. If `true` the Checkbox will be turned on
+### value
+Type: object (type of an element of data for the Dropdown) <br/>
+State variable that specifies the value of the selected item.
 
-### onChange
+### items
+Type: array of objects (each object has `label` and `value`) <br/>
+State variable that holds the items for the Dropdown.
+
+### textAlignInItem = 'left',
+Type: enum (string) <br/>
+Default value: 'left' <br/>
+Text alignment for each dropdown item.
+
+### onSelect
 Type: function <br/>
-Callback that is called when the Checkbox's status changes. (checked -> unchecked or vice versa)
+Callback that returns the selected item.
 
 ### helperText
 Type: string <br/>
@@ -57,50 +85,40 @@ If `true`, user won't be able to interact with the component.
 ### width
 Type: string/number <br/>
 Default value: '80%' <br/>
-Set the width of the Checkbox including its label
+Set the width of the Dropdown
 
-### Size
-Type: number <br/>
-Default value: 32
-Set the size of the Checkbox
+### height
+Type: string/number <br/>
+Default value: 48
+Set the height of the Dropdown
 
-### borderWidth = 2,
-Type: number <br />
-Default value: 2
-Set the width of the Checkbox's border
+### backgroundColor
+Type: hexColorCode (ex: #ff00ff) <br/>
+Default value: #ffffff <br/>
+Background color for the Dropdown.
 
 ### borderColor
 Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #7a81ff <br/>
-Border color of the Checkbox
+Default value: #9a9a9a <br/>
+Border color of the Dropbox
 
-### backgroundColorUnchecked
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #ebebeb <br/>
-Background color when the Checkbox is unchecked.
-
-### backgroundColorChecked
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #7a81ff <br/>
-Background color when the Checkbox is checked.
-
-### checkmarkColor
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #ffffff <br/>
-Checkmark's color
-
-### labelColor
+### textColor
 Type: hexColorCode (ex: #ff00ff) <br/>
 Default value: #000000 <br/>
-Label's color
+Text color of the Dropbox.
+
+### textSize
+Type: number <br/>
+Default value: 16
+Text size (fontSize) of the Dropbox
 
 ### style
 Type: object <br/>
-Set style of checkbox part
+Set style of container part
 
-### labelStyle
+### fieldStyle
 Type: object <br/>
-Set style of label part
+Set style of dropdown field part
 
 ### helperTextStyle
 Type: object <br/>

@@ -19,7 +19,7 @@ const HomeScreen = () => {
     useState(undefined);
   const [phoneNumber, setPhoneNumber] = useState('');
 
-  const dropdownData = [
+  const dropdownItems = [
     {
       label: 'One - This is very very very very very very long selection',
       value: '1',
@@ -74,18 +74,17 @@ const HomeScreen = () => {
   };
 
   const prefiexesForPhoneNumber = [
-    { label: '+1', value: '+1' },
-    { label: '+7', value: '+7' },
-    { label: '+33', value: '+33' },
-    { label: '+44', value: '+44' },
-    { label: '+82', value: '+82' },
-    { label: '+672', value: '+672' },
+    { label: '+1 🇨🇦', value: '+1' },
+    { label: '+33 🇫🇷', value: '+33' },
+    { label: '+44 🇬🇧', value: '+44' },
+    { label: '+82 🇰🇷', value: '+82' },
+    { label: '+672 🇳🇫', value: '+672' },
   ];
 
   return (
     <ScrollView
       contentContainerStyle={{
-        paddingVertical: 48,
+        paddingVertical: 248,
         backgroundColor: 'white',
       }}
     >
@@ -135,7 +134,7 @@ const HomeScreen = () => {
         />
         <Dropdown
           label="This is dropdown"
-          data={dropdownData}
+          items={dropdownItems}
           value={dropdownSelected}
           onSelect={handleDropdownSelect}
           helperText="This is helper text for dropdown"
@@ -157,6 +156,12 @@ const HomeScreen = () => {
           isOn={isOn}
           onChange={handleSwitchChange}
           helperText="This is helper text for switch."
+        />
+        <PhoneNumberField
+          label="Phone Number"
+          prefixes={prefiexesForPhoneNumber}
+          helperText="This is helper text for phone number field"
+          onSubmitEditing={handlePhoneFieldSubmitEditting}
         />
       </View>
     </ScrollView>

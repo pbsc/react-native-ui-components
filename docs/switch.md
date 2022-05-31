@@ -1,8 +1,8 @@
 # Switch
 <table >
    <tr>
-      <td><img src="checkbox_unchecked.png" alt="Checkbox unchecked" /></td>
-      <td><img src="checkbox_checked.png" alt="Checkbox checked" /></td></td>
+      <td><img src="switch_off.png" alt="Switch off" /></td>
+      <td><img src="switch_on.png" alt="Switch on" /></td>
   </tr>
 </table>
 
@@ -10,40 +10,38 @@
 
 ```js
 import React, { useState } from 'react-native';
-import { Checkbox } from '@pbsc/react-native-ui-components';
+import { Switch } from '@pbsc/react-native-ui-components';
 
-const [checked, setChecked] = useState(false);
+const [isOn, setIsOn] = useState(false);
 
 // ...
 
-const handleCheckboxChange = (value) => {
-    setChecked(value);
+const handleSwitchChange = (value) => {
+    setIsOn(value);
 };
 
 // ...
 
-
-<Checkbox
-    label="This is Checkbox"
-    checked={checked}
-    onChange={handleCheckboxChange}
-    helperText="This is helper text for checkbox."
+<Switch
+    label="This is Switch"
+    isOn={isOn}
+    onChange={handleSwitchChange}
+    helperText="This is helper text for switch."
 />
 ```
 
 ## Props
 ### label
 Type: string <br/>
-The text to use for the floating label.
+The text to use for the label.
 
-### checked
+### isOn
 Type: boolean <br/>
-Default value: false <br/>
-Whether the Checkbox is checked or not. If `true` the Checkbox will be turned on
+Whether the Swich is on or not. If `true` the Switch will be turned on
 
 ### onChange
 Type: function <br/>
-Callback that is called when the Checkbox's status changes. (checked -> unchecked or vice versa)
+Callback that is called when the Switch's status changes. (on -> off or vice versa)
 
 ### helperText
 Type: string <br/>
@@ -57,46 +55,51 @@ If `true`, user won't be able to interact with the component.
 ### width
 Type: string/number <br/>
 Default value: '80%' <br/>
-Set the width of the Checkbox including its label
+Set the width of the Swicth including its label
 
-### Size
+### size
 Type: number <br/>
-Default value: 32
-Set the size of the Checkbox
-
-### borderWidth = 2,
-Type: number <br />
-Default value: 2
-Set the width of the Checkbox's border
-
-### borderColor
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #7a81ff <br/>
-Border color of the Checkbox
-
-### backgroundColorUnchecked
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #ebebeb <br/>
-Background color when the Checkbox is unchecked.
-
-### backgroundColorChecked
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #7a81ff <br/>
-Background color when the Checkbox is checked.
-
-### checkmarkColor
-Type: hexColorCode (ex: #ff00ff) <br/>
-Default value: #ffffff <br/>
-Checkmark's color
+Default value: 36
+Set the size of the Switch
 
 ### labelColor
 Type: hexColorCode (ex: #ff00ff) <br/>
 Default value: #000000 <br/>
 Label's color
 
+### onColor
+Type: hexColorCode (ex: #ff00ff) <br/>
+Default value: #7a81ff <br/>
+Background color when the Switch is on
+
+### offColor
+Type: hexColorCode (ex: #ff00ff) <br/>
+Default value: #ebebeb <br/>
+Background color when the Switch is off
+
+### wheelColor
+Type: hexColorCode (ex: #ff00ff) <br/>
+Default value: #ffffff <br/>
+Color for the wheel of the Switch
+
+### checkmarkColor
+Type: hexColorCode (ex: #ff00ff) <br/>
+Default value: #ffffff <br/>
+Checkmark's color
+
+### iconForOn
+Type: string <br/>
+Default value = 'checkmark-sharp'<br/>
+Name of the icon to show on the wheel of the Switch when it's on.  Material community icon name can be used.
+
+### iconForOff
+Type: string <br/>
+Default value = 'close'<br/>
+Name of the icon to show on the wheel of the Switch when it's off.  Material community icon name can be used.
+
 ### style
 Type: object <br/>
-Set style of checkbox part
+Set style of switch part
 
 ### labelStyle
 Type: object <br/>
