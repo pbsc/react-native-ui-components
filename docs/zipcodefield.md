@@ -47,7 +47,7 @@ Placeholder for the TextField.
 
 ### country
 Type: string <br/>
-Default value: 'CA'
+Default value: 'CA' <br/>
 The country code for the zip code field. Changes maximum length of input text. Value needs to follow <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>`ISO 3166-1 alpha-2`</a>.
 
 ### hasError
