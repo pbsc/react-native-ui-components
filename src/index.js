@@ -5,3 +5,4 @@ export { default as PhoneNumberField } from './components/PBSCPhoneNumberField';
 export { default as StepIndicator } from './components/PBSCStepIndicator';
 export { default as Switch } from './components/PBSCSwitch';
 export { default as TextField } from './components/PBSCTextField';
+export { default as ZipcodeField } from './components/PBSCZipcodeField';

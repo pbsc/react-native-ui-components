@@ -60,6 +60,7 @@ import {
   DateTimePicker,
   StepIndicator,
   PhoneNumberField,
+  ZipcodeField,
 } from '@pbsc/react-native-ui-components';
 
 // ...
@@ -71,6 +72,7 @@ import {
 <DateTimePicker />;
 <StepIndicator />;
 <PhoneNumberField />;
+<ZipcodeField />;
 ```
 
 ## Documentations (or API)
@@ -81,6 +83,7 @@ import {
 - [DateTimePicker](./docs/datetimepicker.md)
 - [StepIndicator](./docs/stepindicator.md)
 - [PhoneNumberField](./docs/phonenumberfield.md)
+- [ZipcodeField](./docs/zipcodefield.md)
 
 ## Contributing
 

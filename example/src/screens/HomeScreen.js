@@ -8,6 +8,7 @@ import {
   Switch,
   TextField,
   PhoneNumberField,
+  ZipcodeField,
 } from '@pbsc/react-native-ui-components';
 
 const HomeScreen = () => {
@@ -18,6 +19,7 @@ const HomeScreen = () => {
   const [dateTimePickerSelectd, setDateTimePickerSelected] =
     useState(undefined);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [postalCode, setPostalCode] = useState('');
 
   const dropdownItems = [
     {
@@ -36,7 +38,7 @@ const HomeScreen = () => {
   };
 
   const handleSubmit = (value) => {
-    console.log(`Text submitted: ${value.nativeEvent.text}`);
+    console.log(`Text submitted: ${value}`);
   };
 
   const stepsForStepIndicator = [
@@ -80,6 +82,11 @@ const HomeScreen = () => {
     { label: '+82 🇰🇷', value: '+82' },
     { label: '+672 🇳🇫', value: '+672' },
   ];
+
+  const handlePostalcodeSubmit = (value) => {
+    setPostalCode(value);
+    console.log(`PostalCode: ${value}`);
+  };
 
   return (
     <ScrollView
@@ -162,6 +169,13 @@ const HomeScreen = () => {
           prefixes={prefiexesForPhoneNumber}
           helperText="This is helper text for phone number field"
           onSubmitEditing={handlePhoneFieldSubmitEditting}
+        />
+        <ZipcodeField
+          label="Postal Code"
+          locale="ca"
+          hasError
+          onSubmitEditing={handlePostalcodeSubmit}
+          helperText="Error message from zipcode field."
         />
       </View>
     </ScrollView>
