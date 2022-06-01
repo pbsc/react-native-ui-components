@@ -9,7 +9,7 @@ const PBSCZipcodeField = (props) => {
     label,
     value,
     placeholder,
-    locale = 'ca',
+    country = 'CA',
     hasError = false,
     errorColor = COLOR.RED,
     helperText,
@@ -30,7 +30,7 @@ const PBSCZipcodeField = (props) => {
     helperTextStyle,
   } = props;
 
-  const maxLength = locale.toLowerCase().substring(0, 2) === 'ca' ? 7 : 6;
+  const maxLength = country.toLowerCase().substring(0, 2) === 'ca' ? 7 : 6;
 
   return (
     <TextField
