@@ -1,9 +1,9 @@
 # StepIndicator
 <table >
    <tr>
-      <td><img src="stepindicator_0th.png" alt="StepIndicator 0th step" /></td>
-      <td><img src="stepindicator_3rd.png" alt="StepIndicator 3rd step" /></td>
-      <td><img src="stepindicator_5th.png" alt="StepIndicator 5th step" /></td>
+      <td><img src="./resources/stepindicator_0th.png" alt="StepIndicator 0th step" /></td>
+      <td><img src="./resources/stepindicator_3rd.png" alt="StepIndicator 3rd step" /></td>
+      <td><img src="./resources/stepindicator_5th.png" alt="StepIndicator 5th step" /></td>
   </tr>
 </table>
 

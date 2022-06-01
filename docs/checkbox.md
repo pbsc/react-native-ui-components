@@ -1,8 +1,8 @@
 # Checkbox
 <table >
    <tr>
-      <td><img src="checkbox_unchecked.png" alt="Checkbox unchecked" /></td>
-      <td><img src="checkbox_checked.png" alt="Checkbox checked" /></td>
+      <td><img src="./resources/checkbox_unchecked.png" alt="Checkbox unchecked" /></td>
+      <td><img src="./resources/checkbox_checked.png" alt="Checkbox checked" /></td>
   </tr>
 </table>
 

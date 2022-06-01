@@ -1,8 +1,8 @@
 # Switch
 <table >
    <tr>
-      <td><img src="switch_off.png" alt="Switch off" /></td>
-      <td><img src="switch_on.png" alt="Switch on" /></td>
+      <td><img src="./resources/switch_off.png" alt="Switch off" /></td>
+      <td><img src="./resources/switch_on.png" alt="Switch on" /></td>
   </tr>
 </table>
 

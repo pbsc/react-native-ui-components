@@ -2,9 +2,9 @@
 - When picker is closed
 <table >
    <tr>
-      <td><img src="datetimepicker_unselected.png" alt="DateTimePicker unselected" /></td>
-      <td><img src="datetimepicker_selected.png" alt="DateTimePicker selected" /></td></td>
-      <td><img src="datetimepicker_error.png" alt="DateTimePicker with error" /></td>
+      <td><img src="./resources/datetimepicker_unselected.png" alt="DateTimePicker unselected" /></td>
+      <td><img src="./resources/datetimepicker_selected.png" alt="DateTimePicker selected" /></td></td>
+      <td><img src="./resources/datetimepicker_error.png" alt="DateTimePicker with error" /></td>
   </tr>
 </table>
 
@@ -18,15 +18,15 @@
   </tr>
    <tr>
       <td align="center">Android</td>
-      <td><img src="datetimepicker_date_android.png" alt="DateTimePicker date on Android" /></td>
-      <td><img src="datetimepicker_time_android.png" alt="DateTimePicker time on Android" /></td>
-      <td><img src="datetimepicker_datetime_android.png" alt="DateTimePicker datetime on Android" /></td>
+      <td><img src="./resources/datetimepicker_date_android.png" alt="DateTimePicker date on Android" /></td>
+      <td><img src="./resources/datetimepicker_time_android.png" alt="DateTimePicker time on Android" /></td>
+      <td><img src="./resources/datetimepicker_datetime_android.png" alt="DateTimePicker datetime on Android" /></td>
   </tr>
   <tr>
       <td align="center">iOS</td>
-      <td><img src="datetimepicker_date_ios.png" alt="DateTimePicker date on iOS" /></td>
-      <td><img src="datetimepicker_time_ios.png" alt="DateTimePicker time on iOS" /></td>
-      <td><img src="datetimepicker_datetime_ios.png" alt="DateTimePicker datetime on iOS" /></td>
+      <td><img src="./resources/datetimepicker_date_ios.png" alt="DateTimePicker date on iOS" /></td>
+      <td><img src="./resources/datetimepicker_time_ios.png" alt="DateTimePicker time on iOS" /></td>
+      <td><img src="./resources/datetimepicker_datetime_ios.png" alt="DateTimePicker datetime on iOS" /></td>
   </tr>
 </table>
 

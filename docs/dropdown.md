@@ -2,16 +2,16 @@
 - When menu is closed
 <table >
    <tr>
-      <td><img src="dropdown_unselected.png" alt="Dropdown unselected" /></td>
-      <td><img src="dropdown_selected.png" alt="Dropdown selected" /></td>
+      <td><img src="./resources/dropdown_unselected.png" alt="Dropdown unselected" /></td>
+      <td><img src="./resources/dropdown_selected.png" alt="Dropdown selected" /></td>
   </tr>
 </table>
 
 - When menu is open
 <table >
    <tr>
-      <td><img src="dropdown_open_down.png" alt="Dropdown open downward" /></td>
-      <td><img src="dropdown_open_up.png" alt="Dropdown open upward" /></td></td>
+      <td><img src="./resources/dropdown_open_down.png" alt="Dropdown open downward" /></td>
+      <td><img src="./resources/dropdown_open_up.png" alt="Dropdown open upward" /></td></td>
   </tr>
 </table>
 

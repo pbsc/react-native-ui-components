@@ -2,10 +2,10 @@
 
 <table >
    <tr>
-      <td valign="top"><img src="phonefield.png" alt="PhoneNumberField" /></td>
-      <td valign="top"><img src="phonefield_prefix_open.png" alt="PhoneNumberField when prefix dropdown is open" /></td>
-      <td valign="top"><img src="phonefield_value.png" alt="PhoneNumberField with value" /></td>
-      <td valign="top"><img src="phonefield_error.png" alt="PhoneNumberField with error" /></td>
+      <td valign="top"><img src="./resources/phonefield.png" alt="PhoneNumberField" /></td>
+      <td valign="top"><img src="./resources/phonefield_prefix_open.png" alt="PhoneNumberField when prefix dropdown is open" /></td>
+      <td valign="top"><img src="./resources/phonefield_value.png" alt="PhoneNumberField with value" /></td>
+      <td valign="top"><img src="./resources/phonefield_error.png" alt="PhoneNumberField with error" /></td>
   </tr>
 </table>
 

@@ -2,27 +2,27 @@
 - TextField with Helper Text
 <table >
    <tr>
-      <td><img src="textfield_unfocused.png" alt="TextField unfocused" /></td>
-      <td><img src="textfield_placeholder.png" alt="TextField with placeholder" /></td>
-      <td><img src="textfield_focused.png" alt="TextField focused" /></td>
+      <td><img src="./resources/textfield_unfocused.png" alt="TextField unfocused" /></td>
+      <td><img src="./resources/textfield_placeholder.png" alt="TextField with placeholder" /></td>
+      <td><img src="./resources/textfield_focused.png" alt="TextField focused" /></td>
   </tr>
 </table>
 
 - TextField for password
 <table >
    <tr>
-      <td><img src="textfield_password.png" alt="TextField for password" /></td>
-      <td><img src="textfield_password_focused.png" alt="TextField for password focused" /></td>
-      <td><img src="textfield_password_revealed.png" alt="TextField for password revealed" /></td>
+      <td><img src="./resources/textfield_password.png" alt="TextField for password" /></td>
+      <td><img src="./resources/textfield_password_focused.png" alt="TextField for password focused" /></td>
+      <td><img src="./resources/textfield_password_revealed.png" alt="TextField for password revealed" /></td>
   </tr>
 </table>
 
 - Other examples
 <table >
    <tr>
-      <td><img src="textfield_with_icon.png" alt="TextField with icon" /></td>
-      <td><img src="textfield_with_error.png" alt="TextField with error & error message" /></td>
-      <td><img src="textfield_multiline.png" alt="TextField multiline" /></td>
+      <td><img src="./resources/textfield_with_icon.png" alt="TextField with icon" /></td>
+      <td><img src="./resources/textfield_with_error.png" alt="TextField with error & error message" /></td>
+      <td><img src="./resources/textfield_multiline.png" alt="TextField multiline" /></td>
   </tr>
 </table>
 
