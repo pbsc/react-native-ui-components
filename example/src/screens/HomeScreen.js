@@ -172,10 +172,9 @@ const HomeScreen = () => {
         />
         <ZipcodeField
           label="Postal Code"
-          locale="ca"
-          hasError
+          country="CA"
           onSubmitEditing={handlePostalcodeSubmit}
-          helperText="Error message from zipcode field."
+          helperText="Please enter your postal code."
         />
       </View>
     </ScrollView>

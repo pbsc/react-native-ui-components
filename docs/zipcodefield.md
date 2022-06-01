@@ -45,10 +45,10 @@ The value to show for the ZipcodeField.
 Type: string <br/>
 Placeholder for the TextField.
 
-### locale
+### country
 Type: string <br/>
-Default value: 'ca'
-The locale for the zip code field. Changes maximum length of input text. Value needs to be a Locale ID.
+Default value: 'CA'
+The country code for the zip code field. Changes maximum length of input text. Value needs to follow <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>`ISO 3166-1 alpha-2`</a>.
 
 ### hasError
 Type: boolean <br/>
