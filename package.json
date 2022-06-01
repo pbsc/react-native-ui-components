@@ -1,6 +1,6 @@
 {
   "name": "@pbsc/react-native-ui-components",
-  "version": "0.7.6",
+  "version": "0.8.0",
   "description": "UI components for CycleFinder app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

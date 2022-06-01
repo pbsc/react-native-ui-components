@@ -122,7 +122,8 @@ const PBSCPhoneNumberField = (props) => {
     >
       <View>
         <Dropdown
-          data={prefixes}
+          items={prefixes}
+          textAlignInItem="right"
           height={height}
           disabled={disabled}
           onSelect={handlePrefixSelected}

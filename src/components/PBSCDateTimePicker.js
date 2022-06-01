@@ -99,7 +99,7 @@ const PBSCDateTimePicker = (props) => {
             label={makeLabel()}
             value={
               value
-                ? value
+                ? dateTimeString(value)
                 : selected
                 ? dateTimeString(selectedDate)
                 : undefined
