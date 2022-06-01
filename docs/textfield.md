@@ -29,7 +29,23 @@
 ## Usage
 
 ```js
+import React, { useState } from 'react';
 import { TextField} from '@pbsc/react-native-ui-components';
+
+// ...
+
+const [text, setText] = useState('');
+
+// ...
+
+const handleTextFieldChange = (value) => {
+    setText(value);
+    console.log(`Text input: ${value}`);
+};
+
+const handleSubmit = (value) => {
+    console.log(`Text submitted: ${value}`);
+};
 
 // ...
 
@@ -40,6 +56,8 @@ import { TextField} from '@pbsc/react-native-ui-components';
     autoCapitalize="none"
     helperText="This is helper text."
     value={text}
+    onChangeText={handleTextFieldChange}
+    onSubmitEditing={handleSubmit}
 />
 ```
 

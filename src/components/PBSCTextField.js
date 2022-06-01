@@ -40,6 +40,10 @@ const PBSCTextField = (props) => {
   } = props;
   const [hideText, setHideText] = useState(true);
 
+  const handleOnSubmitEditing = (value) => {
+    onSubmitEditing(value.nativeEvent.text);
+  };
+
   const setRightIcon = () => {
     if (password == true) {
       return (
@@ -96,7 +100,7 @@ const PBSCTextField = (props) => {
         autoComplete={autoComplete}
         right={setRightIcon()}
         onChangeText={onChangeText}
-        onSubmitEditing={onSubmitEditing}
+        onSubmitEditing={handleOnSubmitEditing}
         onBlur={onBlur}
         onFocus={onFocus}
         style={{
