@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { TextField } from '..';
 import { COLOR } from '../helpers/Colors';
@@ -30,13 +30,20 @@ const PBSCZipcodeField = (props) => {
     helperTextStyle,
   } = props;
 
+  const [controlledText, setControlledText] = useState(value);
   const maxLength = country.toLowerCase().substring(0, 2) === 'ca' ? 7 : 6;
+
+  const handleChangeText = (value) => {
+    const capitalizedText = value.toUpperCase();
+    setControlledText(capitalizedText);
+    onChangeText(capitalizedText);
+  };
 
   return (
     <TextField
       id={id}
       label={label}
-      value={value}
+      value={controlledText}
       placeholder={placeholder}
       hasError={hasError}
       errorColor={errorColor}
@@ -44,7 +51,7 @@ const PBSCZipcodeField = (props) => {
       autoCapitalize="characters"
       maxLength={maxLength}
       keyboard
-      onChangeText={onChangeText}
+      onChangeText={handleChangeText}
       onSubmitEditing={onSubmitEditing}
       onBlur={onBlur}
       onFocus={onFocus}
