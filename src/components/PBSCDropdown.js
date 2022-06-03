@@ -17,8 +17,7 @@ const PBSCDropdown = (props) => {
     id,
     label,
     value = undefined,
-    items,
-    textAlignInItem = 'left',
+    data,
     onSelect = () => {},
     helperText,
     disabled = false,
@@ -53,8 +52,8 @@ const PBSCDropdown = (props) => {
       const dropdownBottom = y + h;
       if (windowHeight - dropdownBottom > 2 * height + marginVertical) {
         const desiredHeight =
-          windowHeight - dropdownBottom - marginVertical > items.length * height
-            ? items.length * height
+          windowHeight - dropdownBottom - marginVertical > data.length * height
+            ? data.length * height
             : windowHeight - dropdownBottom - marginVertical;
         setDropdownTop(y + h);
         setDropdownLeft(x);
@@ -62,8 +61,8 @@ const PBSCDropdown = (props) => {
         setDropdownHeight(desiredHeight);
       } else {
         const desiredHeight =
-          y - marginVertical > items.length * height
-            ? items.length * height
+          y - marginVertical > data.length * height
+            ? data.length * height
             : y - marginVertical;
         setDropdownTop(y - desiredHeight);
         setDropdownLeft(x);
@@ -96,7 +95,7 @@ const PBSCDropdown = (props) => {
       <Text
         numberOfLines={2}
         adjustsFontSizeToFit
-        style={{ fontSize: textSize, textAlign: textAlignInItem }}
+        style={{ fontSize: textSize }}
       >
         {item.label}
       </Text>
@@ -119,7 +118,7 @@ const PBSCDropdown = (props) => {
             ]}
           >
             <FlatList
-              data={items}
+              data={data}
               renderItem={renderItem}
               keyExtractor={(item, index) => index.toString()}
             />

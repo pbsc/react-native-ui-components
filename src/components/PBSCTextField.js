@@ -81,6 +81,7 @@ const PBSCTextField = (props) => {
   return (
     <View style={{ width: width, ...style }}>
       <TextInput
+        testID="input"
         mode="outlined"
         id={id}
         label={label}
