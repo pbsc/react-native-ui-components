@@ -17,9 +17,11 @@ const PBSCDropdown = (props) => {
     id,
     label,
     value = undefined,
-    data,
+    items,
+    textAlignInItem = 'left',
     onSelect = () => {},
     helperText,
+    showValueWhenSelected = false,
     disabled = false,
     width = '80%',
     height = 48,
@@ -52,8 +54,8 @@ const PBSCDropdown = (props) => {
       const dropdownBottom = y + h;
       if (windowHeight - dropdownBottom > 2 * height + marginVertical) {
         const desiredHeight =
-          windowHeight - dropdownBottom - marginVertical > data.length * height
-            ? data.length * height
+          windowHeight - dropdownBottom - marginVertical > items.length * height
+            ? items.length * height
             : windowHeight - dropdownBottom - marginVertical;
         setDropdownTop(y + h);
         setDropdownLeft(x);
@@ -61,8 +63,8 @@ const PBSCDropdown = (props) => {
         setDropdownHeight(desiredHeight);
       } else {
         const desiredHeight =
-          y - marginVertical > data.length * height
-            ? data.length * height
+          y - marginVertical > items.length * height
+            ? items.length * height
             : y - marginVertical;
         setDropdownTop(y - desiredHeight);
         setDropdownLeft(x);
@@ -95,7 +97,7 @@ const PBSCDropdown = (props) => {
       <Text
         numberOfLines={2}
         adjustsFontSizeToFit
-        style={{ fontSize: textSize }}
+        style={{ fontSize: textSize, textAlign: textAlignInItem }}
       >
         {item.label}
       </Text>
@@ -118,7 +120,7 @@ const PBSCDropdown = (props) => {
             ]}
           >
             <FlatList
-              data={data}
+              data={items}
               renderItem={renderItem}
               keyExtractor={(item, index) => index.toString()}
             />
@@ -141,7 +143,10 @@ const PBSCDropdown = (props) => {
             mode="outlined"
             id={id}
             label={label}
-            value={selectedItem && selectedItem.label}
+            value={
+              selectedItem &&
+              (showValueWhenSelected ? selectedItem.value : selectedItem.label)
+            }
             disabled={disabled}
             editable={false}
             outlineColor={borderColor}

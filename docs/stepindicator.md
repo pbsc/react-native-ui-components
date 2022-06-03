@@ -33,7 +33,7 @@ const stepsForStepIndicator = [
 Type: array of objects. (each object has `color` and `text`) <br/>
 State variable that holds the steps.
 
-### currentStepIndex = -1
+### currentStepIndex
 Type: number <br/>
 Default value: -1 <br/>
 The index of the current step.  Steps before the current step (inclusive) show up as their own colors.  Steps after the current step (exclusive) show up as gray color.

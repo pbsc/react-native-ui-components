@@ -125,6 +125,7 @@ const PBSCPhoneNumberField = (props) => {
           items={prefixes}
           textAlignInItem="right"
           height={height}
+          showValueWhenSelected={true}
           disabled={disabled}
           onSelect={handlePrefixSelected}
           borderColor={hasError ? COLOR.RED : COLOR.GRAY_LIGHT}

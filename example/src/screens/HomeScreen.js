@@ -164,12 +164,6 @@ const HomeScreen = () => {
           onChange={handleSwitchChange}
           helperText="This is helper text for switch."
         />
-        <PhoneNumberField
-          label="Phone Number"
-          prefixes={prefiexesForPhoneNumber}
-          helperText="This is helper text for phone number field"
-          onSubmitEditing={handlePhoneFieldSubmitEditting}
-        />
         <ZipcodeField
           label="Postal Code"
           country="CA"
