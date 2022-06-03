@@ -21,6 +21,7 @@ const PBSCDropdown = (props) => {
     textAlignInItem = 'left',
     onSelect = () => {},
     helperText,
+    showValueWhenSelected = false,
     disabled = false,
     width = '80%',
     height = 48,
@@ -142,7 +143,10 @@ const PBSCDropdown = (props) => {
             mode="outlined"
             id={id}
             label={label}
-            value={selectedItem && selectedItem.label}
+            value={
+              selectedItem &&
+              (showValueWhenSelected ? selectedItem.value : selectedItem.label)
+            }
             disabled={disabled}
             editable={false}
             outlineColor={borderColor}

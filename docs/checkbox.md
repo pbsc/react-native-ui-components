@@ -63,7 +63,7 @@ Type: number <br/>
 Default value: 32
 Set the size of the Checkbox
 
-### borderWidth = 2,
+### borderWidth
 Type: number <br />
 Default value: 2
 Set the width of the Checkbox's border
