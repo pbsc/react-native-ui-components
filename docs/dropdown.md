@@ -64,7 +64,7 @@ State variable that specifies the value of the selected item.
 Type: array of objects (each object has `label` and `value`) <br/>
 State variable that holds the items for the Dropdown.
 
-### textAlignInItem = 'left',
+### textAlignInItem
 Type: enum (string) <br/>
 Default value: 'left' <br/>
 Text alignment for each dropdown item.
@@ -76,6 +76,11 @@ Callback that returns the selected item.
 ### helperText
 Type: string <br/>
 Text for additional info.
+
+### showValueWhenSelected
+Type: boolean <br/>
+Default value: false <br/>
+If `true` selected `value` is shown instead of `label`.
 
 ### disabled
 Type: boolean <br/>
