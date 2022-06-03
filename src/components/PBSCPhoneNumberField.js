@@ -110,6 +110,12 @@ const PBSCPhoneNumberField = (props) => {
     )}-${phoneNumber.slice(6, 10)}`;
   };
 
+  const dividerColor = disabled
+    ? COLOR.DISABLED
+    : hasError
+    ? COLOR.RED
+    : COLOR.GRAY_LIGHT;
+
   return (
     <View
       style={{
@@ -186,22 +192,14 @@ const PBSCPhoneNumberField = (props) => {
                 style={{
                   height: 1,
                   width: 5,
-                  backgroundColor: hasError
-                    ? COLOR.RED
-                    : disabled
-                    ? COLOR.DISABLED
-                    : COLOR.GRAY_LIGHT,
+                  backgroundColor: dividerColor,
                 }}
               />
               <Divider
                 style={{
                   height: isActive ? 2 : 1,
                   width: 6,
-                  backgroundColor: hasError
-                    ? COLOR.RED
-                    : disabled
-                    ? COLOR.DISABLED
-                    : COLOR.GRAY_LIGHT,
+                  backgroundColor: dividerColor,
                 }}
               />
             </View>
@@ -209,11 +207,7 @@ const PBSCPhoneNumberField = (props) => {
               style={{
                 height: isActive ? height - 2 : height,
                 width: isActive ? 2 : 1,
-                backgroundColor: hasError
-                  ? COLOR.RED
-                  : disabled
-                  ? COLOR.DISABLED
-                  : COLOR.GRAY_LIGHT,
+                backgroundColor: dividerColor,
                 left: 5,
               }}
             />
@@ -223,22 +217,14 @@ const PBSCPhoneNumberField = (props) => {
                   height: 1,
                   width: 5,
                   top: isActive ? 1 : 0,
-                  backgroundColor: hasError
-                    ? COLOR.RED
-                    : disabled
-                    ? COLOR.DISABLED
-                    : COLOR.GRAY_LIGHT,
+                  backgroundColor: dividerColor,
                 }}
               />
               <Divider
                 style={{
                   height: isActive ? 2 : 1,
                   width: 6,
-                  backgroundColor: hasError
-                    ? COLOR.RED
-                    : disabled
-                    ? COLOR.DISABLED
-                    : COLOR.GRAY_LIGHT,
+                  backgroundColor: dividerColor,
                 }}
               />
             </View>
