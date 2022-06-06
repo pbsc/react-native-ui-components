@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { TextInput, HelperText } from 'react-native-paper';
+import { incrRegEx } from 'incr-regex-package';
 
 import { COLOR } from '../helpers/Colors';
 import { helperTextColor } from '../helpers/HelperTextColor';
@@ -12,6 +13,7 @@ const PBSCTextField = (props) => {
     value,
     placeholder,
     password,
+    inputPattern = '',
     rightIconName, // material community icon
     onPressRightIcon,
     hasError = false,
@@ -39,6 +41,26 @@ const PBSCTextField = (props) => {
     helperTextStyle,
   } = props;
   const [hideText, setHideText] = useState(true);
+  const [controlledText, setControlledText] = useState(value ? value : '');
+
+  const handleChangeText = (value) => {
+    if (inputPattern === '') {
+      setControlledText(value);
+      onChangeText(value);
+    } else {
+      const matches = value.match(inputPattern);
+      if (matches != null && matches.length > 0) {
+        const matchedString = matches[0];
+        if (value.length < controlledText.length) {
+          setControlledText(value);
+          onChangeText(value);
+        } else if (matchedString.length > controlledText.length) {
+          setControlledText(matchedString);
+          onChangeText(matchedString);
+        }
+      }
+    }
+  };
 
   const handleOnSubmitEditing = (value) => {
     onSubmitEditing(value.nativeEvent.text);
@@ -84,7 +106,7 @@ const PBSCTextField = (props) => {
         mode="outlined"
         id={id}
         label={label}
-        value={value}
+        value={controlledText}
         placeholder={placeholder}
         disabled={disabled}
         editable={editable}
@@ -99,7 +121,7 @@ const PBSCTextField = (props) => {
         autoCapitalize={autoCapitalize}
         autoComplete={autoComplete}
         right={setRightIcon()}
-        onChangeText={onChangeText}
+        onChangeText={handleChangeText}
         onSubmitEditing={handleOnSubmitEditing}
         onBlur={onBlur}
         onFocus={onFocus}
