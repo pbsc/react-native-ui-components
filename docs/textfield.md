@@ -70,6 +70,11 @@ The text to use for the floating label.
 Type: string <br/>
 The value to show for the TextField.
 
+### inputPattern
+Type: string <br/>
+Defalut value: '' <br/>
+Regex pattern to restrict user input.  When the value of this prop is given, users only can input strings match the pattern.
+
 ### placeholder
 Type: string <br/>
 Placeholder for the TextField.

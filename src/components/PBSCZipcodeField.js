@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { TextField } from '..';
 import { COLOR } from '../helpers/Colors';
+import '../helpers/RegexService';
+import { PostalcodeRegex } from '../helpers/PostalcodeRegex';
 
 const PBSCZipcodeField = (props) => {
   const {
@@ -31,12 +33,22 @@ const PBSCZipcodeField = (props) => {
   } = props;
 
   const [controlledText, setControlledText] = useState(value);
-  const maxLength = country.toLowerCase().substring(0, 2) === 'ca' ? 7 : 6;
-
   const handleChangeText = (value) => {
     const capitalizedText = value.toUpperCase();
     setControlledText(capitalizedText);
     onChangeText(capitalizedText);
+  };
+
+  const regexPatternForPostalCode = () => {
+    const postRegex = PostalcodeRegex.find(
+      (x) => x.abbrev === country.toUpperCase()
+    ).postal;
+    if (postRegex != undefined) {
+      const regex = new RegExp(postRegex);
+      return regex.toPartialMatchRegex();
+    } else {
+      return '';
+    }
   };
 
   return (
@@ -45,11 +57,11 @@ const PBSCZipcodeField = (props) => {
       label={label}
       value={controlledText}
       placeholder={placeholder}
+      inputPattern={regexPatternForPostalCode()}
       hasError={hasError}
       errorColor={errorColor}
       helperText={helperText}
       autoCapitalize="characters"
-      maxLength={maxLength}
       keyboard
       onChangeText={handleChangeText}
       onSubmitEditing={onSubmitEditing}
