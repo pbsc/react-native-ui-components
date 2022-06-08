@@ -5,7 +5,7 @@ export const COLOR = {
   GRAY_PALE: '#ebebeb',
   DISABLED: '#bdbdbd',
   WHITE: '#fff',
-  PBSCGREEN: '#76BC21',
-  RED: '#b00020',
+  PBSC_GREEN: '#76BC21',
+  PBSC_RED: '#b00020',
   PURPLE_LIGHT: '#7A81FF',
 };

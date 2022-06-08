@@ -96,7 +96,7 @@ const PBSCDropdown = (props) => {
         onPress={() => onItemPress(item)}
       >
         <Text
-          testID={`item-${index}`}
+          testID={`dropdown-item-${index}`}
           numberOfLines={2}
           adjustsFontSizeToFit
           style={{ fontSize: textSize }}
@@ -110,7 +110,7 @@ const PBSCDropdown = (props) => {
   const renderDropdown = () => {
     return (
       <Modal
-        testID="dropdownMenu"
+        testID="dropdown-modal"
         visible={isOpen}
         transparent
         animationType="none"
@@ -148,7 +148,7 @@ const PBSCDropdown = (props) => {
         {renderDropdown()}
         <View pointerEvents="none">
           <TextInput
-            testID="textLabel"
+            testID="dropdown-input"
             mode="outlined"
             id={id}
             label={label}
@@ -181,7 +181,7 @@ const PBSCDropdown = (props) => {
         </View>
       </Pressable>
       <HelperText
-        testID="helperTextLabel"
+        testID="dropdown-helpertext"
         type="info"
         visible={helperText}
         style={{ marginStart: -10, ...helperTextStyle }}

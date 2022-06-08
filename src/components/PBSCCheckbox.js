@@ -50,6 +50,7 @@ const PBSCCheckbox = (props) => {
     <View style={{ width: width, ...style }}>
       <View style={styles.container}>
         <Pressable
+          testID="checkbox-body"
           id={id}
           disabled={disabled}
           style={[checkboxBaseStyle, checked && checkboxCheckedStyle]}
@@ -57,6 +58,7 @@ const PBSCCheckbox = (props) => {
         >
           {checked && (
             <Icon
+              testID="checkbox-mark"
               name="checkmark-sharp"
               size={size}
               color={disabled ? COLOR.WHITE : checkmarkColor}
@@ -69,6 +71,7 @@ const PBSCCheckbox = (props) => {
           )}
         </Pressable>
         <Text
+          testID="checkbox-title"
           style={{
             marginStart: 10,
             fontSize: 16,
@@ -80,6 +83,7 @@ const PBSCCheckbox = (props) => {
         </Text>
       </View>
       <HelperText
+        testID="checkbox-helpertext"
         type="info"
         visible={helperText}
         style={{ marginStart: size - 2, ...helperTextStyle }}

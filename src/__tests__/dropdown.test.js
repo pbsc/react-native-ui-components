@@ -5,14 +5,15 @@ import { Dropdown } from '../index';
 
 afterEach(cleanup);
 
-const dropdownItems = [
-  { label: 'One', value: '1' },
-  { label: 'Two', value: '2' },
-  { label: 'Three', value: '3' },
-  { label: 'Four', value: '4' },
-  { label: 'Five', value: '5' },
-];
-describe('Dropdown tests', () => {
+describe('Dropdown unit testing', () => {
+  const dropdownItems = [
+    { label: 'One', value: '1' },
+    { label: 'Two', value: '2' },
+    { label: 'Three', value: '3' },
+    { label: 'Four', value: '4' },
+    { label: 'Five', value: '5' },
+  ];
+
   it('should render component without crashing', () => {
     const rendered = renderer
       .create(
@@ -36,25 +37,25 @@ describe('Dropdown tests', () => {
       />
     );
 
-    const textLabel = getByTestId('textLabel');
-    const dropdownItems = getByTestId('dropdownMenu');
-    expect(dropdownItems).toHaveProp('visible', false);
+    const dropdownInput = getByTestId('dropdown-input');
+    const dropdownModal = getByTestId('dropdown-modal');
+    expect(dropdownModal).toHaveProp('visible', false);
 
-    fireEvent.press(textLabel);
-    expect(dropdownItems).toHaveProp('visible', true);
+    fireEvent.press(dropdownInput);
+    expect(dropdownModal).toHaveProp('visible', true);
   });
 
-  it('dropdown show its helper text', () => {
+  it('dropdown shows its helper text', () => {
     const helperText = 'This is helper text';
 
     const { getByTestId } = render(
       <Dropdown
         label="This is dropdown"
         items={dropdownItems}
-        helperText="This is helper text for dropdown"
+        helperText={helperText}
       />
     );
-    const helperTextLabel = getByTestId('helperTextLabel');
+    const helperTextLabel = getByTestId('dropdown-helpertext');
 
     expect(helperTextLabel).toHaveTextContent(helperText);
   });
@@ -71,10 +72,10 @@ describe('Dropdown tests', () => {
       />
     );
 
-    const textLabel = getByTestId('textLabel');
-    fireEvent.press(textLabel);
+    const dropdownInput = getByTestId('dropdown-input');
+    fireEvent.press(dropdownInput);
 
-    const selectedItem = getByTestId('item-3');
+    const selectedItem = getByTestId('dropdown-item-3');
     fireEvent.press(selectedItem);
 
     expect(mockFn).toBeCalledWith(dropdownItems[3]);

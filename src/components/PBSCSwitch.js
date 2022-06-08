@@ -16,7 +16,7 @@ const PBSCSwitch = (props) => {
   const {
     id,
     label,
-    isOn,
+    isOn = false,
     onChange = () => {},
     helperText,
     disabled = false,
@@ -43,7 +43,7 @@ const PBSCSwitch = (props) => {
       [0, 1],
       [2, (size * 2) / 3 + 3]
     );
-    return { marginLeft };
+    return { marginLeft: marginLeft };
   });
 
   const animatedColorStyle = useAnimatedStyle(() => {
@@ -55,7 +55,7 @@ const PBSCSwitch = (props) => {
         disabled ? COLOR.DISABLED : onColor,
       ]
     );
-    return { backgroundColor };
+    return { backgroundColor: backgroundColor };
   });
 
   const animatedOnIconStyle = useAnimatedStyle(() => {
@@ -81,7 +81,12 @@ const PBSCSwitch = (props) => {
   return (
     <View style={{ width: width, ...style }}>
       <View style={styles.container}>
-        <Pressable id={id} disabled={disabled} onPress={onSwitchPress}>
+        <Pressable
+          testID="switch-body"
+          id={id}
+          disabled={disabled}
+          onPress={onSwitchPress}
+        >
           <Animated.View
             style={[
               {
@@ -94,6 +99,7 @@ const PBSCSwitch = (props) => {
             ]}
           >
             <Animated.View
+              testID={isOn ? 'switch-wheel-on' : 'switch-wheel-off'}
               style={[
                 styles.toggleWheelStyle,
                 {
@@ -115,6 +121,7 @@ const PBSCSwitch = (props) => {
           </Animated.View>
         </Pressable>
         <Text
+          testID="switch-title"
           style={{
             marginStart: 10,
             fontSize: 16,
@@ -126,6 +133,7 @@ const PBSCSwitch = (props) => {
         </Text>
       </View>
       <HelperText
+        testID="switch-helpertext"
         type="info"
         visible={helperText}
         style={{ marginStart: (size * 5) / 3 - 2, ...helperTextStyle }}

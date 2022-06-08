@@ -16,7 +16,7 @@ const PBSCTextField = (props) => {
     rightIconName, // material community icon
     onPressRightIcon,
     hasError = false,
-    errorColor = COLOR.RED,
+    errorColor = COLOR.PBSC_RED,
     helperText,
     keyboardType = 'default',
     autoCapitalize,
@@ -69,6 +69,7 @@ const PBSCTextField = (props) => {
     if (password == true) {
       return (
         <TextInput.Icon
+          testID="textfield-righticon"
           name={hideText ? 'eye' : 'eye-off'}
           onPress={onPressEyeIcon}
           style={{ marginTop: 16 }}
@@ -102,7 +103,7 @@ const PBSCTextField = (props) => {
   return (
     <View style={{ width: width, ...style }}>
       <TextInput
-        testID="input"
+        testID="textfield-input"
         mode="outlined"
         id={id}
         label={label}
@@ -138,7 +139,7 @@ const PBSCTextField = (props) => {
         }}
       />
       <HelperText
-        testID="helperTextLabel"
+        testID="textfield-helpertext"
         type={hasError ? 'error' : 'info'}
         visible={helperText}
         style={{

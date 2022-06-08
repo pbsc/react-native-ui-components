@@ -18,7 +18,7 @@ const PBSCPhoneNumberField = (props) => {
     width = '80%',
     height = 48,
     hasError = false,
-    errorColor = COLOR.RED,
+    errorColor = COLOR.PBSC_RED,
     textColor = COLOR.BLACK,
     textSize = 16,
     helperText,
@@ -113,7 +113,7 @@ const PBSCPhoneNumberField = (props) => {
   const dividerColor = disabled
     ? COLOR.DISABLED
     : hasError
-    ? COLOR.RED
+    ? COLOR.PBSC_RED
     : COLOR.GRAY_LIGHT;
 
   return (
@@ -134,7 +134,7 @@ const PBSCPhoneNumberField = (props) => {
           showValueWhenSelected={true}
           disabled={disabled}
           onSelect={handlePrefixSelected}
-          borderColor={hasError ? COLOR.RED : COLOR.GRAY_LIGHT}
+          borderColor={hasError ? COLOR.PBSC_RED : COLOR.GRAY_LIGHT}
           textColor={textColor}
           textSize={textSize}
           style={{

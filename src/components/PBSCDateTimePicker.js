@@ -16,7 +16,7 @@ const PBSCDateTimePicker = (props) => {
     onConfirm = () => {},
     onCancel = () => {},
     hasError = false,
-    errorColor = COLOR.RED,
+    errorColor = COLOR.PBSC_RED,
     helperText,
     disabled = false,
     mode = 'date',
