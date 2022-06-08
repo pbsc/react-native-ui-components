@@ -10,8 +10,8 @@ describe('TextField tests', () => {
     const rendered = renderer
       .create(
         <TextField
-          title="Hello"
-          placeholer="Please input your name"
+          label="Hello"
+          placeholder="Please input your name"
           helperText="This is helper text"
         />
       )
@@ -20,21 +20,48 @@ describe('TextField tests', () => {
     expect(rendered).toBeTruthy();
   });
 
-  it('textfield has proper title and placeholder', () => {
-    const titleText = 'This is a sample title.';
-    const placeholerText = 'Please input anything,';
+  it('textfield show placeholder correctly', () => {
+    const placeholderText = 'Please input anything,';
 
-    const { getByTestId } = render(
-      <TextField title={titleText} placeholer={placeholerText} />
-    );
+    const { getByTestId } = render(<TextField placeholder={placeholderText} />);
 
     const inputField = getByTestId('input');
 
-    expect(inputField).toHaveTextContent(titleText);
+    expect(inputField).toHaveProp('placeholder', placeholderText);
+  });
 
-    fireEvent.changeText(inputField, '');
+  it('textfield show value and text input by user', () => {
+    const valueText = 'This is text in text field';
+    const inputText = 'This is text input by user';
 
-    expect(inputField).toHaveTextContent(placeholerText);
+    const { getByTestId } = render(<TextField value={valueText} />);
+    const inputField = getByTestId('input');
+
+    expect(inputField).toHaveProp('value', valueText);
+
+    fireEvent.changeText(inputField, inputText);
+    expect(inputField).toHaveProp('value', inputText);
+  });
+
+  it('textfield show its helper text', () => {
+    const helperText = 'This is helper text';
+
+    const { getByTestId } = render(<TextField helperText={helperText} />);
+    const helperTextLabel = getByTestId('helperTextLabel');
+
+    expect(helperTextLabel).toHaveTextContent(helperText);
+  });
+
+  it('color changed to error color when has error', () => {
+    const helperText = 'This is helper text';
+
+    const { getByTestId } = render(
+      <TextField hasError helperText={helperText} />
+    );
+
+    const helperTextLabel = getByTestId('helperTextLabel');
+
+    expect(helperTextLabel.props.style.color).toBe('#b00020');
   });
 
   it('textfield passes input text', () => {

@@ -138,6 +138,7 @@ const PBSCTextField = (props) => {
         }}
       />
       <HelperText
+        testID="helperTextLabel"
         type={hasError ? 'error' : 'info'}
         visible={helperText}
         style={{

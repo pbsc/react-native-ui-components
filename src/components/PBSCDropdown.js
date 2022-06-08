@@ -83,30 +83,38 @@ const PBSCDropdown = (props) => {
     setIsOpen(false);
   };
 
-  const renderItem = ({ item }) => (
-    <Pressable
-      style={({ pressed }) => [
-        {
-          backgroundColor: pressed ? COLOR.GRAY_PALE : COLOR.WHITE,
-          height: height,
-          padding: 10,
-        },
-      ]}
-      onPress={() => onItemPress(item)}
-    >
-      <Text
-        numberOfLines={2}
-        adjustsFontSizeToFit
-        style={{ fontSize: textSize, textAlign: textAlignInItem }}
+  const renderItem = ({ item, index }) => {
+    return (
+      <Pressable
+        style={({ pressed }) => [
+          {
+            backgroundColor: pressed ? COLOR.GRAY_PALE : COLOR.WHITE,
+            height: height,
+            padding: 10,
+          },
+        ]}
+        onPress={() => onItemPress(item)}
       >
-        {item.label}
-      </Text>
-    </Pressable>
-  );
+        <Text
+          testID={`item-${index}`}
+          numberOfLines={2}
+          adjustsFontSizeToFit
+          style={{ fontSize: textSize }}
+        >
+          {item.label}
+        </Text>
+      </Pressable>
+    );
+  };
 
   const renderDropdown = () => {
     return (
-      <Modal visible={isOpen} transparent animationType="none">
+      <Modal
+        testID="dropdownMenu"
+        visible={isOpen}
+        transparent
+        animationType="none"
+      >
         <Pressable style={styles.overlay} onPress={toggleDropdown}>
           <View
             style={[
@@ -140,6 +148,7 @@ const PBSCDropdown = (props) => {
         {renderDropdown()}
         <View pointerEvents="none">
           <TextInput
+            testID="textLabel"
             mode="outlined"
             id={id}
             label={label}
@@ -172,6 +181,7 @@ const PBSCDropdown = (props) => {
         </View>
       </Pressable>
       <HelperText
+        testID="helperTextLabel"
         type="info"
         visible={helperText}
         style={{ marginStart: -10, ...helperTextStyle }}
