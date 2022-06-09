@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { cleanup, render, fireEvent } from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
-import { Switch, Checkbox } from '../index';
+import { Switch } from '../index';
 
 afterEach(cleanup);
 
@@ -34,12 +34,12 @@ describe('Switch unit testing', () => {
   });
 
   it('switch change its state when pressed', () => {
-    const CheckboxWithState = () => {
+    const SwitchWithState = () => {
       const [isOn, setIsOn] = useState(false);
       return <Switch isOn={isOn} onChange={() => setIsOn(!isOn)} />;
     };
 
-    const { getByTestId, queryByTestId } = render(<CheckboxWithState />);
+    const { getByTestId, queryByTestId } = render(<SwitchWithState />);
 
     const switchBody = getByTestId('switch-body');
     expect(queryByTestId('switch-wheel-on')).toBeNull();

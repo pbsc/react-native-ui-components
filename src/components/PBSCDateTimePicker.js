@@ -94,6 +94,7 @@ const PBSCDateTimePicker = (props) => {
       <Pressable disabled={disabled} onPress={handlePress}>
         <View pointerEvents="none">
           <TextInput
+            testID="datepicker-input"
             mode="outlined"
             id={id}
             label={makeLabel()}
@@ -125,6 +126,7 @@ const PBSCDateTimePicker = (props) => {
         </View>
       </Pressable>
       <HelperText
+        testID="datepicker-helpertext"
         type={hasError ? 'error' : 'info'}
         visible={helperText}
         style={{
@@ -136,6 +138,7 @@ const PBSCDateTimePicker = (props) => {
         {helperText}
       </HelperText>
       <DatePicker
+        testID="datepicker-modal"
         androidVariant="iosClone"
         modal
         mode={mode}

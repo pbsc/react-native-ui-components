@@ -41,8 +41,8 @@ const HomeScreen = () => {
     console.log(`Text submitted: ${value}`);
   };
 
+  const textBeforeStartForStepIndicator = 'This is 0th step';
   const stepsForStepIndicator = [
-    { text: 'This is 0th step' },
     { color: '#dd2618', text: 'This is 1st step' },
     { color: '#fea112', text: 'This is 2nd step' },
     { color: '#76bc23', text: 'This is 3rd step' },
@@ -118,7 +118,11 @@ const HomeScreen = () => {
           rightIconName="credit-card-outline"
           keyboardType="number-pad"
         />
-        <StepIndicator steps={stepsForStepIndicator} currentStepIndex={2} />
+        <StepIndicator
+          textBeforeStart={textBeforeStartForStepIndicator}
+          steps={stepsForStepIndicator}
+          currentStepIndex={2}
+        />
         <TextField
           label="Text field with error"
           hasError

@@ -46,7 +46,7 @@ describe('Dropdown unit testing', () => {
   });
 
   it('dropdown shows its helper text', () => {
-    const helperText = 'This is helper text';
+    const helperText = 'This is helper text for dropdown';
 
     const { getByTestId } = render(
       <Dropdown

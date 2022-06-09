@@ -53,7 +53,7 @@ describe('TextField unit testing', () => {
   });
 
   it('color changed to error color when has error', () => {
-    const helperText = 'This is helper text';
+    const helperText = 'This is error message.';
 
     const { getByTestId } = render(
       <TextField hasError helperText={helperText} />
