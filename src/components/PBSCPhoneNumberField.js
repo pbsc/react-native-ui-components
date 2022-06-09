@@ -5,6 +5,7 @@ import { TextInput, Divider, HelperText } from 'react-native-paper';
 import { Dropdown } from '..';
 import { COLOR } from '../helpers/Colors';
 import { helperTextColor } from '../helpers/HelperTextColor';
+import { formatPhoneNumber } from '../helpers/PhoneNumberService';
 
 const PBSCPhoneNumberField = (props) => {
   const {
@@ -59,6 +60,7 @@ const PBSCPhoneNumberField = (props) => {
 
   const dropdownWidth =
     60 + (10 * textSize) / 16 + (numPrefix * 10 * textSize) / 16;
+
   const textinputWidth = () => {
     if (typeof width === 'string') {
       if (width.endsWith('%')) {
@@ -80,34 +82,6 @@ const PBSCPhoneNumberField = (props) => {
     const formatedPhoneNumber = formatPhoneNumber(value);
     setPhoneNumber(formatedPhoneNumber);
     onChangeText(value);
-  };
-
-  const formatPhoneNumber = (value) => {
-    // if input value is falsy eg if the user deletes the input, then just return
-    if (!value) return value;
-
-    // clean the input for any non-digit values.
-    const phoneNumber = value.replace(/[^\d]/g, '');
-
-    // phoneNumberLength is used to know when to apply our formatting for the phone number
-    const phoneNumberLength = phoneNumber.length;
-
-    // we need to return the value with no formatting if its less then four digits
-    // this is to avoid weird behavior that occurs if you  format the area code to early
-    if (phoneNumberLength < 4) return phoneNumber;
-
-    // if phoneNumberLength is greater than 4 and less the 7 we start to return
-    // the formatted number
-    if (phoneNumberLength < 7) {
-      return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
-    }
-
-    // finally, if the phoneNumberLength is greater then seven, we add the last
-    // bit of formatting and return it.
-    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(
-      3,
-      6
-    )}-${phoneNumber.slice(6, 10)}`;
   };
 
   const dividerColor = disabled
@@ -152,6 +126,7 @@ const PBSCPhoneNumberField = (props) => {
           }}
         >
           <TextInput
+            testID="phonenumberfield-input"
             id={id}
             mode="outlined"
             label={label}
@@ -232,6 +207,7 @@ const PBSCPhoneNumberField = (props) => {
         </View>
       </View>
       <HelperText
+        testID="phonenumberfield-helpertext"
         type={hasError ? 'error' : 'info'}
         visible={helperText}
         style={{
