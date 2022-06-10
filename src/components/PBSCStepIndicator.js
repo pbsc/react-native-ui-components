@@ -5,8 +5,9 @@ import { COLOR } from '../helpers/Colors';
 const PBSCStepIndicator = (props) => {
   const {
     steps,
+    textBeforeStart,
     currentStepIndex = -1,
-    inactiveColor,
+    inactiveColor = '#bbbbbb',
     width = '80%',
     height = 6,
     textColor = COLOR.BLACK,
@@ -23,10 +24,6 @@ const PBSCStepIndicator = (props) => {
       </View>
     );
   }
-  const textBeforeStart = steps[0].text;
-  steps.shift();
-  const stepColors = steps.map((step) => step.color);
-  const stepTexts = steps.map((step) => step.text);
 
   return (
     <View style={{ width: width, ...style }}>
@@ -36,21 +33,27 @@ const PBSCStepIndicator = (props) => {
           marginHorizontal: -5,
         }}
       >
-        {stepColors.map((value, index) => {
+        {steps.map((value, index) => {
           return (
-            <PBSCStep
-              index={index}
-              currentIndex={currentStepIndex}
-              activeColor={value}
-              inactiveColor={inactiveColor}
-              height={height}
-              stepStyle={stepStyle}
+            <View
+              testID={`stepindicator-step-${index}`}
+              style={[
+                styles.step,
+                {
+                  backgroundColor:
+                    index > currentStepIndex ? inactiveColor : value.color,
+                  borderRadius: height / 2,
+                  height: height,
+                },
+                stepStyle,
+              ]}
               key={index}
             />
           );
         })}
       </View>
       <Text
+        testID="stepindicator-text"
         style={{
           color: textColor,
           fontSize: textSize,
@@ -59,53 +62,13 @@ const PBSCStepIndicator = (props) => {
           ...textStyle,
         }}
       >
-        {currentStepIndex < 0 ? textBeforeStart : stepTexts[currentStepIndex]}
+        {currentStepIndex < 0 ? textBeforeStart : steps[currentStepIndex].text}
       </Text>
     </View>
   );
 };
 
 export default PBSCStepIndicator;
-
-const PBSCStep = (props) => {
-  const {
-    index,
-    currentIndex,
-    activeColor,
-    inactiveColor = '#bbbbbb',
-    height,
-    stepStyle,
-  } = props;
-  if (index > currentIndex) {
-    return (
-      <View
-        style={[
-          styles.step,
-          {
-            backgroundColor: inactiveColor,
-            borderRadius: height / 2,
-            height: height,
-          },
-          stepStyle,
-        ]}
-      ></View>
-    );
-  } else {
-    return (
-      <View
-        style={[
-          styles.step,
-          {
-            backgroundColor: activeColor,
-            borderRadius: height / 2,
-            height: height,
-          },
-          stepStyle,
-        ]}
-      ></View>
-    );
-  }
-};
 
 const styles = StyleSheet.create({
   step: {

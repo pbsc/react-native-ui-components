@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { TextInput, HelperText } from 'react-native-paper';
 
-import { COLOR } from '../helpers/Colors';
-import { helperTextColor } from '../helpers/HelperTextColor';
+import { COLOR, helperTextColor } from '../helpers/Colors';
 
 const PBSCTextField = (props) => {
   const {
@@ -16,7 +15,7 @@ const PBSCTextField = (props) => {
     rightIconName, // material community icon
     onPressRightIcon,
     hasError = false,
-    errorColor = COLOR.RED,
+    errorColor = COLOR.PBSC_RED,
     helperText,
     keyboardType = 'default',
     autoCapitalize,
@@ -69,6 +68,7 @@ const PBSCTextField = (props) => {
     if (password == true) {
       return (
         <TextInput.Icon
+          testID="textfield-righticon"
           name={hideText ? 'eye' : 'eye-off'}
           onPress={onPressEyeIcon}
           style={{ marginTop: 16 }}
@@ -102,6 +102,7 @@ const PBSCTextField = (props) => {
   return (
     <View style={{ width: width, ...style }}>
       <TextInput
+        testID="textfield-input"
         mode="outlined"
         id={id}
         label={label}
@@ -137,6 +138,7 @@ const PBSCTextField = (props) => {
         }}
       />
       <HelperText
+        testID="textfield-helpertext"
         type={hasError ? 'error' : 'info'}
         visible={helperText}
         style={{

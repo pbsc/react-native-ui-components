@@ -13,7 +13,7 @@ const PBSCZipcodeField = (props) => {
     placeholder,
     country = 'CA',
     hasError = false,
-    errorColor = COLOR.RED,
+    errorColor = COLOR.PBSC_RED,
     helperText,
     onChangeText = () => {},
     onSubmitEditing = () => {},
