@@ -63,8 +63,8 @@ describe('DateTimePicker unit testing', () => {
 
   it('datepicker passes selected date', () => {
     const mockFn = jest.fn();
-    const dateOnPicker = new Date(2001, 1, 21);
-    const selectedDate = new Date(2022, 12, 25);
+    const dateOnPicker = new Date(2001, 0, 21);
+    const selectedDate = new Date(2022, 11, 25);
 
     const { getByTestId } = render(
       <DateTimePicker

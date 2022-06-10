@@ -47,9 +47,7 @@ const PBSCDateTimePicker = (props) => {
   } = props;
   const windowSize = Dimensions.get('window');
 
-  const [selectingDate, setSelectingDate] = useState(
-    value ? value : new Date()
-  );
+  const [selectingDate, setSelectingDate] = useState(value ? value : undefined);
   const [selectedDate, setSelectedDate] = useState(selectingDate);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -78,7 +76,7 @@ const PBSCDateTimePicker = (props) => {
   };
 
   const dateTimeString = (date) => {
-    if (typeof date === 'Date') {
+    if (date instanceof Date) {
       if (mode === 'date') {
         return date.toLocaleDateString(locale);
       } else if (mode === 'time') {
@@ -197,7 +195,7 @@ const PBSCDateTimePicker = (props) => {
                 confirmText={confirmText}
                 cancelText={cancelText}
                 is24hourSource={is24hour}
-                date={selectingDate}
+                date={selectingDate ? selectingDate : new Date()}
                 onDateChange={handleDateChange}
               />
               <View
