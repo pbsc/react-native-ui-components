@@ -15,18 +15,6 @@ describe('DateTimePicker unit testing', () => {
     expect(rendered).toBeTruthy();
   });
 
-  //   it('datepicker modal shown after pressed', () => {
-  //     const { getByTestId, queryByTestId } = render(
-  //       <DateTimePicker label="Birthday" locale="en" mode="date" />
-  //     );
-
-  //     const datePickerInput = getByTestId('datepicker-input');
-  //     expect(queryByTestId('datepicker-modal')).toBeNull();
-
-  //     fireEvent.press(datePickerInput);
-  //     expect(queryByTestId('datepicker-modal')).toBeTruthy();
-  //   });
-
   it('datepicker shows its helper text', () => {
     const helperText = 'This is helper text for date picker';
 
@@ -60,24 +48,70 @@ describe('DateTimePicker unit testing', () => {
     expect(helperTextLabel.props.style.color).toBe(COLOR.PBSC_RED);
   });
 
-  //   it('datepicker passes selected item', () => {
-  //     const mockFn = jest.fn();
+  it('datepicker modal shown after pressed', () => {
+    const { getByTestId } = render(
+      <DateTimePicker label="Birthday" locale="en" mode="date" />
+    );
 
-  //     const { getByTestId } = render(
-  //       <DateTimePicker
-  //         label="Birthday"
-  //         locale="en"
-  //         mode="date"
-  //         onConfirm={mockFn}
-  //       />
-  //     );
+    const datePickerInput = getByTestId('datepicker-input');
+    const datePickerModal = getByTestId('datepicker-modal');
+    expect(datePickerModal).toHaveProp('visible', false);
 
-  //     const dropdownInput = getByTestId('datepicker-input');
-  //     fireEvent.press(dropdownInput);
+    fireEvent.press(datePickerInput);
+    expect(datePickerModal).toHaveProp('visible', true);
+  });
 
-  //     const selectedItem = getByTestId('dropdown-item-3');
-  //     fireEvent.press(selectedItem);
+  it('datepicker passes selected date', () => {
+    const mockFn = jest.fn();
+    const dateOnPicker = new Date(2001, 1, 21);
+    const selectedDate = new Date(2022, 12, 25);
 
-  //     expect(mockFn).toBeCalledWith(dropdownItems[3]);
-  //   });
+    const { getByTestId } = render(
+      <DateTimePicker
+        label="Birthday"
+        locale="en"
+        mode="date"
+        value={dateOnPicker}
+        onConfirm={mockFn}
+      />
+    );
+
+    const datePickerInput = getByTestId('datepicker-input');
+    fireEvent.press(datePickerInput);
+
+    const datePicker = getByTestId('datepicker-picker');
+    fireEvent(datePicker, 'dateChange', selectedDate);
+
+    const confirmButton = getByTestId('datepicker-confirm');
+    fireEvent(confirmButton, 'pressOut');
+
+    expect(mockFn).toBeCalledWith(selectedDate);
+  });
+
+  it('datepicker does not change its date when cancel pressed', () => {
+    const mockFn = jest.fn();
+    const dateOnPicker = new Date(2001, 1, 21);
+    const selectedDate = new Date(2022, 12, 25);
+
+    const { getByTestId } = render(
+      <DateTimePicker
+        label="Birthday"
+        locale="en"
+        mode="date"
+        value={dateOnPicker}
+        onCancel={mockFn}
+      />
+    );
+
+    const datePickerInput = getByTestId('datepicker-input');
+    fireEvent.press(datePickerInput);
+
+    const datePicker = getByTestId('datepicker-picker');
+    fireEvent(datePicker, 'dateChange', selectedDate);
+
+    const cancelButton = getByTestId('datepicker-cancel');
+    fireEvent(cancelButton, 'pressOut');
+
+    expect(mockFn).toBeCalledWith(dateOnPicker);
+  });
 });

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { TextInput, HelperText } from 'react-native-paper';
 
-import { COLOR } from '../helpers/Colors';
-import { helperTextColor } from '../helpers/HelperTextColor';
+import { COLOR, helperTextColor } from '../helpers/Colors';
 
 const PBSCTextField = (props) => {
   const {

@@ -3,8 +3,7 @@ import { Dimensions, View } from 'react-native';
 import { TextInput, Divider, HelperText } from 'react-native-paper';
 
 import { Dropdown } from '..';
-import { COLOR } from '../helpers/Colors';
-import { helperTextColor } from '../helpers/HelperTextColor';
+import { COLOR, helperTextColor } from '../helpers/Colors';
 import { formatPhoneNumber } from '../helpers/PhoneNumberService';
 
 const PBSCPhoneNumberField = (props) => {

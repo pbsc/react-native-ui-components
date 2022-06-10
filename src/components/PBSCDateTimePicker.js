@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { Pressable, View } from 'react-native';
+import {
+  Button,
+  Dimensions,
+  Modal,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import { TextInput, HelperText } from 'react-native-paper';
 
-import { COLOR } from '../helpers/Colors';
+import { COLOR, helperTextColor } from '../helpers/Colors';
+import { ModalButton } from '../helpers/UIComponents';
 import * as DateTimeService from '../helpers/DateTimeService';
-import { helperTextColor } from '../helpers/HelperTextColor';
 
 const PBSCDateTimePicker = (props) => {
   const {
@@ -37,38 +45,49 @@ const PBSCDateTimePicker = (props) => {
     fieldStyle,
     helperTextStyle,
   } = props;
+  const windowSize = Dimensions.get('window');
 
-  const [selected, setSelected] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectingDate, setSelectingDate] = useState(
+    value ? value : new Date()
+  );
+  const [selectedDate, setSelectedDate] = useState(selectingDate);
   const [isOpen, setIsOpen] = useState(false);
 
   const handlePress = () => {
     setIsOpen(true);
   };
 
-  const handleConfirm = (date) => {
+  const handleDateChange = (date) => {
+    setSelectingDate(date);
+  };
+
+  const handleConfirm = () => {
     setIsOpen(false);
-    setSelectedDate(date);
-    setSelected(true);
+    setSelectedDate(selectingDate);
     if (typeof onConfirm === 'function') {
-      onConfirm(date);
+      onConfirm(selectingDate);
     }
   };
 
   const handleCancel = () => {
     setIsOpen(false);
+    setSelectingDate(selectedDate);
     if (typeof onCancel === 'function') {
-      onCancel();
+      onCancel(selectedDate);
     }
   };
 
   const dateTimeString = (date) => {
-    if (mode === 'date') {
-      return date.toLocaleDateString(locale);
-    } else if (mode === 'time') {
-      return date.toLocaleTimeString(locale);
+    if (typeof date === 'Date') {
+      if (mode === 'date') {
+        return date.toLocaleDateString(locale);
+      } else if (mode === 'time') {
+        return date.toLocaleTimeString(locale);
+      } else {
+        return date.toLocaleString(locale);
+      }
     } else {
-      return date.toLocaleString(locale);
+      return '';
     }
   };
 
@@ -98,13 +117,7 @@ const PBSCDateTimePicker = (props) => {
             mode="outlined"
             id={id}
             label={makeLabel()}
-            value={
-              value
-                ? dateTimeString(value)
-                : selected
-                ? dateTimeString(selectedDate)
-                : undefined
-            }
+            value={dateTimeString(selectingDate)}
             disabled={disabled}
             editable={false}
             outlineColor={borderColor}
@@ -137,25 +150,81 @@ const PBSCDateTimePicker = (props) => {
       >
         {helperText}
       </HelperText>
-      <DatePicker
+      <Modal
         testID="datepicker-modal"
-        androidVariant="iosClone"
-        modal
-        mode={mode}
-        maximumDate={maximumValue}
-        minimumDate={minimumValue}
-        minuteInterval={minInterval}
-        locale={locale}
-        title={pickerTitleText}
-        textColor={pickerTextColor}
-        confirmText={confirmText}
-        cancelText={cancelText}
-        is24hourSource={is24hour}
-        open={isOpen}
-        date={selectedDate}
-        onConfirm={handleConfirm}
-        onCancel={handleCancel}
-      />
+        visible={isOpen}
+        transparent
+        animationType="fade"
+      >
+        <TouchableOpacity
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            flex: 1,
+            justifyContent: 'center',
+          }}
+          onPress={handleCancel}
+        >
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+              marginBottom: 36,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: 'white',
+                shadowColor: '#000',
+                shadowRadius: 4,
+                shadowOffset: { height: 4, width: 0 },
+                elevation: 4,
+                shadowOpacity: 0.5,
+                borderRadius: 12,
+                padding: 12,
+              }}
+            >
+              <DatePicker
+                testID="datepicker-picker"
+                androidVariant="iosClone"
+                mode={mode}
+                maximumDate={maximumValue}
+                minimumDate={minimumValue}
+                minuteInterval={minInterval}
+                locale={locale}
+                title={pickerTitleText}
+                textColor={pickerTextColor}
+                confirmText={confirmText}
+                cancelText={cancelText}
+                is24hourSource={is24hour}
+                date={selectingDate}
+                onDateChange={handleDateChange}
+              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                }}
+              >
+                <ModalButton
+                  testID="datepicker-cancel"
+                  title="Cancel"
+                  backgroundColor={COLOR.WHITE}
+                  textColor={COLOR.PBSC_RED}
+                  onPress={handleCancel}
+                />
+                <ModalButton
+                  testID="datepicker-confirm"
+                  title="Confirm"
+                  backgroundColor={COLOR.WHITE}
+                  textColor={COLOR.PBSC_BLUE}
+                  onPress={handleConfirm}
+                />
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 };

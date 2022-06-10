@@ -37,62 +37,51 @@ const textBeforeStart = 'It is not started yet';
 ## Props
 
 ### steps
-
 Type: array of objects. (each object has `color` and `text`) <br/>
 State variable that holds color and text for each step.
 
 ### textBeforeStart
-
 Type: string <br/>
 Text showing before starting (when `currentStepIndex` is below 0). If this isn't provided, no text is shown.
 
 ### currentStepIndex
-
 Type: number <br/>
 Default value: -1 <br/>
 The index of the current step. Steps before the current step (inclusive) show up as their own colors. Steps after the current step (exclusive) show up as gray color.
 
 ### inactiveColor
-
 Type: hexColorCode (ex: #ff00ff) <br/>
 Default value: #bbbbbb <br/>
 color for inactive steps
 
 ### width
-
 Type: string/number <br/>
 Default value: '80%' <br/>
 Set the width of the StepIndicator
 
 ### height
-
 Type: string/number <br/>
 Default value: 6
 Set the height of the StepIndicator
 
 ### textColor
-
 Type: hexColorCode (ex: #ff00ff) <br/>
 Default value: #000000 <br/>
 Label's color
 
 ### textSize
-
 Type: number <br/>
 Default value: 12
 Label's text size (fontSize)
 
 ### style
-
 Type: object <br/>
 Set style of container part
 
 ### stepStyle
-
 Type: object <br/>
 Set style of each step
 
 ### textStyle
-
 Type: object <br/>
 Set style of label text part
