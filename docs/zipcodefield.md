@@ -26,7 +26,7 @@ const handlePostalcodeSubmit = (value) => {
 
 <ZipcodeField
     label="Postal Code"
-    locale="ca"
+    country="ca"
     onSubmitEditing={handlePostalcodeSubmit}
     helperText="Please input your postal code."
 />
