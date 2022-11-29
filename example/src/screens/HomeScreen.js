@@ -9,6 +9,7 @@ import {
   TextField,
   PhoneNumberField,
   ZipcodeField,
+  PasswordStrength
 } from '@pbsc/react-native-ui-components';
 
 const HomeScreen = () => {
@@ -20,6 +21,7 @@ const HomeScreen = () => {
     useState(undefined);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [postalCode, setPostalCode] = useState('');
+  const [passwordStrengthValue, setPasswordStrengthValue] = useState('');
 
   const dropdownItems = [
     {
@@ -174,6 +176,14 @@ const HomeScreen = () => {
           onSubmitEditing={handlePostalcodeSubmit}
           helperText="Please enter your postal code."
         />
+        <View>
+          <TextField
+            label="Password Strenght Input"
+            value={PasswordStrengthValue}
+            onChangeText={setPasswordStrengthValue}
+          />
+          <PasswordStrength value={PasswordStrengthValue}/>
+        </View>
       </View>
     </ScrollView>
   );
