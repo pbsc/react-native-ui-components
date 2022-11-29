@@ -13,6 +13,7 @@ const PBSCTextField = (props) => {
     password,
     inputPattern = '',
     rightIconName, // material community icon
+    customIcon,
     onPressRightIcon,
     hasError = false,
     errorColor = COLOR.PBSC_RED,
@@ -84,7 +85,7 @@ const PBSCTextField = (props) => {
         />
       );
     } else {
-      return null;
+      return customIcon ? (<TextInput.Icon icon={() => customIcon()} style={{ marginTop: 16 }}/>) : null ;
     }
   };
 
