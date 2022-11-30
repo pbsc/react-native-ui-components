@@ -84,8 +84,10 @@ const PBSCTextField = (props) => {
           style={{ marginTop: 16 }}
         />
       );
+    } else if(customIcon) {
+      return (<TextInput.Icon icon={() => customIcon()} style={{ marginTop: 16 }}/>)  ;
     } else {
-      return customIcon ? (<TextInput.Icon icon={() => customIcon()} style={{ marginTop: 16 }}/>) : null ;
+      return null;
     }
   };
 
