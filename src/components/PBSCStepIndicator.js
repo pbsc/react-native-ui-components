@@ -15,6 +15,8 @@ const PBSCStepIndicator = (props) => {
     style,
     stepStyle,
     textStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
 
   if (steps == undefined || steps.length < 1) {
@@ -52,18 +54,23 @@ const PBSCStepIndicator = (props) => {
           );
         })}
       </View>
-      <Text
-        testID="stepindicator-text"
-        style={{
-          color: textColor,
-          fontSize: textSize,
-          marginVertical: 5,
-          marginStart: 2,
-          ...textStyle,
-        }}
-      >
-        {currentStepIndex < 0 ? textBeforeStart : steps[currentStepIndex].text}
-      </Text>
+      <View style={{ flexDirection: 'row' }}>
+        {hasHelperTextIcon && helperTextCustomIcon}
+        <Text
+          testID="stepindicator-text"
+          style={{
+            color: textColor,
+            fontSize: textSize,
+            marginVertical: 5,
+            marginStart: 2,
+            ...textStyle,
+          }}
+        >
+          {currentStepIndex < 0
+            ? textBeforeStart
+            : steps[currentStepIndex].text}
+        </Text>
+      </View>
     </View>
   );
 };

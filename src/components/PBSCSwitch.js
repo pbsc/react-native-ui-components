@@ -31,6 +31,8 @@ const PBSCSwitch = (props) => {
     style,
     labelStyle,
     helperTextStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
 
   const progress = useDerivedValue(() => {
@@ -132,14 +134,17 @@ const PBSCSwitch = (props) => {
           {label}
         </Text>
       </View>
-      <HelperText
-        testID="switch-helpertext"
-        type="info"
-        visible={helperText}
-        style={{ marginStart: (size * 5) / 3 - 2, ...helperTextStyle }}
-      >
-        {helperText}
-      </HelperText>
+      <View style={{ flexDirection: 'row' }}>
+        {hasHelperTextIcon && helperTextCustomIcon}
+        <HelperText
+          testID="switch-helpertext"
+          type="info"
+          visible={helperText}
+          style={{ marginStart: (size * 5) / 3 - 2, ...helperTextStyle }}
+        >
+          {helperText}
+        </HelperText>
+      </View>
     </View>
   );
 };
