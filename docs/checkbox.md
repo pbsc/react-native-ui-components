@@ -3,6 +3,7 @@
    <tr>
       <td><img src="./resources/checkbox_unchecked.png" alt="Checkbox unchecked" /></td>
       <td><img src="./resources/checkbox_checked.png" alt="Checkbox checked" /></td>
+      <td><img src="./resources/checkbox_icon_helpertext.png" alt="Checkbox icon and helpertext" /></td>
   </tr>
 </table>
 
@@ -27,6 +28,13 @@ const handleCheckboxChange = (value) => {
     checked={checked}
     onChange={handleCheckboxChange}
     helperText="This is helper text for checkbox."
+    hasHelperTextIcon={true}
+        helperTextCustomIcon={
+        <Image
+            source={require('../images/info.png')}
+            style={{ width: 12, height: 12, marginTop: 5 }}
+        />
+        }
 />
 ```
 
@@ -104,3 +112,11 @@ Set style of label part
 ### helperTextStyle
 Type: object <br/>
 Set style of helper text part
+
+### hasHelperTextIcon
+Type: boolean <br/>
+Enable custom component (ex: helperTextCustomIcon) to place before helperText
+
+### helperTextCustomIcon
+Type: jsx component <br/>
+A custom component (usually svg component or Image) to place icon before helperText and can be used for errors as well.

@@ -6,6 +6,7 @@
       <td valign="top"><img src="./resources/phonefield_prefix_open.png" alt="PhoneNumberField when prefix dropdown is open" /></td>
       <td valign="top"><img src="./resources/phonefield_value.png" alt="PhoneNumberField with value" /></td>
       <td valign="top"><img src="./resources/phonefield_error.png" alt="PhoneNumberField with error" /></td>
+      <td><img src="./resources/phonefield_icon_with_helperText.png" alt="PhoneNumberField with icon and helpertext" /></td>
   </tr>
 </table>
 
@@ -38,6 +39,13 @@ const handlePhoneFieldSubmitEditting = (value) => {
   prefixes={prefiexesForPhoneNumber}
   helperText="This is helper text for phone number field"
   onSubmitEditing={handlePhoneFieldSubmitEditting}
+  hasHelperTextIcon={true}
+        helperTextCustomIcon={
+          <Image
+            source={require('../images/info.png')}
+            style={{ width: 12, height: 12, marginTop: 5 }}
+          />
+        }
 />;
 ```
 
@@ -139,3 +147,11 @@ Set style of textfield part
 
 Type: object <br/>
 Set style of helper text part
+
+### hasHelperTextIcon
+Type: boolean <br/>
+Enable custom component (ex: helperTextCustomIcon) to place before helperText
+
+### helperTextCustomIcon
+Type: jsx component <br/>
+A custom component (usually svg component or Image) to place icon before helperText and can be used for errors as well.

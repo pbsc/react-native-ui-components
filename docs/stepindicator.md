@@ -5,6 +5,7 @@
       <td><img src="./resources/stepindicator_0th.png" alt="StepIndicator 0th step" /></td>
       <td><img src="./resources/stepindicator_3rd.png" alt="StepIndicator 3rd step" /></td>
       <td><img src="./resources/stepindicator_5th.png" alt="StepIndicator 5th step" /></td>
+      <td><img src="./resources/stepindicator_nth_step_with_icon.png" alt="StepIndicator_nth_step with icon" /></td>
   </tr>
 </table>
 
@@ -31,6 +32,13 @@ const textBeforeStart = 'It is not started yet';
   steps={steps}
   textBeforeStart={textBeforeStart}
   currentStepIndex={3}
+  hasHelperTextIcon={true}
+  helperTextCustomIcon={
+    <Image
+        source={require('../images/info.png')}
+        style={{ width: 12, height: 12, marginTop: 5 }}
+    />
+  }
 />;
 ```
 
@@ -85,3 +93,11 @@ Set style of each step
 ### textStyle
 Type: object <br/>
 Set style of label text part
+
+### hasHelperTextIcon
+Type: boolean <br/>
+Enable custom component (ex: helperTextCustomIcon) to place before helperText
+
+### helperTextCustomIcon
+Type: jsx component <br/>
+A custom component (usually svg component or Image) to place icon before helperText and can be used for errors as well.

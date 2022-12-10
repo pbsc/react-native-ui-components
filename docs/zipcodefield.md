@@ -4,6 +4,7 @@
       <td><img src="./resources/zipcodefield.png" alt="TextField unfocused" /></td>
       <td><img src="./resources/zipcodefield_value.png" alt="TextField with placeholder" /></td>
       <td><img src="./resources/zipcodefield_error.png" alt="TextField focused" /></td>
+      <td><img src="./resources/postal_code_icon_helpertext.png" alt="TextField focused" /></td>
   </tr>
 </table>
 
@@ -29,6 +30,13 @@ const handlePostalcodeSubmit = (value) => {
     country="ca"
     onSubmitEditing={handlePostalcodeSubmit}
     helperText="Please input your postal code."
+    hasHelperTextIcon={true}
+        helperTextCustomIcon={
+        <Image
+            source={require('../images/info.png')}
+            style={{ width: 12, height: 12, marginTop: 5 }}
+        />
+        }
 />
 ```
 
@@ -131,3 +139,11 @@ Set style of text input part
 ### helperTextStyle
 Type: object <br/>
 Set style of helper text part
+
+### hasHelperTextIcon
+Type: boolean <br/>
+Enable custom component (ex: helperTextCustomIcon) to place before helperText
+
+### helperTextCustomIcon
+Type: jsx component <br/>
+A custom component (usually svg component or Image) to place icon before helperText and can be used for errors as well.

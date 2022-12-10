@@ -4,6 +4,7 @@
    <tr>
       <td><img src="./resources/dropdown_unselected.png" alt="Dropdown unselected" /></td>
       <td><img src="./resources/dropdown_selected.png" alt="Dropdown selected" /></td>
+      <td><img src="./resources/dropdown_icon_with_helpertext.png" alt="Dropdown icon with helpertext" /></td>
   </tr>
 </table>
 
@@ -48,6 +49,13 @@ const handleDropdownSelect = (selectedItem) => {
     value={dropdownSelected}
     onSelect={handleDropdownSelect}
     helperText="This is helper text for dropdown"
+    hasHelperTextIcon={true}
+        helperTextCustomIcon={
+          <Image
+            source={require('../images/info.png')}
+            style={{ width: 12, height: 12, marginTop: 5 }}
+          />
+        }
 />
 ```
 
@@ -128,3 +136,11 @@ Set style of dropdown field part
 ### helperTextStyle
 Type: object <br/>
 Set style of helper text part
+
+### hasHelperTextIcon
+Type: boolean <br/>
+Enable custom component (ex: helperTextCustomIcon) to place before helperText
+
+### helperTextCustomIcon
+Type: jsx component <br/>
+A custom component (usually svg component or Image) to place icon before helperText and can be used for errors as well.
