@@ -36,7 +36,8 @@ const textBeforeStart = 'It is not started yet';
   helperTextCustomIcon={
     <Image
         source={require('../images/info.png')}
-        style={{ width: 12, height: 12, marginTop: 5 }}
+        style={{ width: 12, height: 12 }}
+
     />
   }
 />;

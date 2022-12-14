@@ -13,7 +13,6 @@ import {
 } from '@pbsc/react-native-ui-components';
 import { Text } from 'react-native-paper';
 
-
 const HomeScreen = () => {
   const [text, setText] = useState('');
   const [checked, setChecked] = useState(false);
@@ -119,7 +118,7 @@ const HomeScreen = () => {
           helperTextCustomIcon={
             <Image
               source={require('../images/info.png')}
-              style={{ width: 12, height: 12, marginTop: 5 }}
+              style={{ width: 12, height: 12 }}
             />
           }
         />
@@ -134,10 +133,12 @@ const HomeScreen = () => {
           steps={stepsForStepIndicator}
           currentStepIndex={2}
           hasHelperTextIcon={true}
-          helperTextCustomIcon={<Image
-            source={require('../images/info.png')}
-            style={{ width: 12, height: 12, marginTop: 5 }}
-          />}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <TextField
           label="Text field with error"
@@ -147,7 +148,7 @@ const HomeScreen = () => {
           helperTextCustomIcon={
             <Image
               source={require('../images/info.png')}
-              style={{ width: 12, height: 12, marginTop: 5 }}
+              style={{ width: 12, height: 12 }}
             />
           }
         />
@@ -161,7 +162,7 @@ const HomeScreen = () => {
           helperTextCustomIcon={
             <Image
               source={require('../images/info.png')}
-              style={{ width: 12, height: 12, marginTop: 5 }}
+              style={{ width: 12, height: 12 }}
             />
           }
         />
@@ -176,7 +177,7 @@ const HomeScreen = () => {
           helperTextCustomIcon={
             <Image
               source={require('../images/info.png')}
-              style={{ width: 12, height: 12, marginTop: 5 }}
+              style={{ width: 12, height: 12 }}
             />
           }
         />
@@ -190,7 +191,7 @@ const HomeScreen = () => {
           helperTextCustomIcon={
             <Image
               source={require('../images/info.png')}
-              style={{ width: 12, height: 12, marginTop: 5 }}
+              style={{ width: 12, height: 12 }}
             />
           }
         />
@@ -203,7 +204,7 @@ const HomeScreen = () => {
           helperTextCustomIcon={
             <Image
               source={require('../images/info.png')}
-              style={{ width: 12, height: 12, marginTop: 5 }}
+              style={{ width: 12, height: 12 }}
             />
           }
         />
@@ -217,7 +218,7 @@ const HomeScreen = () => {
           helperTextCustomIcon={
             <Image
               source={require('../images/info.png')}
-              style={{ width: 12, height: 12, marginTop: 5 }}
+              style={{ width: 12, height: 12 }}
             />
           }
         />
@@ -231,7 +232,7 @@ const HomeScreen = () => {
           helperTextCustomIcon={
             <Image
               source={require('../images/info.png')}
-              style={{ width: 12, height: 12, marginTop: 5 }}
+              style={{ width: 12, height: 12 }}
             />
           }
         />
@@ -244,7 +245,7 @@ const HomeScreen = () => {
           helperTextCustomIcon={
             <Image
               source={require('../images/info.png')}
-              style={{ width: 12, height: 12, marginTop: 5 }}
+              style={{ width: 12, height: 12 }}
             />
           }
         />

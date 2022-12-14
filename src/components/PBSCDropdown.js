@@ -182,7 +182,7 @@ const PBSCDropdown = (props) => {
           />
         </View>
       </Pressable>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {hasHelperTextIcon && helperTextCustomIcon}
         <HelperText
           testID="dropdown-helpertext"

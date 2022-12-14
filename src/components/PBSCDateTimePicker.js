@@ -138,7 +138,7 @@ const PBSCDateTimePicker = (props) => {
           />
         </View>
       </Pressable>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {hasHelperTextIcon && helperTextCustomIcon}
         <HelperText
           testID="datepicker-helpertext"

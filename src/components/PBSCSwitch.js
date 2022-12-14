@@ -134,7 +134,7 @@ const PBSCSwitch = (props) => {
           {label}
         </Text>
       </View>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {hasHelperTextIcon && helperTextCustomIcon}
         <HelperText
           testID="switch-helpertext"

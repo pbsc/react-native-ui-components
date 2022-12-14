@@ -84,7 +84,7 @@ const PBSCCheckbox = (props) => {
           {label}
         </Text>
       </View>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {hasHelperTextIcon && helperTextCustomIcon}
         <HelperText
           testID="checkbox-helpertext"
