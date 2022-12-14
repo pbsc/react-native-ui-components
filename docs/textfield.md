@@ -5,6 +5,7 @@
       <td><img src="./resources/textfield_unfocused.png" alt="TextField unfocused" /></td>
       <td><img src="./resources/textfield_placeholder.png" alt="TextField with placeholder" /></td>
       <td><img src="./resources/textfield_focused.png" alt="TextField focused" /></td>
+      <td><img src="./resources/textfield_focused.png" alt="TextField focused with helpertext icon" /></td>
   </tr>
 </table>
 
@@ -58,6 +59,15 @@ const handleSubmit = (value) => {
     value={text}
     onChangeText={handleTextFieldChange}
     onSubmitEditing={handleSubmit}
+    hasHelperTextIcon={true}
+    helperTextCustomIcon={
+        <Image
+            source={require('../images/info.png')}
+            style={{ width: 12, height: 12 }}
+
+        />
+        }
+    customIcon={() => <Image source={require('../../info.png')}>}
 />
 ```
 
@@ -248,3 +258,15 @@ Set style of text input part
 ### helperTextStyle
 Type: object <br/>
 Set style of helper text part
+
+### customIcon
+Type: callBack fn <br/>
+Set custom rightIcon
+
+### hasHelperTextIcon
+Type: boolean <br/>
+Enable custom component (ex: helperTextCustomIcon) to place before helperText
+
+### helperTextCustomIcon
+Type: jsx component <br/>
+A custom component (usually svg component or Image) to place icon before helperText and can be used for errors as well.

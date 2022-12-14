@@ -26,6 +26,8 @@ const PBSCPhoneNumberField = (props) => {
     prefixStyle,
     fieldStyle,
     helperTextStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
 
   const windowWidth = Dimensions.get('window').width;
@@ -205,18 +207,21 @@ const PBSCPhoneNumberField = (props) => {
           </View>
         </View>
       </View>
-      <HelperText
-        testID="phonenumberfield-helpertext"
-        type={hasError ? 'error' : 'info'}
-        visible={helperText}
-        style={{
-          marginStart: -10,
-          color: helperTextColor(hasError, disabled, errorColor),
-          ...helperTextStyle,
-        }}
-      >
-        {helperText}
-      </HelperText>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        {hasHelperTextIcon && helperTextCustomIcon}
+        <HelperText
+          testID="phonenumberfield-helpertext"
+          type={hasError ? 'error' : 'info'}
+          visible={helperText}
+          style={{
+            marginStart: -10,
+            color: helperTextColor(hasError, disabled, errorColor),
+            ...helperTextStyle,
+          }}
+        >
+          {helperText}
+        </HelperText>
+      </View>
     </View>
   );
 };

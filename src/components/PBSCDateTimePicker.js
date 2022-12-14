@@ -44,6 +44,8 @@ const PBSCDateTimePicker = (props) => {
     style,
     fieldStyle,
     helperTextStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
   const windowSize = Dimensions.get('window');
 
@@ -136,18 +138,21 @@ const PBSCDateTimePicker = (props) => {
           />
         </View>
       </Pressable>
-      <HelperText
-        testID="datepicker-helpertext"
-        type={hasError ? 'error' : 'info'}
-        visible={helperText}
-        style={{
-          marginStart: -10,
-          color: helperTextColor(hasError, disabled, errorColor),
-          ...helperTextStyle,
-        }}
-      >
-        {helperText}
-      </HelperText>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        {hasHelperTextIcon && helperTextCustomIcon}
+        <HelperText
+          testID="datepicker-helpertext"
+          type={hasError ? 'error' : 'info'}
+          visible={helperText}
+          style={{
+            marginStart: -10,
+            color: helperTextColor(hasError, disabled, errorColor),
+            ...helperTextStyle,
+          }}
+        >
+          {helperText}
+        </HelperText>
+      </View>
       <Modal
         testID="datepicker-modal"
         visible={isOpen}
