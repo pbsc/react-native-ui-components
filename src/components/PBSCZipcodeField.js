@@ -30,6 +30,8 @@ const PBSCZipcodeField = (props) => {
     style,
     textInputStyle,
     helperTextStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon // any svg icon component to show before helper text or error text goes here
   } = props;
 
   const [controlledText, setControlledText] = useState(value);
@@ -78,6 +80,8 @@ const PBSCZipcodeField = (props) => {
       style={style}
       textInputStyle={textInputStyle}
       helperTextStyle={helperTextStyle}
+      hasHelperTextIcon={hasHelperTextIcon}
+      helperTextCustomIcon={helperTextCustomIcon}
     />
   );
 };

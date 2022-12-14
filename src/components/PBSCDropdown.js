@@ -32,6 +32,8 @@ const PBSCDropdown = (props) => {
     style,
     fieldStyle,
     helperTextStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
   const windowHeight = Dimensions.get('window').height;
 
@@ -180,14 +182,17 @@ const PBSCDropdown = (props) => {
           />
         </View>
       </Pressable>
-      <HelperText
-        testID="dropdown-helpertext"
-        type="info"
-        visible={helperText}
-        style={{ marginStart: -10, ...helperTextStyle }}
-      >
-        {helperText}
-      </HelperText>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        {hasHelperTextIcon && helperTextCustomIcon}
+        <HelperText
+          testID="dropdown-helpertext"
+          type="info"
+          visible={helperText}
+          style={{ marginStart: -10, ...helperTextStyle }}
+        >
+          {helperText}
+        </HelperText>
+      </View>
     </View>
   );
 };

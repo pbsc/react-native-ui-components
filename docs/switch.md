@@ -3,6 +3,7 @@
    <tr>
       <td><img src="./resources/switch_off.png" alt="Switch off" /></td>
       <td><img src="./resources/switch_on.png" alt="Switch on" /></td>
+      <td><img src="./resources/switch_icon_helpertext.png" alt="switch_icon and helpertext" /></td>
   </tr>
 </table>
 
@@ -27,6 +28,14 @@ const handleSwitchChange = (value) => {
     isOn={isOn}
     onChange={handleSwitchChange}
     helperText="This is helper text for switch."
+    hasHelperTextIcon={true}
+        helperTextCustomIcon={
+        <Image
+            source={require('../images/info.png')}
+            style={{ width: 12, height: 12 }}
+
+        />
+        }
 />
 ```
 
@@ -108,3 +117,11 @@ Set style of label part
 ### helperTextStyle
 Type: object <br/>
 Set style of helper text part
+
+### hasHelperTextIcon
+Type: boolean <br/>
+Enable custom component (ex: helperTextCustomIcon) to place before helperText
+
+### helperTextCustomIcon
+Type: jsx component <br/>
+A custom component (usually svg component or Image) to place icon before helperText and can be used for errors as well.
