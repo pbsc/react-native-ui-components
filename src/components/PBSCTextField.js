@@ -7,6 +7,7 @@ import { COLOR, helperTextColor } from '../helpers/Colors';
 const PBSCTextField = (props) => {
   const {
     id,
+    fieldRef,
     label,
     value,
     placeholder,
@@ -110,6 +111,7 @@ const PBSCTextField = (props) => {
         testID="textfield-input"
         mode="outlined"
         id={id}
+        ref={fieldRef}
         label={label}
         value={controlledText}
         placeholder={placeholder}

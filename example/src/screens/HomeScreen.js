@@ -13,6 +13,21 @@ import {
 } from '@pbsc/react-native-ui-components';
 import { Text } from 'react-native-paper';
 
+const TextFieldInput = React.forwardRef(
+  (
+    props,
+    ref // to complete with all props
+  ) => (
+    <TextField
+      fieldRef={ref}
+      label={props.label}
+      placeholder={props.placeholder}
+      value={props.value}
+      onSubmitEditing={props.handleSubmit}
+    />
+  )
+);
+
 const HomeScreen = () => {
   const [text, setText] = useState('');
   const [checked, setChecked] = useState(false);
@@ -22,6 +37,11 @@ const HomeScreen = () => {
     useState(undefined);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [postalCode, setPostalCode] = useState('');
+
+  const [username, setUsername] = useState('');
+  const [address, setAddress] = useState('');
+  const usernameRef = React.useRef();
+  const addressRef = React.useRef();
 
   const dropdownItems = [
     {
@@ -104,6 +124,26 @@ const HomeScreen = () => {
           justifyContent: 'center',
         }}
       >
+        <TextFieldInput
+          ref={usernameRef}
+          label={'Your username'}
+          placeholder={'Enter your username'}
+          value={username}
+          onChange={(v) => setUsername(v)}
+          handleSubmit={() => {
+            addressRef.current.focus();
+          }}
+        />
+        <TextFieldInput
+          ref={addressRef}
+          label={'Your address'}
+          placeholder={'Enter your address'}
+          value={address}
+          onChange={(v) => setAddress(v)}
+          handleSubmit={() => {
+            usernameRef.current.focus();
+          }}
+        />
         <TextField
           label="Email with help text"
           placeholder="Placeholder - Your email address"
