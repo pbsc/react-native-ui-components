@@ -40,7 +40,7 @@ const PBSCTextField = (props) => {
     textInputStyle,
     helperTextStyle,
     hasHelperTextIcon = false,
-    helperTextCustomIcon // any svg icon component to show before helper text or error text goes here
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
   const [hideText, setHideText] = useState(true);
   const [controlledText, setControlledText] = useState(value ? value : '');
@@ -87,8 +87,10 @@ const PBSCTextField = (props) => {
           style={{ marginTop: 16 }}
         />
       );
-    } else if(customIcon) {
-      return (<TextInput.Icon icon={() => customIcon()} style={{ marginTop: 16 }}/>)  ;
+    } else if (customIcon) {
+      return (
+        <TextInput.Icon icon={() => customIcon()} style={{ marginTop: 16 }} />
+      );
     } else {
       return null;
     }
@@ -144,8 +146,8 @@ const PBSCTextField = (props) => {
           },
         }}
       />
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      {hasHelperTextIcon && helperTextCustomIcon}
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        {hasHelperTextIcon && helperTextCustomIcon}
         <HelperText
           testID="textfield-helpertext"
           type={hasError ? 'error' : 'info'}
@@ -156,8 +158,8 @@ const PBSCTextField = (props) => {
             ...helperTextStyle,
           }}
         >
-        {helperText}
-      </HelperText>
+          {helperText}
+        </HelperText>
       </View>
     </View>
   );

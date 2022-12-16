@@ -13,21 +13,6 @@ import {
 } from '@pbsc/react-native-ui-components';
 import { Text } from 'react-native-paper';
 
-const TextFieldInput = React.forwardRef(
-  (
-    props,
-    ref // to complete with all props
-  ) => (
-    <TextField
-      fieldRef={ref}
-      label={props.label}
-      placeholder={props.placeholder}
-      value={props.value}
-      onSubmitEditing={props.handleSubmit}
-    />
-  )
-);
-
 const HomeScreen = () => {
   const [text, setText] = useState('');
   const [checked, setChecked] = useState(false);
@@ -124,23 +109,23 @@ const HomeScreen = () => {
           justifyContent: 'center',
         }}
       >
-        <TextFieldInput
-          ref={usernameRef}
+        <TextField
+          fieldRef={usernameRef}
           label={'Your username'}
           placeholder={'Enter your username'}
           value={username}
           onChange={(v) => setUsername(v)}
-          handleSubmit={() => {
+          onSubmitEditing={() => {
             addressRef.current.focus();
           }}
         />
-        <TextFieldInput
-          ref={addressRef}
+        <TextField
+          fieldRef={addressRef}
           label={'Your address'}
           placeholder={'Enter your address'}
           value={address}
           onChange={(v) => setAddress(v)}
-          handleSubmit={() => {
+          onSubmitEditing={() => {
             usernameRef.current.focus();
           }}
         />
