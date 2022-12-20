@@ -64,27 +64,18 @@ const PBSCCheckbox = (props) => {
               name="checkmark-sharp"
               size={size}
               color={disabled ? COLOR.WHITE : checkmarkColor}
-              style={{
-                position: 'absolute',
-                left: (-1 * size) / 16,
-                top: (-1 * size) / 16,
-              }}
+              style={styles.checkedIcon(size)}
             />
           )}
         </Pressable>
         <Text
           testID="checkbox-title"
-          style={{
-            marginStart: 10,
-            fontSize: 16,
-            color: disabled ? COLOR.DISABLED : labelColor,
-            ...labelStyle,
-          }}
+          style={[styles.title(labelColor, disabled), labelStyle]}
         >
           {label}
         </Text>
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={styles.helperTextContainer}>
         {hasHelperTextIcon && helperTextCustomIcon}
         <HelperText
           testID="checkbox-helpertext"
@@ -107,5 +98,19 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     marginTop: 10,
+  },
+  title: (labelColor, disabled = false) => ({
+    marginStart: 10,
+    fontSize: 16,
+    color: disabled ? COLOR.DISABLED : labelColor,
+  }),
+  checkedIcon: (size) => ({
+    position: 'absolute',
+    left: (-1 * size) / 16,
+    top: (-1 * size) / 16,
+  }),
+  helperTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

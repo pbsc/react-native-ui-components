@@ -19,7 +19,7 @@ const PBSCStepIndicator = (props) => {
     helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
 
-  if (steps == undefined || steps.length < 1) {
+  if (steps === undefined || steps.length < 1) {
     return (
       <View style={styles.container}>
         <Text>This component needs steps array.</Text>
@@ -28,13 +28,8 @@ const PBSCStepIndicator = (props) => {
   }
 
   return (
-    <View style={{ width: width, ...style }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          marginHorizontal: -5,
-        }}
-      >
+    <View style={[{ width }, style]}>
+      <View style={styles.stepContainer}>
         {steps.map((value, index) => {
           return (
             <View
@@ -54,17 +49,11 @@ const PBSCStepIndicator = (props) => {
           );
         })}
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={styles.helperTextContainer}>
         {hasHelperTextIcon && helperTextCustomIcon}
         <Text
           testID="stepindicator-text"
-          style={{
-            color: textColor,
-            fontSize: textSize,
-            marginVertical: 5,
-            marginStart: 2,
-            ...textStyle,
-          }}
+          style={[styles.helperText(textColor, textSize), textStyle]}
         >
           {currentStepIndex < 0
             ? textBeforeStart
@@ -78,6 +67,10 @@ const PBSCStepIndicator = (props) => {
 export default PBSCStepIndicator;
 
 const styles = StyleSheet.create({
+  stepContainer: {
+    flexDirection: 'row',
+    marginHorizontal: -5,
+  },
   step: {
     flex: 1,
     marginHorizontal: 5,
@@ -87,4 +80,14 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignSelf: 'center',
   },
+  helperTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  helperText: (color, fontSize) => ({
+    color,
+    fontSize,
+    marginVertical: 5,
+    marginStart: 2,
+  }),
 });

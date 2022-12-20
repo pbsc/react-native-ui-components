@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, fireEvent } from '@testing-library/react-native';
+import { cleanup, render } from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
 import { StepIndicator } from '../index';
 import { COLOR } from '../helpers/Colors';
