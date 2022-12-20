@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const getDateTimePattern = (mode, locale) => {
   let options;
   if (mode === 'date') {
@@ -62,13 +60,10 @@ export const getDateTimePattern = (mode, locale) => {
         switch (e.type) {
           case 'month':
             return 'MM';
-            break;
           case 'day':
             return 'DD';
-            break;
           case 'year':
             return 'YYYY';
-            break;
           default:
             return e.value;
         }
@@ -80,13 +75,10 @@ export const getDateTimePattern = (mode, locale) => {
         switch (e.type) {
           case 'hour':
             return 'HH';
-            break;
           case 'minute':
             return 'mm';
-            break;
           case 'second':
             return 'ss';
-            break;
           default:
             return e.value;
         }
@@ -98,22 +90,16 @@ export const getDateTimePattern = (mode, locale) => {
         switch (e.type) {
           case 'month':
             return 'MM';
-            break;
           case 'day':
             return 'DD';
-            break;
           case 'year':
             return 'YYYY';
-            break;
           case 'hour':
             return 'HH';
-            break;
           case 'minute':
             return 'mm';
-            break;
           case 'second':
             return 'ss';
-            break;
           default:
             return e.value;
         }

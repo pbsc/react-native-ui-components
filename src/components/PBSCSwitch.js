@@ -90,26 +90,13 @@ const PBSCSwitch = (props) => {
           onPress={onSwitchPress}
         >
           <Animated.View
-            style={[
-              {
-                width: (size * 5) / 3,
-                height: size,
-                borderRadius: size / 2,
-                justifyContent: 'center',
-              },
-              animatedColorStyle,
-            ]}
+            style={[styles.animatedOuterContainer(size), animatedColorStyle]}
           >
             <Animated.View
               testID={isOn ? 'switch-wheel-on' : 'switch-wheel-off'}
               style={[
                 styles.toggleWheelStyle,
-                {
-                  width: size - 5,
-                  height: size - 5,
-                  backgroundColor: disabled ? COLOR.WHITE : wheelColor,
-                  borderRadius: (size - 5) / 2,
-                },
+                styles.animatedInnerContainer(size, disabled, wheelColor),
                 animatedMarginStyle,
               ]}
             >
@@ -124,23 +111,18 @@ const PBSCSwitch = (props) => {
         </Pressable>
         <Text
           testID="switch-title"
-          style={{
-            marginStart: 10,
-            fontSize: 16,
-            color: disabled ? COLOR.DISABLED : labelColor,
-            ...labelStyle,
-          }}
+          style={[styles.text(disabled, labelColor), labelStyle]}
         >
           {label}
         </Text>
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={styles.helperTextContainer}>
         {hasHelperTextIcon && helperTextCustomIcon}
         <HelperText
           testID="switch-helpertext"
           type="info"
           visible={helperText}
-          style={{ marginStart: (size * 5) / 3 - 2, ...helperTextStyle }}
+          style={[styles.helperText, helperTextStyle]}
         >
           {helperText}
         </HelperText>
@@ -154,11 +136,7 @@ const WheelIcon = ({ name, size, disabled }) => {
     <Icon
       name={name}
       size={(size * 2) / 3}
-      style={{
-        position: 'absolute',
-        left: size / 6 - 2,
-        top: size / 8 - 2,
-      }}
+      style={styles.wheelIcon(size)}
       color={disabled ? COLOR.DISABLED : COLOR.BLACK}
     />
   );
@@ -174,6 +152,18 @@ const styles = StyleSheet.create({
     width: '80%',
     marginTop: 10,
   },
+  animatedOuterContainer: (size) => ({
+    width: (size * 5) / 3,
+    height: size,
+    borderRadius: size / 2,
+    justifyContent: 'center',
+  }),
+  animatedInnerContainer: (size, disabled, backgroundColor) => ({
+    width: size - 5,
+    height: size - 5,
+    backgroundColor: disabled ? COLOR.WHITE : backgroundColor,
+    borderRadius: (size - 5) / 2,
+  }),
   toggleWheelStyle: {
     shadowColor: '#000',
     shadowOffset: {
@@ -184,4 +174,21 @@ const styles = StyleSheet.create({
     shadowRadius: 2.5,
     elevation: 1.5,
   },
+  wheelIcon: (size) => ({
+    position: 'absolute',
+    left: size / 6 - 2,
+    top: size / 8 - 2,
+  }),
+  text: (disabled, color) => ({
+    marginStart: 10,
+    fontSize: 16,
+    color: disabled ? COLOR.DISABLED : color,
+  }),
+  helperTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  helperText: (size) => ({
+    marginStart: (size * 5) / 3 - 2,
+  }),
 });

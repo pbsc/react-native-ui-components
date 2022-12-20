@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import {
-  Button,
-  Dimensions,
+  StyleSheet,
   Modal,
   Pressable,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -47,7 +45,6 @@ const PBSCDateTimePicker = (props) => {
     hasHelperTextIcon = false,
     helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
-  const windowSize = Dimensions.get('window');
 
   const [selectingDate, setSelectingDate] = useState(value ? value : undefined);
   const [selectedDate, setSelectedDate] = useState(selectingDate);
@@ -138,17 +135,16 @@ const PBSCDateTimePicker = (props) => {
           />
         </View>
       </Pressable>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={styles.helperTextContainer}>
         {hasHelperTextIcon && helperTextCustomIcon}
         <HelperText
           testID="datepicker-helpertext"
           type={hasError ? 'error' : 'info'}
           visible={helperText}
-          style={{
-            marginStart: -10,
-            color: helperTextColor(hasError, disabled, errorColor),
-            ...helperTextStyle,
-          }}
+          style={[
+            styles.helperText(helperTextColor(hasError, disabled, errorColor)),
+            helperTextStyle,
+          ]}
         >
           {helperText}
         </HelperText>
@@ -160,33 +156,11 @@ const PBSCDateTimePicker = (props) => {
         animationType="fade"
       >
         <TouchableOpacity
-          style={{
-            backgroundColor: 'rgba(0, 0, 0, 0.3)',
-            flex: 1,
-            justifyContent: 'center',
-          }}
+          style={styles.modalTouchableOpacity}
           onPress={handleCancel}
         >
-          <View
-            style={{
-              flex: 1,
-              justifyContent: 'flex-end',
-              alignItems: 'center',
-              marginBottom: 36,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: 'white',
-                shadowColor: '#000',
-                shadowRadius: 4,
-                shadowOffset: { height: 4, width: 0 },
-                elevation: 4,
-                shadowOpacity: 0.5,
-                borderRadius: 12,
-                padding: 12,
-              }}
-            >
+          <View style={styles.modalOuterView}>
+            <View style={styles.modalInnerView}>
               <DatePicker
                 testID="datepicker-picker"
                 androidVariant="iosClone"
@@ -203,12 +177,7 @@ const PBSCDateTimePicker = (props) => {
                 date={selectingDate ? selectingDate : new Date()}
                 onDateChange={handleDateChange}
               />
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                }}
-              >
+              <View style={styles.modalDatePickerView}>
                 <ModalButton
                   testID="datepicker-cancel"
                   title="Cancel"
@@ -233,3 +202,39 @@ const PBSCDateTimePicker = (props) => {
 };
 
 export default PBSCDateTimePicker;
+
+const styles = StyleSheet.create({
+  helperTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  helperText: (color) => ({
+    marginStart: -10,
+    color,
+  }),
+  modalTouchableOpacity: {
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    flex: 1,
+    justifyContent: 'center',
+  },
+  modalOuterView: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom: 36,
+  },
+  modalInnerView: {
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowRadius: 4,
+    shadowOffset: { height: 4, width: 0 },
+    elevation: 4,
+    shadowOpacity: 0.5,
+    borderRadius: 12,
+    padding: 12,
+  },
+  modalDatePickerView: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+});

@@ -3,7 +3,6 @@ import { cleanup, render, fireEvent } from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
 import { ZipcodeField } from '../index';
 import { COLOR } from '../helpers/Colors';
-import { formatPhoneNumber } from '../helpers/PhoneNumberService';
 
 afterEach(cleanup);
 
