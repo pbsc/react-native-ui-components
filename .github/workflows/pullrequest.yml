@@ -3,10 +3,15 @@
 #   a pull request is opened, reopened or edited.
 # It installs node dependencies, then validates the PR title and runs lint check on the code. Finally, it runs all the tests.
 
-name: Node.js CI
+name: Pull Request
 
 on:
-  pull_request
+  pull_request:
+    types: 
+      - opened  
+      - reopened  
+      - synchronize 
+      - edited # to check pr title
       
 
 jobs:
