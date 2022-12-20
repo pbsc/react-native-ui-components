@@ -1,0 +1,37 @@
+# This workflow is triggered on the following events:
+#   
+#   a pull request is opened, reopened or edited.
+# It installs node dependencies, then validates the PR title and runs lint check on the code. Finally, it runs all the tests.
+
+name: Node.js CI
+
+on:
+  pull_request
+      
+
+jobs:
+  lint-and-tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 'lts/*'
+        cache: yarn
+    
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+    
+    - name: Lint PR title
+      run: echo "${{ github.event.pull_request.title }}" | yarn commitlint
+        
+    - name: Lint all codebase
+      run: yarn lint
+
+    - name: Run all tests
+      run: yarn test
