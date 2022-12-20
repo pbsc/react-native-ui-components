@@ -1,9 +1,11 @@
+/* eslint-disable no-extend-native */
 // Regex extension function
 // source: https://stackoverflow.com/questions/22483214/regex-check-if-input-still-has-chances-to-become-matching/41580048#41580048
 
 RegExp.prototype.toPartialMatchRegex = function () {
   'use strict';
 
+  // eslint-disable-next-line consistent-this
   let re = this;
   let source = this.source;
   let i = 0;
@@ -93,7 +95,7 @@ RegExp.prototype.toPartialMatchRegex = function () {
           break;
 
         case '(':
-          if (source[i + 1] == '?') {
+          if (source[i + 1] === '?') {
             switch (source[i + 2]) {
               case ':':
                 result += '(?:';

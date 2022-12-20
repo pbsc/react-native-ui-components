@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text } from 'react-native';
+import { Pressable, Text, StyleSheet } from 'react-native';
 import { COLOR } from './Colors';
 
 export const ModalButton = (props) => {
@@ -19,18 +19,16 @@ export const ModalButton = (props) => {
       style={({ pressed }) => [{ backgroundColor: backgroundColor }]}
     >
       {({ pressed }) => (
-        <Text
-          style={[
-            { color: pressed ? COLOR.GRAY_PALE : textColor },
-            {
-              fontSize: fontSize,
-              padding: 8,
-            },
-          ]}
-        >
-          {title}
-        </Text>
+        <Text style={styles.text(pressed, textColor, fontSize)}>{title}</Text>
       )}
     </Pressable>
   );
 };
+
+const styles = StyleSheet.create({
+  text: (isPressed, color, fontSize) => ({
+    color: isPressed ? COLOR.GRAY_PALE : color,
+    fontSize,
+    padding: 8,
+  }),
+});

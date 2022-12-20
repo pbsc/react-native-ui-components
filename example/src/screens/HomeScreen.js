@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { Image, ScrollView, View } from 'react-native';
 
@@ -11,16 +12,18 @@ import {
   PhoneNumberField,
   ZipcodeField,
 } from '@pbsc/react-native-ui-components';
-import { Text } from 'react-native-paper';
 
 const HomeScreen = () => {
   const [text, setText] = useState('');
   const [checked, setChecked] = useState(false);
   const [isOn, setIsOn] = useState(false);
   const [dropdownSelected, setDropdownSelected] = useState(undefined);
+  // eslint-disable-next-line no-unused-vars
   const [dateTimePickerSelectd, setDateTimePickerSelected] =
     useState(undefined);
+  // eslint-disable-next-line no-unused-vars
   const [phoneNumber, setPhoneNumber] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [postalCode, setPostalCode] = useState('');
 
   const dropdownItems = [

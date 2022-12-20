@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, View, StyleSheet } from 'react-native';
 import { TextInput, Divider, HelperText } from 'react-native-paper';
 
 import { Dropdown } from '..';
@@ -92,15 +92,7 @@ const PBSCPhoneNumberField = (props) => {
     : COLOR.GRAY_LIGHT;
 
   return (
-    <View
-      style={{
-        width: width,
-        height: height,
-        marginTop: 10,
-        marginBottom: 30,
-        ...style,
-      }}
-    >
+    <View style={[styles.container(width, height), style]}>
       <View>
         <Dropdown
           items={prefixes}
@@ -112,19 +104,10 @@ const PBSCPhoneNumberField = (props) => {
           borderColor={hasError ? COLOR.PBSC_RED : COLOR.GRAY_LIGHT}
           textColor={textColor}
           textSize={textSize}
-          style={{
-            marginTop: -6,
-            marginBottom: -24,
-            width: dropdownWidth,
-            ...prefixStyle,
-          }}
+          style={[styles.dropdown(dropdownWidth), prefixStyle]}
         />
         <View
-          style={{
-            width: textinputWidth(),
-            position: 'absolute',
-            left: dropdownWidth,
-          }}
+          style={styles.phoneNumberContainer(textinputWidth(), dropdownWidth)}
         >
           <TextInput
             testID="phonenumberfield-input"
@@ -141,13 +124,7 @@ const PBSCPhoneNumberField = (props) => {
             value={phoneNumber}
             onFocus={handleOnFocus}
             onBlur={handleOnBlur}
-            style={{
-              marginTop: -6,
-              height: height,
-              backgroundColor: 'white',
-              fontSize: textSize,
-              ...fieldStyle,
-            }}
+            style={[styles.phoneNumberTextInput(height, textSize), fieldStyle]}
             theme={{
               colors: {
                 text: disabled ? COLOR.GRAY_MEDIUM : textColor,
@@ -155,69 +132,31 @@ const PBSCPhoneNumberField = (props) => {
               },
             }}
           />
-          <View
-            style={{
-              position: 'absolute',
-              width: 10,
-              left: -5,
-              backgroundColor: 'white',
-            }}
-          >
-            <View style={{ flexDirection: 'row' }}>
-              <Divider
-                style={{
-                  height: 1,
-                  width: 5,
-                  backgroundColor: dividerColor,
-                }}
-              />
-              <Divider
-                style={{
-                  height: isActive ? 2 : 1,
-                  width: 6,
-                  backgroundColor: dividerColor,
-                }}
-              />
+          <View style={styles.dividersContainer}>
+            <View style={styles.rowDirection}>
+              <Divider style={styles.firstDivider(dividerColor)} />
+              <Divider style={styles.secondDivider(isActive, dividerColor)} />
             </View>
             <Divider
-              style={{
-                height: isActive ? height - 2 : height,
-                width: isActive ? 2 : 1,
-                backgroundColor: dividerColor,
-                left: 5,
-              }}
+              style={styles.thirdDivider(isActive, height, dividerColor)}
             />
-            <View style={{ flexDirection: 'row' }}>
-              <Divider
-                style={{
-                  height: 1,
-                  width: 5,
-                  top: isActive ? 1 : 0,
-                  backgroundColor: dividerColor,
-                }}
-              />
-              <Divider
-                style={{
-                  height: isActive ? 2 : 1,
-                  width: 6,
-                  backgroundColor: dividerColor,
-                }}
-              />
+            <View style={styles.rowDirection}>
+              <Divider style={styles.fourthDivider(isActive, dividerColor)} />
+              <Divider style={styles.secondDivider(isActive, dividerColor)} />
             </View>
           </View>
         </View>
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={styles.helperTextContainer}>
         {hasHelperTextIcon && helperTextCustomIcon}
         <HelperText
           testID="phonenumberfield-helpertext"
           type={hasError ? 'error' : 'info'}
           visible={helperText}
-          style={{
-            marginStart: -10,
-            color: helperTextColor(hasError, disabled, errorColor),
-            ...helperTextStyle,
-          }}
+          style={[
+            styles.helperText(helperTextColor(hasError, disabled, errorColor)),
+            helperTextStyle,
+          ]}
         >
           {helperText}
         </HelperText>
@@ -227,3 +166,67 @@ const PBSCPhoneNumberField = (props) => {
 };
 
 export default PBSCPhoneNumberField;
+
+const styles = StyleSheet.create({
+  container: (width, height) => ({
+    width: width,
+    height: height,
+    marginTop: 10,
+    marginBottom: 30,
+  }),
+  dropdown: (width) => ({
+    marginTop: -6,
+    marginBottom: -24,
+    width,
+  }),
+  phoneNumberContainer: (width, leftPosition) => ({
+    width,
+    position: 'absolute',
+    left: leftPosition,
+  }),
+  phoneNumberTextInput: (height, fontSize) => ({
+    marginTop: -6,
+    height,
+    backgroundColor: 'white',
+    fontSize,
+  }),
+  dividersContainer: {
+    position: 'absolute',
+    width: 10,
+    left: -5,
+    backgroundColor: 'white',
+  },
+  firstDivider: (backgroundColor) => ({
+    height: 1,
+    width: 5,
+    backgroundColor,
+  }),
+  secondDivider: (isActive, backgroundColor) => ({
+    height: isActive ? 2 : 1,
+    width: 6,
+    backgroundColor,
+  }),
+  thirdDivider: (isActive, height, backgroundColor) => ({
+    height: isActive ? height - 2 : height,
+    width: isActive ? 2 : 1,
+    backgroundColor,
+    left: 5,
+  }),
+  fourthDivider: (isActive, backgroundColor) => ({
+    height: 1,
+    width: 5,
+    top: isActive ? 1 : 0,
+    backgroundColor,
+  }),
+  helperTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  helperText: (color) => ({
+    marginStart: -10,
+    color,
+  }),
+  rowDirection: {
+    flexDirection: 'row',
+  },
+});
