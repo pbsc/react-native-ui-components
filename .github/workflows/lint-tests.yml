@@ -13,7 +13,7 @@ on:
 
 jobs:
   lint-and-tests:
-
+    name: Lint and Tests
     runs-on: ubuntu-latest
 
     steps:
