@@ -117,6 +117,7 @@ When you're sending a pull request:
 - Follow the pull request template when opening a pull request.
 - For pull requests that change the API or implementation, discuss with maintainers first by opening an issue.
 - Make sure that the pull request title follows the commit message format
+- When merging the pull request, make sure to pick the 'Rebase and merge' option. Otherwise, semantic-release will not be able to generate changelogs.
 
 ## Code of Conduct
 
