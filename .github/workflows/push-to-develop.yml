@@ -11,4 +11,4 @@ on:
 
 jobs:
   lint-and-tests:
-    uses: pbsc/react-native-ui-components/.github/workflows/lint-tests.yml
+    uses: ./.github/workflows/lint-tests.yml
