@@ -59,7 +59,7 @@ yarn test
 
 ### Commit message convention
 
-We follow the [conventional commits specification](https://www.conventionalcommits.org/en) for our commit messages:
+We follow the [Angular commits specification](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines) for our commit messages:
 
 - `fix`: bug fixes, e.g. fix crash due to deprecated method.
 - `feat`: new features, e.g. add new method to the module.
