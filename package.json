@@ -171,6 +171,16 @@
               "release": "patch"
             },
             {
+              "type": "docs",
+              "scope": "README",
+              "release": "patch"
+            },
+            {
+              "type": "docs",
+              "scope": "CONTRIBUTING",
+              "release": "patch"
+            },
+            {
               "type": "refactor",
               "release": "patch"
             },
@@ -202,13 +212,7 @@
               "type": "revert",
               "release": "patch"
             }
-          ],
-          "parserOpts": {
-            "noteKeywords": [
-              "BREAKING CHANGE",
-              "BREAKING CHANGES"
-            ]
-          }
+          ]
         }
       ],
       "@semantic-release/release-notes-generator",
