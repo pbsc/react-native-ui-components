@@ -94,7 +94,7 @@ Our pre-commit hooks verify that the linter and tests pass when committing.
 
 We use [semantic-release](https://github.com/semantic-release/semantic-release) to make it easier to release new versions. [semantic-release](https://github.com/semantic-release/semantic-release) handles common tasks like bumping version based on semver, creating tags and releases etc. This is why when writting commit messages, it is a must to follow the commit message convention described above.
 
-To publish new versions, run the following:
+To publish a new package version, run the following:
 
 ```sh
 yarn release
