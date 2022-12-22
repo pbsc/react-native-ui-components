@@ -68,6 +68,13 @@ We follow the [conventional commits specification](https://www.conventionalcommi
 - `test`: adding or updating tests, e.g. add integration tests using detox.
 - `chore`: tooling changes, e.g. change CI config.
 
+If your changes introduce any breaking changes, make sure to specify 'BREAKING CHANGE' in the footer of your commit message. Refer to [commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format) for more details.
+
+Some guidelines to follow when writting commit messages:
+- use the present tense. For example, write: 'add new component' instead of 'added new component'
+- provide a message body that explains the changes you have made and why they are needed
+- provide a message footer when your change is a BREAKING CHANGE
+
 Our pre-commit hooks verify that your commit message matches this format when committing.
 
 When committing, you can use the 'commit' script to help you write your commit message
@@ -83,9 +90,9 @@ We use [ESLint](https://eslint.org/) with [Prettier](https://prettier.io/) for l
 
 Our pre-commit hooks verify that the linter and tests pass when committing.
 
-### Publishing to npm
+### Release Process: Release Notes & Package Publishing to npm
 
-We use [semantic-release](https://github.com/semantic-release/semantic-release) to make it easier to publish new versions. It handles common tasks like bumping version based on semver, creating tags and releases etc.
+We use [semantic-release](https://github.com/semantic-release/semantic-release) to make it easier to release new versions. [semantic-release](https://github.com/semantic-release/semantic-release) handles common tasks like bumping version based on semver, creating tags and releases etc. This is why when writting commit messages, it is a must to follow the commit message convention described above.
 
 To publish new versions, run the following:
 
