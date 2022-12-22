@@ -171,16 +171,6 @@
               "release": "patch"
             },
             {
-              "type": "docs",
-              "scope": "README",
-              "release": "patch"
-            },
-            {
-              "type": "docs",
-              "scope": "CONTRIBUTING",
-              "release": "patch"
-            },
-            {
               "type": "refactor",
               "release": "patch"
             },
@@ -214,7 +204,10 @@
             }
           ],
           "parserOpts": {
-            "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"]
+            "noteKeywords": [
+              "BREAKING CHANGE",
+              "BREAKING CHANGES"
+            ]
           }
         }
       ],
