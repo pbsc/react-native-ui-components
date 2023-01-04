@@ -73,7 +73,11 @@ If your changes introduce any breaking changes, make sure to specify 'BREAKING C
 Some guidelines to follow when writting commit messages:
 - use the present tense. For example, write: 'add new component' instead of 'added new component'
 - provide a message body that explains the changes you have made and why they are needed
-- provide a message footer when your change is a BREAKING CHANGE
+- when your change is a BREAKING CHANGE:
+  - put an '!' mark right after the subject/scope. For example:
+    - feat!: add a new feature 
+    - fix(PBSCDropdown)!: remvove a property  
+  - provide a message in the footer that begins with 'BREAKING CHANGE:'
 
 Our pre-commit hooks verify that your commit message matches this format when committing.
 
