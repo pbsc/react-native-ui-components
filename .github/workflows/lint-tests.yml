@@ -1,0 +1,40 @@
+# This workflow is a reusable workflow.
+#   
+# It installs node dependencies, then:
+#  - validates the PR title for pull requests events
+#  - runs lint check on the code
+#  - runs all the tests
+
+name: Push to Develop
+
+on:
+  workflow_call:
+      
+
+jobs:
+  lint-and-tests:
+    name: Lint and Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 'lts/*'
+        cache: yarn
+    
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+    
+    - name: Lint PR title for Pull Requests Events
+      if: github.event_name == 'pull_request'
+      run: echo "${{ github.event.pull_request.title }}" | yarn commitlint
+        
+    - name: Lint all codebase
+      run: yarn lint
+
+    - name: Run all tests
+      run: yarn test

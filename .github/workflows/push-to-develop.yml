@@ -1,0 +1,14 @@
+# This workflow is triggered when commits gets pushed to develop branch
+# It calls the reusable workflow lint-tests
+
+name: Push to Develop
+
+on:
+  push:
+    branches: 
+      - develop  
+      
+
+jobs:
+  lint-and-tests:
+    uses: ./.github/workflows/lint-tests.yml

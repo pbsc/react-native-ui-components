@@ -30,11 +30,13 @@ const PBSCZipcodeField = (props) => {
     style,
     textInputStyle,
     helperTextStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
 
   const [controlledText, setControlledText] = useState(value);
-  const handleChangeText = (value) => {
-    const capitalizedText = value.toUpperCase();
+  const handleChangeText = (textValue) => {
+    const capitalizedText = textValue.toUpperCase();
     setControlledText(capitalizedText);
     onChangeText(capitalizedText);
   };
@@ -43,7 +45,7 @@ const PBSCZipcodeField = (props) => {
     const postRegex = PostalcodeRegex.find(
       (x) => x.abbrev === country.toUpperCase()
     ).postal;
-    if (postRegex != undefined) {
+    if (postRegex !== undefined) {
       const regex = new RegExp(postRegex);
       return regex.toPartialMatchRegex();
     } else {
@@ -78,6 +80,8 @@ const PBSCZipcodeField = (props) => {
       style={style}
       textInputStyle={textInputStyle}
       helperTextStyle={helperTextStyle}
+      hasHelperTextIcon={hasHelperTextIcon}
+      helperTextCustomIcon={helperTextCustomIcon}
     />
   );
 };

@@ -10,7 +10,7 @@ To get started with the project, run `yarn` in the root directory to install the
 yarn
 ```
 
-> While it's possible to use [`npm`](https://github.com/npm/cli), the tooling is built around [`yarn`](https://classic.yarnpkg.com/), so you'll have an easier time if you use `yarn` for development.
+> While it is possible to use [`npm`](https://github.com/npm/cli), the tooling is built around [`yarn`](https://classic.yarnpkg.com/), so you'll have an easier time if you use `yarn` for development.
 
 While developing, you can run the [example app](/example/) to test your changes. Any changes you make in your library's JavaScript code will be reflected in the example app without a rebuild. If you change any native code, then you'll need to rebuild the example app.
 
@@ -59,7 +59,7 @@ yarn test
 
 ### Commit message convention
 
-We follow the [conventional commits specification](https://www.conventionalcommits.org/en) for our commit messages:
+We follow the [Angular commits specification](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines) for our commit messages:
 
 - `fix`: bug fixes, e.g. fix crash due to deprecated method.
 - `feat`: new features, e.g. add new method to the module.
@@ -68,21 +68,33 @@ We follow the [conventional commits specification](https://www.conventionalcommi
 - `test`: adding or updating tests, e.g. add integration tests using detox.
 - `chore`: tooling changes, e.g. change CI config.
 
+If your changes introduce any breaking changes, make sure to specify 'BREAKING CHANGE' in the footer of your commit message. Refer to [commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format) for more details.
+
+Some guidelines to follow when writting commit messages:
+- use the present tense. For example, write: 'add new component' instead of 'added new component'
+- provide a message body that explains the changes you have made and why they are needed
+- provide a message footer when your change is a BREAKING CHANGE
+
 Our pre-commit hooks verify that your commit message matches this format when committing.
+
+When committing, you can use the 'commit' script to help you write your commit message
+```sh
+yarn commit
+```
 
 ### Linting and tests
 
 [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [TypeScript](https://www.typescriptlang.org/)
 
-We use [TypeScript](https://www.typescriptlang.org/) for type checking, [ESLint](https://eslint.org/) with [Prettier](https://prettier.io/) for linting and formatting the code, and [Jest](https://jestjs.io/) for testing.
+We use [ESLint](https://eslint.org/) with [Prettier](https://prettier.io/) for linting and formatting the code, and [Jest](https://jestjs.io/) for testing.
 
 Our pre-commit hooks verify that the linter and tests pass when committing.
 
-### Publishing to npm
+### Release Process: Release Notes & Package Publishing to npm
 
-We use [release-it](https://github.com/release-it/release-it) to make it easier to publish new versions. It handles common tasks like bumping version based on semver, creating tags and releases etc.
+We use [semantic-release](https://github.com/semantic-release/semantic-release) to make it easier to release new versions. [semantic-release](https://github.com/semantic-release/semantic-release) handles common tasks like bumping version based on semver, creating tags and release notes etc. This is why when writting commit messages, it is a must to follow the commit message convention described above.
 
-To publish new versions, run the following:
+To publish a new package version, run the following:
 
 ```sh
 yarn release
@@ -111,6 +123,8 @@ When you're sending a pull request:
 - Review the documentation to make sure it looks good.
 - Follow the pull request template when opening a pull request.
 - For pull requests that change the API or implementation, discuss with maintainers first by opening an issue.
+- Make sure that the pull request title follows the commit message format
+- When merging the pull request, make sure to pick the 'Rebase and merge' option. Otherwise, semantic-release will not be able to generate changelogs.
 
 ## Code of Conduct
 
@@ -196,3 +210,4 @@ Community Impact Guidelines were inspired by [Mozilla's code of conduct enforcem
 
 For answers to common questions about this code of conduct, see the FAQ at
 https://www.contributor-covenant.org/faq. Translations are available at https://www.contributor-covenant.org/translations.
+

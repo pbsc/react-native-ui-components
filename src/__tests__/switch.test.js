@@ -27,7 +27,6 @@ describe('Switch unit testing', () => {
       <Switch label={titleText} helperText={helperText} />
     );
 
-    const titleLabel = getByTestId('switch-title');
     const helperTextLabel = getByTestId('switch-helpertext');
 
     expect(helperTextLabel).toHaveTextContent(helperText);

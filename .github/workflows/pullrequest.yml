@@ -1,0 +1,18 @@
+# This workflow is triggered when the following events occur:
+#   a pull request is opened, reopened, synchronized or edited
+# It calls the reusable workflow lint-tests
+
+name: Pull Request
+
+on:
+  pull_request:
+    types: 
+      - opened  
+      - reopened  
+      - synchronize # to run the workflow when PR gets updated with new commits
+      - edited # to check pr title
+      
+
+jobs:
+  lint-and-tests:
+    uses: ./.github/workflows/lint-tests.yml

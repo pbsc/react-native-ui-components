@@ -5,6 +5,7 @@
       <td><img src="./resources/datetimepicker_unselected.png" alt="DateTimePicker unselected" /></td>
       <td><img src="./resources/datetimepicker_selected.png" alt="DateTimePicker selected" /></td></td>
       <td><img src="./resources/datetimepicker_error.png" alt="DateTimePicker with error" /></td>
+      <td><img src="./resources/datetimepicker_icon_with-helperText.png" alt="DateTimePicker with icon and helper text" /></td>
   </tr>
 </table>
 
@@ -54,6 +55,14 @@ const handleDateTimePickerConfirm = (selectedDateTime) => {
     mode="date"
     onConfirm={handleDateTimePickerConfirm}
     helperText="This is helper text for date picker"
+    hasHelperTextIcon={true}
+        helperTextCustomIcon={
+        <Image
+            source={require('../images/info.png')}
+            style={{ width: 12, height: 12 }}
+
+        />
+        }
 />
 ```
 
@@ -172,3 +181,11 @@ Set style of field part
 ### helperTextStyle
 Type: object <br/>
 Set style of helper text part
+
+### hasHelperTextIcon
+Type: boolean <br/>
+Enable custom component (ex: helperTextCustomIcon) to place before helperText
+
+### helperTextCustomIcon
+Type: jsx component <br/>
+A custom component (usually svg component or Image) to place icon before helperText and can be used for errors as well.

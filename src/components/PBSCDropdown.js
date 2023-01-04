@@ -18,7 +18,6 @@ const PBSCDropdown = (props) => {
     label,
     value = undefined,
     items,
-    textAlignInItem = 'left',
     onSelect = () => {},
     helperText,
     showValueWhenSelected = false,
@@ -32,6 +31,8 @@ const PBSCDropdown = (props) => {
     style,
     fieldStyle,
     helperTextStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
   const windowHeight = Dimensions.get('window').height;
 
@@ -139,7 +140,7 @@ const PBSCDropdown = (props) => {
   };
 
   return (
-    <View style={{ width: width, marginTop: 10, ...style }}>
+    <View style={[styles.dropdownContainer(width), style]}>
       <Pressable
         disabled={disabled}
         ref={DropdownPressible}
@@ -165,7 +166,7 @@ const PBSCDropdown = (props) => {
                 name="chevron-down"
                 color={disabled ? COLOR.GRAY_LIGHT : COLOR.BLACK}
                 disabled
-                style={{ paddingTop: 10 }}
+                style={styles.dropdownInputIcon}
               />
             }
             style={{
@@ -180,14 +181,17 @@ const PBSCDropdown = (props) => {
           />
         </View>
       </Pressable>
-      <HelperText
-        testID="dropdown-helpertext"
-        type="info"
-        visible={helperText}
-        style={{ marginStart: -10, ...helperTextStyle }}
-      >
-        {helperText}
-      </HelperText>
+      <View style={styles.helperTextContainer}>
+        {hasHelperTextIcon && helperTextCustomIcon}
+        <HelperText
+          testID="dropdown-helpertext"
+          type="info"
+          visible={helperText}
+          style={[styles.helperText, helperTextStyle]}
+        >
+          {helperText}
+        </HelperText>
+      </View>
     </View>
   );
 };
@@ -195,6 +199,10 @@ const PBSCDropdown = (props) => {
 export default PBSCDropdown;
 
 const styles = StyleSheet.create({
+  dropdownContainer: (width) => ({
+    width: width,
+    marginTop: 10,
+  }),
   dropdown: {
     position: 'absolute',
     backgroundColor: '#fff',
@@ -207,5 +215,15 @@ const styles = StyleSheet.create({
   overlay: {
     width: '100%',
     height: '100%',
+  },
+  dropdownInputIcon: {
+    paddingTop: 10,
+  },
+  helperTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  helperText: {
+    marginStart: -10,
   },
 });

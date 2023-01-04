@@ -24,6 +24,8 @@ const PBSCCheckbox = (props) => {
     style,
     labelStyle,
     helperTextStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
 
   const onCheckmarkPress = () => {
@@ -62,34 +64,28 @@ const PBSCCheckbox = (props) => {
               name="checkmark-sharp"
               size={size}
               color={disabled ? COLOR.WHITE : checkmarkColor}
-              style={{
-                position: 'absolute',
-                left: (-1 * size) / 16,
-                top: (-1 * size) / 16,
-              }}
+              style={styles.checkedIcon(size)}
             />
           )}
         </Pressable>
         <Text
           testID="checkbox-title"
-          style={{
-            marginStart: 10,
-            fontSize: 16,
-            color: disabled ? COLOR.DISABLED : labelColor,
-            ...labelStyle,
-          }}
+          style={[styles.title(labelColor, disabled), labelStyle]}
         >
           {label}
         </Text>
       </View>
-      <HelperText
-        testID="checkbox-helpertext"
-        type="info"
-        visible={helperText}
-        style={{ marginStart: size - 2, ...helperTextStyle }}
-      >
-        {helperText}
-      </HelperText>
+      <View style={styles.helperTextContainer}>
+        {hasHelperTextIcon && helperTextCustomIcon}
+        <HelperText
+          testID="checkbox-helpertext"
+          type="info"
+          visible={helperText}
+          style={{ marginStart: size - 2, ...helperTextStyle }}
+        >
+          {helperText}
+        </HelperText>
+      </View>
     </View>
   );
 };
@@ -102,5 +98,19 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     marginTop: 10,
+  },
+  title: (labelColor, disabled = false) => ({
+    marginStart: 10,
+    fontSize: 16,
+    color: disabled ? COLOR.DISABLED : labelColor,
+  }),
+  checkedIcon: (size) => ({
+    position: 'absolute',
+    left: (-1 * size) / 16,
+    top: (-1 * size) / 16,
+  }),
+  helperTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

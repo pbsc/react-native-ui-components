@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { TextInput, HelperText } from 'react-native-paper';
 
 import { COLOR, helperTextColor } from '../helpers/Colors';
@@ -13,6 +13,7 @@ const PBSCTextField = (props) => {
     password,
     inputPattern = '',
     rightIconName, // material community icon
+    customIcon,
     onPressRightIcon,
     hasError = false,
     errorColor = COLOR.PBSC_RED,
@@ -37,21 +38,23 @@ const PBSCTextField = (props) => {
     style,
     textInputStyle,
     helperTextStyle,
+    hasHelperTextIcon = false,
+    helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
   } = props;
   const [hideText, setHideText] = useState(true);
   const [controlledText, setControlledText] = useState(value ? value : '');
 
-  const handleChangeText = (value) => {
+  const handleChangeText = (textValue) => {
     if (inputPattern === '') {
-      setControlledText(value);
-      onChangeText(value);
+      setControlledText(textValue);
+      onChangeText(textValue);
     } else {
-      const matches = value.match(inputPattern);
+      const matches = textValue.match(inputPattern);
       if (matches != null && matches.length > 0) {
         const matchedString = matches[0];
-        if (value.length < controlledText.length) {
-          setControlledText(value);
-          onChangeText(value);
+        if (textValue.length < controlledText.length) {
+          setControlledText(textValue);
+          onChangeText(textValue);
         } else if (matchedString.length > controlledText.length) {
           setControlledText(matchedString);
           onChangeText(matchedString);
@@ -60,28 +63,32 @@ const PBSCTextField = (props) => {
     }
   };
 
-  const handleOnSubmitEditing = (value) => {
-    onSubmitEditing(value.nativeEvent.text);
+  const handleOnSubmitEditing = (textValue) => {
+    onSubmitEditing(textValue.nativeEvent.text);
   };
 
   const setRightIcon = () => {
-    if (password == true) {
+    if (password === true) {
       return (
         <TextInput.Icon
           testID="textfield-righticon"
           name={hideText ? 'eye' : 'eye-off'}
           onPress={onPressEyeIcon}
-          style={{ marginTop: 16 }}
+          style={styles.rightIcon}
         />
       );
-    } else if (rightIconName != undefined && rightIconName.length > 0) {
+    } else if (rightIconName !== undefined && rightIconName.length > 0) {
       return (
         <TextInput.Icon
           name={rightIconName}
           disabled={typeof onPressRightIcon === 'function' ? false : true}
           onPress={onPressRightIcon}
-          style={{ marginTop: 16 }}
+          style={styles.rightIcon}
         />
+      );
+    } else if (customIcon) {
+      return (
+        <TextInput.Icon icon={() => customIcon()} style={styles.rightIcon} />
       );
     } else {
       return null;
@@ -89,7 +96,7 @@ const PBSCTextField = (props) => {
   };
 
   let secureTextEntry;
-  if (password == true) {
+  if (password === true) {
     secureTextEntry = hideText;
   } else {
     secureTextEntry = false;
@@ -117,7 +124,7 @@ const PBSCTextField = (props) => {
         error={hasError}
         errorColor={errorColor}
         secureTextEntry={secureTextEntry}
-        keyboardType={password == true ? 'default' : keyboardType}
+        keyboardType={password === true ? 'default' : keyboardType}
         autoCapitalize={autoCapitalize}
         autoComplete={autoComplete}
         right={setRightIcon()}
@@ -137,20 +144,36 @@ const PBSCTextField = (props) => {
           },
         }}
       />
-      <HelperText
-        testID="textfield-helpertext"
-        type={hasError ? 'error' : 'info'}
-        visible={helperText}
-        style={{
-          marginStart: -10,
-          color: helperTextColor(hasError, disabled, errorColor),
-          ...helperTextStyle,
-        }}
-      >
-        {helperText}
-      </HelperText>
+      <View style={styles.helperTextContainer}>
+        {hasHelperTextIcon && helperTextCustomIcon}
+        <HelperText
+          testID="textfield-helpertext"
+          type={hasError ? 'error' : 'info'}
+          visible={helperText}
+          style={[
+            styles.helperText(helperTextColor(hasError, disabled, errorColor)),
+            helperTextStyle,
+          ]}
+        >
+          {helperText}
+        </HelperText>
+      </View>
     </View>
   );
 };
 
 export default PBSCTextField;
+
+const styles = StyleSheet.create({
+  rightIcon: {
+    marginTop: 16,
+  },
+  helperTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  helperText: (color) => ({
+    marginStart: -10,
+    color,
+  }),
+});

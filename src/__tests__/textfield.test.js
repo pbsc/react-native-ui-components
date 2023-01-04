@@ -77,9 +77,6 @@ describe('TextField unit testing', () => {
   });
 
   it('textfield behaves as password', () => {
-    const mockFn = jest.fn();
-    const inputText = 'This is a sample input text.';
-
     const { getByTestId } = render(<TextField label="Password" password />);
 
     const inputField = getByTestId('textfield-input');

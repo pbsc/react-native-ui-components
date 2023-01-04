@@ -1,5 +1,7 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { Image, ScrollView, View } from 'react-native';
+
 import {
   Checkbox,
   DateTimePicker,
@@ -17,9 +19,12 @@ const HomeScreen = () => {
   const [checked, setChecked] = useState(false);
   const [isOn, setIsOn] = useState(false);
   const [dropdownSelected, setDropdownSelected] = useState(undefined);
+  // eslint-disable-next-line no-unused-vars
   const [dateTimePickerSelectd, setDateTimePickerSelected] =
     useState(undefined);
+  // eslint-disable-next-line no-unused-vars
   const [phoneNumber, setPhoneNumber] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [postalCode, setPostalCode] = useState('');
   const [passwordStrengthValue, setPasswordStrengthValue] = useState('');
 
@@ -113,6 +118,14 @@ const HomeScreen = () => {
           value={text}
           onChangeText={handleTextFieldChange}
           onSubmitEditing={handleSubmit}
+          hasHelperTextIcon={true}
+          disabled
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <TextField label="Password" password />
         <TextField
@@ -124,11 +137,25 @@ const HomeScreen = () => {
           textBeforeStart={textBeforeStartForStepIndicator}
           steps={stepsForStepIndicator}
           currentStepIndex={2}
+          hasHelperTextIcon={true}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <TextField
           label="Text field with error"
           hasError
           helperText="This is error text!"
+          hasHelperTextIcon={true}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <TextField label="Multiline Text field" multiLine height={100} />
         <TextField
@@ -136,6 +163,13 @@ const HomeScreen = () => {
           value="This field is disabled."
           disabled
           helperText="This is helper text for disalbed text field"
+          hasHelperTextIcon={true}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <DateTimePicker
           label="Birthday"
@@ -144,6 +178,13 @@ const HomeScreen = () => {
           mode="date"
           onConfirm={handleDateTimePickerConfirm}
           helperText="This is helper text for date picker"
+          hasHelperTextIcon={true}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <Dropdown
           label="This is dropdown"
@@ -151,30 +192,67 @@ const HomeScreen = () => {
           value={dropdownSelected}
           onSelect={handleDropdownSelect}
           helperText="This is helper text for dropdown"
+          hasHelperTextIcon={true}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <PhoneNumberField
           label="Phone Number"
           prefixes={prefiexesForPhoneNumber}
           helperText="This is helper text for phone number field"
           onSubmitEditing={handlePhoneFieldSubmitEditting}
+          hasHelperTextIcon={true}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <Checkbox
           label="This is Checkbox"
           checked={checked}
           onChange={handleCheckboxChange}
           helperText="This is helper text for checkbox."
+          hasHelperTextIcon={true}
+          helperTextStyle={{ marginStart: -10 }}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <Switch
           label="This is Switch"
           isOn={isOn}
           onChange={handleSwitchChange}
           helperText="This is helper text for switch."
+          hasHelperTextIcon={true}
+          helperTextStyle={{ marginStart: -10 }}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <ZipcodeField
           label="Postal Code"
           country="CA"
           onSubmitEditing={handlePostalcodeSubmit}
           helperText="Please enter your postal code."
+          hasHelperTextIcon={true}
+          helperTextCustomIcon={
+            <Image
+              source={require('../images/info.png')}
+              style={{ width: 12, height: 12 }}
+            />
+          }
         />
         <View>
           <TextField
