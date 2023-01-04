@@ -92,7 +92,7 @@ Our pre-commit hooks verify that the linter and tests pass when committing.
 
 ### Release Process: Release Notes & Package Publishing to npm
 
-We use [semantic-release](https://github.com/semantic-release/semantic-release) to make it easier to release new versions. [semantic-release](https://github.com/semantic-release/semantic-release) handles common tasks like bumping version based on semver, creating tags and releases etc. This is why when writting commit messages, it is a must to follow the commit message convention described above.
+We use [semantic-release](https://github.com/semantic-release/semantic-release) to make it easier to release new versions. [semantic-release](https://github.com/semantic-release/semantic-release) handles common tasks like bumping version based on semver, creating tags and release notes etc. This is why when writting commit messages, it is a must to follow the commit message convention described above.
 
 To publish a new package version, run the following:
 
