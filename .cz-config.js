@@ -32,7 +32,7 @@ module.exports = {
     },
     {
       value: ':green_heart: ci',
-      name: '💚 ci:\tAdd or update regards to build process',
+      name: '💚 ci:\tAdd or update regards to CI/CD process',
     },
   ],
 
