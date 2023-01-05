@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { Image, ScrollView, View } from 'react-native';
 
@@ -11,8 +12,11 @@ import {
   TextField,
   PhoneNumberField,
   ZipcodeField,
-  PasswordStrength
 } from '@pbsc/react-native-ui-components';
+
+import { PasswordStrength } from '../../../src/index';
+
+import { StrengthChecker } from '../helpers/StrengthChecker';
 
 const HomeScreen = () => {
   const [text, setText] = useState('');
@@ -27,6 +31,9 @@ const HomeScreen = () => {
   // eslint-disable-next-line no-unused-vars
   const [postalCode, setPostalCode] = useState('');
   const [passwordStrengthValue, setPasswordStrengthValue] = useState('');
+  const [passwordStrengthValidation, setPasswordStrengthValidation] = useState(
+    {}
+  );
 
   const dropdownItems = [
     {
@@ -93,6 +100,14 @@ const HomeScreen = () => {
   const handlePostalcodeSubmit = (value) => {
     setPostalCode(value);
     console.log(`PostalCode: ${value}`);
+  };
+
+  const validateInputStrenghtApi = async (value) => {
+    setPasswordStrengthValue(value);
+
+    const passwordWeakness = StrengthChecker(value);
+
+    setPasswordStrengthValidation(passwordWeakness);
   };
 
   return (
@@ -255,12 +270,16 @@ const HomeScreen = () => {
           }
         />
         <View>
+          {`/ eslint-disable-next-line no-undef`}
           <TextField
             label="Password Strenght Input"
             value={PasswordStrengthValue}
-            onChangeText={setPasswordStrengthValue}
+            onChangeText={validateInputStrenghtApi}
           />
-          <PasswordStrength value={PasswordStrengthValue}/>
+          <PasswordStrength
+            value={PasswordStrengthValue}
+            passwordStrengthValidation={passwordStrengthValidation}
+          />
         </View>
       </View>
     </ScrollView>
