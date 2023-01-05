@@ -16,4 +16,5 @@
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] Documentation update
 - [ ] Code refactoring
+- [ ] CI/CD or build process changes
 - [ ] Other
