@@ -1,15 +1,15 @@
-# This workflow is triggered when commits gets pushed to master branch
+# This workflow is triggered when commits gets pushed to main branch
 # It calls the reusable workflow lint-tests
 
-name: Push to Master
+name: Push to Main
 
 concurrency:
-  group: push-to-master # to run only one build of this type at a time
+  group: push-to-main # to run only one build of this type at a time
 
 on:
   push:
     branches: 
-      - master  
+      - main  
       
 
 jobs:
