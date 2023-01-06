@@ -89,6 +89,17 @@ import {
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
+## CI/CD process 
+
+We use [semantic-release](https://github.com/semantic-release/semantic-release) and Github Actions to automatically handle the release creation. 
+We use the Angular commit convention to write commit messages that can be parsed by semantic-release.
+
+To validate commit messages, we use [commitlint](https://github.com/conventional-changelog/commitlint) with [gitmoji](https://www.npmjs.com/package/commitlint-config-gitmoji)
+
+To help developers write a good commit message, we use [commitizen](https://github.com/commitizen/cz-cli) with [cz-customizable](https://github.com/leoforfree/cz-customizable)
+
+We also have hooks (using husky) that validate that the commit is in the right format before pushing to the repository.
+
 ## License
 
 MIT
