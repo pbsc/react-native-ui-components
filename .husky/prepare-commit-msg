@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
+// this script validates that a commit message that contains BREAKING CHANGE contains an exclamation mark (!) in
+// its subject (just after the commit type(scope))
+
 const fs = require('fs');
 
 const message = fs.readFileSync(process.argv[2], 'utf8').trim();
-
-console.log('process.argv :>> ', process.argv);
-console.log('message :>> ', message);
 
 if (!message.includes('BREAKING CHANGE')) {
   process.exit(0);
