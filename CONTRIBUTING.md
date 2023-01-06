@@ -66,7 +66,9 @@ We follow the [Angular commits specification](https://github.com/angular/angular
 - `refactor`: code refactor, e.g. migrate from class components to hooks.
 - `docs`: changes into documentation, e.g. add usage example for the module..
 - `test`: adding or updating tests, e.g. add integration tests using detox.
-- `chore`: tooling changes, e.g. change CI config.
+- `ci`: changes to the CI/CD process.
+- `build`: changes to the build process.
+- `chore`: any chore project changes
 
 If your changes introduce any breaking changes, make sure to specify 'BREAKING CHANGE' in the footer of your commit message. Refer to [commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format) for more details.
 
