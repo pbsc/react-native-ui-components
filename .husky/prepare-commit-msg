@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// this script validates that a commit message that contains BREAKING CHANGE contains an exclamation mark (!) in
+// hook that validates that a 'BREAKING CHANGE' commit message contains an exclamation mark (!) in
 // its subject (just after the commit type(scope))
 
 const fs = require('fs');
