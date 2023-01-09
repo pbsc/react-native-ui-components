@@ -61,6 +61,7 @@ import {
   StepIndicator,
   PhoneNumberField,
   ZipcodeField,
+  PasswordStrength
 } from '@pbsc/react-native-ui-components';
 
 // ...
@@ -73,6 +74,7 @@ import {
 <StepIndicator />;
 <PhoneNumberField />;
 <ZipcodeField />;
+<PasswordStrength />;
 ```
 
 ## Documentations (or API)
@@ -84,6 +86,7 @@ import {
 - [StepIndicator](./docs/stepindicator.md)
 - [PhoneNumberField](./docs/phonenumberfield.md)
 - [ZipcodeField](./docs/zipcodefield.md)
+- [ZipcodeField](./docs/passwordStrength.md)
 
 ## Contributing
 

@@ -40,25 +40,21 @@ const strengthListDictionary = [
   },
 ];
 
-const PBSCPasswordStrength = ({ value, passwordStrengthValidation }) => {
+const PBSCPasswordStrength = (props) => {
+  const {
+    width = '80%',
+    style,
+    isValid,
+    value,
+    passwordStrengthValidation
+  } = props;
+
   const [passwordStrength, setPasswordStrength] = useState(
     strengthListDictionary[0]
   );
 
   useEffect(() => {
     if (value !== '') {
-      /*
-      validateInput(bikeNetwork.url, bikeNetwork.apiKey, 'en').then((data) => {
-        isValid(data.valid);
-        const findStrength = strengthListDictionary.find((list) => list.strength === data.strength);
-        if (findStrength) {
-          setPasswordStrength({ ...findStrength, suggestions: data.suggestions});
-          console.log('findStrength', { ...findStrength, suggestions: data.suggestions})
-        } 
-      })
-      */
-      //isValid(passwordStrengthValidation.valid);
-
       const findStrength = strengthListDictionary.find(
         (list) => list.strength === passwordStrengthValidation.strength
       );
@@ -67,10 +63,7 @@ const PBSCPasswordStrength = ({ value, passwordStrengthValidation }) => {
           ...findStrength,
           suggestions: passwordStrengthValidation.suggestions,
         });
-        console.log('findStrength', {
-          ...findStrength,
-          suggestions: passwordStrengthValidation.suggestions,
-        });
+        isValid(passwordStrengthValidation.valid)
       }
     } else {
       setPasswordStrength(strengthListDictionary[0]);
@@ -78,38 +71,36 @@ const PBSCPasswordStrength = ({ value, passwordStrengthValidation }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
-  /*
-  const validateInput = (apiUrl, apiKey, language) => {
-    return requestPublicCustomerAPI(
-        apiUrl,
-        apiKey,
-        `/validation/password-strength`,
-        'POST',
-        {
-          headers: {
-            'Accept-Language': normalizeLanguagecode(language)
-          },
-          password: value
-        }
-      );
+  const getSuggestionsText = () => {
+    let suggestionsText = '';
+    passwordStrength.suggestions.map((suggestion) => {
+      if(suggestionsText === '') {
+        suggestionsText = suggestion;
+      } else {
+        suggestionsText = `${suggestionsText} ${suggestion}`;
+      }
+    })
+    return suggestionsText;
   }
-  */
 
   return (
-    <View>
-      <View>
+    <View style={[{ width }, style]}>
+      <View style={styles.titleWrapper}>
         <Text>
-          {`Password strength (${passwordStrength.strengthLevel} of 5)`}
+          {`Password strength `}
+        </Text>
+        <Text style={{ color: passwordStrength.color[passwordStrength.strengthLevel - 1] }}>
+          {`(${passwordStrength.strengthLevel} of 5)`}
         </Text>
       </View>
       <View style={styles.strengthBarWrapper}>
-        {passwordStrength.color.map((color) => (
-          <View style={{ backgroundColor: color, ...styles.strengthBar }} />
+        {passwordStrength.color.map((color, index) => (
+          <View testID={`passwordStrength-color-${index}`} key={index} style={{ backgroundColor: color, ...styles.strengthBar }} />
         ))}
       </View>
-      <View>
+      <View style={styles.suggestionsWrapper}>
         {passwordStrength.suggestions.map((suggestion) => (
-          <Text>{suggestion}</Text>
+          <Text>{`${suggestion}`}</Text>
         ))}
       </View>
     </View>
@@ -129,4 +120,12 @@ const styles = StyleSheet.create({
     width: '18%',
     borderRadius: 5,
   },
+  titleWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    marginBottom: 10
+  },
+  suggestionsWrapper:{
+    marginTop: 10
+  }
 });

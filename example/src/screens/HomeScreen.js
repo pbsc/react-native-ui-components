@@ -269,18 +269,18 @@ const HomeScreen = () => {
             />
           }
         />
-        <View>
-          {`/ eslint-disable-next-line no-undef`}
+    
           <TextField
             label="Password Strenght Input"
-            value={PasswordStrengthValue}
+            value={passwordStrengthValue}
             onChangeText={validateInputStrenghtApi}
           />
           <PasswordStrength
-            value={PasswordStrengthValue}
+            value={passwordStrengthValue}
+            isValid={() => {}}
             passwordStrengthValidation={passwordStrengthValidation}
           />
-        </View>
+       
       </View>
     </ScrollView>
   );
