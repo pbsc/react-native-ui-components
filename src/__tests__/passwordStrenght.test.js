@@ -9,10 +9,13 @@ afterEach(cleanup);
 describe('Password Strength unit testing', () => {
   it('should render component without crashing', () => {
     const rendered = renderer
-      .create(<PasswordStrength
-        value="test123"
-        isValid={() => {}}
-        passwordStrengthValidation={{}} />)
+      .create(
+        <PasswordStrength
+          value="test123"
+          isValid={() => {}}
+          passwordStrengthValidation={{}}
+        />
+      )
       .toJSON();
 
     expect(rendered).toBeTruthy();
@@ -28,7 +31,11 @@ describe('Password Strength unit testing', () => {
     };
 
     const { getByTestId } = render(
-      <PasswordStrength value={textFieldvalue} isValid={() => {}} passwordStrengthValidation={passwordValidation} />
+      <PasswordStrength
+        value={textFieldvalue}
+        isValid={() => {}}
+        passwordStrengthValidation={passwordValidation}
+      />
     );
     const helperColor0 = getByTestId('passwordStrength-color-0');
     const helperColor1 = getByTestId('passwordStrength-color-1');
@@ -53,7 +60,11 @@ describe('Password Strength unit testing', () => {
     };
 
     const { getByTestId } = render(
-      <PasswordStrength value={textFieldvalue} isValid={() => {}} passwordStrengthValidation={passwordValidation} />
+      <PasswordStrength
+        value={textFieldvalue}
+        isValid={() => {}}
+        passwordStrengthValidation={passwordValidation}
+      />
     );
     const helperColor0 = getByTestId('passwordStrength-color-0');
     const helperColor1 = getByTestId('passwordStrength-color-1');
@@ -78,7 +89,11 @@ describe('Password Strength unit testing', () => {
     };
 
     const { getByTestId } = render(
-      <PasswordStrength value={textFieldvalue} isValid={() => {}} passwordStrengthValidation={passwordValidation} />
+      <PasswordStrength
+        value={textFieldvalue}
+        isValid={() => {}}
+        passwordStrengthValidation={passwordValidation}
+      />
     );
     const helperColor0 = getByTestId('passwordStrength-color-0');
     const helperColor1 = getByTestId('passwordStrength-color-1');
@@ -103,7 +118,11 @@ describe('Password Strength unit testing', () => {
     };
 
     const { getByTestId } = render(
-      <PasswordStrength value={textFieldvalue} isValid={() => {}} passwordStrengthValidation={passwordValidation} />
+      <PasswordStrength
+        value={textFieldvalue}
+        isValid={() => {}}
+        passwordStrengthValidation={passwordValidation}
+      />
     );
     const helperColor0 = getByTestId('passwordStrength-color-0');
     const helperColor1 = getByTestId('passwordStrength-color-1');
@@ -128,7 +147,11 @@ describe('Password Strength unit testing', () => {
     };
 
     const { getByTestId } = render(
-      <PasswordStrength value={textFieldvalue} isValid={() => {}} passwordStrengthValidation={passwordValidation} />
+      <PasswordStrength
+        value={textFieldvalue}
+        isValid={() => {}}
+        passwordStrengthValidation={passwordValidation}
+      />
     );
     const helperColor0 = getByTestId('passwordStrength-color-0');
     const helperColor1 = getByTestId('passwordStrength-color-1');

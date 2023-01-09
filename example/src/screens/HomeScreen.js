@@ -269,18 +269,17 @@ const HomeScreen = () => {
             />
           }
         />
-    
-          <TextField
-            label="Password Strenght Input"
-            value={passwordStrengthValue}
-            onChangeText={validateInputStrenghtApi}
-          />
-          <PasswordStrength
-            value={passwordStrengthValue}
-            isValid={() => {}}
-            passwordStrengthValidation={passwordStrengthValidation}
-          />
-       
+
+        <TextField
+          label="Password Strenght Input"
+          value={passwordStrengthValue}
+          onChangeText={validateInputStrenghtApi}
+        />
+        <PasswordStrength
+          value={passwordStrengthValue}
+          isValid={() => {}}
+          passwordStrengthValidation={passwordStrengthValidation}
+        />
       </View>
     </ScrollView>
   );

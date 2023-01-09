@@ -5,14 +5,9 @@ const strongPassword = new RegExp(
   '(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])'
 );
 
-const goodPassword = new RegExp(
-  '(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])'
-);
+const goodPassword = new RegExp('(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])');
 
-const fairPassword = new RegExp(
-  '(?=.*[A-Z].*[A-Z])'
-);
-
+const fairPassword = new RegExp('(?=.*[A-Z].*[A-Z])');
 
 export const StrengthChecker = (password) => {
   if (veryStrongPassword.test(password)) {
@@ -29,7 +24,7 @@ export const StrengthChecker = (password) => {
       warning: 'Ce mot de passe est similaire à un mot de passe commun.',
       suggestions: [
         'Ensure string has three lowercase letters.',
-        "Ensure string is of length 8.",
+        'Ensure string is of length 8.',
       ],
     };
   } else if (goodPassword.test(password)) {

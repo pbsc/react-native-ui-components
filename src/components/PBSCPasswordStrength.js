@@ -46,7 +46,7 @@ const PBSCPasswordStrength = (props) => {
     style,
     isValid,
     value,
-    passwordStrengthValidation
+    passwordStrengthValidation,
   } = props;
 
   const [passwordStrength, setPasswordStrength] = useState(
@@ -63,7 +63,7 @@ const PBSCPasswordStrength = (props) => {
           ...findStrength,
           suggestions: passwordStrengthValidation.suggestions,
         });
-        isValid(passwordStrengthValidation.valid)
+        isValid(passwordStrengthValidation.valid);
       }
     } else {
       setPasswordStrength(strengthListDictionary[0]);
@@ -74,28 +74,34 @@ const PBSCPasswordStrength = (props) => {
   const getSuggestionsText = () => {
     let suggestionsText = '';
     passwordStrength.suggestions.map((suggestion) => {
-      if(suggestionsText === '') {
+      if (suggestionsText === '') {
         suggestionsText = suggestion;
       } else {
         suggestionsText = `${suggestionsText} ${suggestion}`;
       }
-    })
+    });
     return suggestionsText;
-  }
+  };
 
   return (
     <View style={[{ width }, style]}>
       <View style={styles.titleWrapper}>
-        <Text>
-          {`Password strength `}
-        </Text>
-        <Text style={{ color: passwordStrength.color[passwordStrength.strengthLevel - 1] }}>
+        <Text>{`Password strength `}</Text>
+        <Text
+          style={{
+            color: passwordStrength.color[passwordStrength.strengthLevel - 1],
+          }}
+        >
           {`(${passwordStrength.strengthLevel} of 5)`}
         </Text>
       </View>
       <View style={styles.strengthBarWrapper}>
         {passwordStrength.color.map((color, index) => (
-          <View testID={`passwordStrength-color-${index}`} key={index} style={{ backgroundColor: color, ...styles.strengthBar }} />
+          <View
+            testID={`passwordStrength-color-${index}`}
+            key={index}
+            style={{ backgroundColor: color, ...styles.strengthBar }}
+          />
         ))}
       </View>
       <View style={styles.suggestionsWrapper}>
@@ -123,9 +129,9 @@ const styles = StyleSheet.create({
   titleWrapper: {
     flex: 1,
     flexDirection: 'row',
-    marginBottom: 10
+    marginBottom: 10,
   },
-  suggestionsWrapper:{
-    marginTop: 10
-  }
+  suggestionsWrapper: {
+    marginTop: 10,
+  },
 });
