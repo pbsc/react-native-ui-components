@@ -1,6 +1,6 @@
 {
   "name": "@pbsc/react-native-ui-components",
-  "version": "0.0.0-development",
+  "version": "2.0.0",
   "description": "UI components for CycleFinder app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -55,7 +55,7 @@
     "react-native-vector-icons": "^9.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.3.0",
+    "@commitlint/cli": "^17.4.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@semantic-release/git": "^10.0.1",
@@ -67,7 +67,9 @@
     "babel-jest": "^28.1.0",
     "commitizen": "^4.2.6",
     "commitlint": "^11.0.0",
+    "commitlint-config-gitmoji": "^2.2.8",
     "cz-conventional-changelog": "3.3.0",
+    "cz-customizable": "^7.0.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.1.3",
@@ -104,11 +106,6 @@
     "verbose": true,
     "transformIgnorePatterns": [
       "node_modules/(?!(@react-native|react-native|react-native-vector-icons|react-native-iphone-x-helper|react-native-date-picker|react-native-reanimated)/)"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
     ]
   },
   "eslintConfig": {
@@ -157,10 +154,13 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "cz-customizable"
     }
   },
   "release": {
+    "branches": [
+      "main"
+    ],
     "plugins": [
       [
         "@semantic-release/commit-analyzer",

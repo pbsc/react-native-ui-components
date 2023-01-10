@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# hook that validates that the commit message is in the correct format using commitlint
 yarn commitlint --edit "$1"

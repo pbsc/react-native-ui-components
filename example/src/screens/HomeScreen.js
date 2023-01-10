@@ -269,7 +269,6 @@ const HomeScreen = () => {
             />
           }
         />
-
         <TextField
           label="Password Strenght Input"
           value={passwordStrengthValue}

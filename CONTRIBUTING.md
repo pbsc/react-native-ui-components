@@ -66,7 +66,20 @@ We follow the [Angular commits specification](https://github.com/angular/angular
 - `refactor`: code refactor, e.g. migrate from class components to hooks.
 - `docs`: changes into documentation, e.g. add usage example for the module..
 - `test`: adding or updating tests, e.g. add integration tests using detox.
-- `chore`: tooling changes, e.g. change CI config.
+- `ci`: changes to the CI/CD process.
+- `build`: changes to the build process.
+- `chore`: any chore project changes
+
+If your changes introduce any breaking changes, make sure to specify 'BREAKING CHANGE' in the footer of your commit message. Refer to [commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format) for more details.
+
+Some guidelines to follow when writting commit messages:
+- use the present tense. For example, write: 'add new component' instead of 'added new component'
+- provide a message body that explains the changes you have made and why they are needed
+- when your change is a BREAKING CHANGE:
+  - put an '!' mark right after the subject/scope. For example:
+    - feat!: add a new feature 
+    - fix(PBSCDropdown)!: remvove a property  
+  - provide a message in the footer that begins with 'BREAKING CHANGE:'
 
 If your changes introduce any breaking changes, make sure to specify 'BREAKING CHANGE' in the footer of your commit message. Refer to [commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format) for more details.
 
