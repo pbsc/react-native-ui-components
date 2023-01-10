@@ -103,7 +103,6 @@ const PBSCPasswordStrength = (props) => {
 
       <View style={styles.strengthBarWrapper}>
         {baseFullColor.map((color, index) => {
-          
           let displayColor = color;
 
           if((index + 1) === passwordStrength.strengthLevel) {
