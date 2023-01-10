@@ -55,6 +55,14 @@ The text typed in the textfield.
 Type: boolean <br/>
 Return true if the value entered is valid
 
+### strengthLabel
+Type: string <br/>
+The text to use for the strength label.
+
+### fractionLabel
+Type: string <br/>
+The text to use for the fraction of the total. Ex. "of" is the sentence "3 of 5"
+
 ### passwordStrengthValidation
 Type: object <br/>
 A object that contain the current validation based on the text entered in the textField

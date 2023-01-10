@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+const baseFullColor = ['#DC2619', '#FFA114', '#76BC21', '#349724', '#287C1A']
+
 const strengthListDictionary = [
   {
     strength: 'EMPTY',
@@ -47,6 +49,8 @@ const PBSCPasswordStrength = (props) => {
     isValid,
     value,
     passwordStrengthValidation,
+    strengthLabel = 'Password strength',
+    fractionLabel = 'of'
   } = props;
 
   const [passwordStrength, setPasswordStrength] = useState(
@@ -86,13 +90,13 @@ const PBSCPasswordStrength = (props) => {
   return (
     <View style={[{ width }, style]}>
       <View style={styles.titleWrapper}>
-        <Text>{`Password strength `}</Text>
+        <Text>{`${strengthLabel} `}</Text>
         <Text
           style={{
             color: passwordStrength.color[passwordStrength.strengthLevel - 1],
           }}
         >
-          {`(${passwordStrength.strengthLevel} of 5)`}
+          {`(${passwordStrength.strengthLevel} ${fractionLabel} 5)`}
         </Text>
       </View>
       <View style={styles.strengthBarWrapper}>

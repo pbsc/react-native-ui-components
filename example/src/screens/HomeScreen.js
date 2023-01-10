@@ -16,7 +16,7 @@ import {
 
 import { PasswordStrength } from '../../../src/index';
 
-import { StrengthChecker } from '../helpers/StrengthChecker';
+import { checkPasswordStrength } from '../helpers/StrengthChecker';
 
 const HomeScreen = () => {
   const [text, setText] = useState('');

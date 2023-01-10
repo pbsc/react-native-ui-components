@@ -9,7 +9,7 @@ const goodPassword = new RegExp('(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])');
 
 const fairPassword = new RegExp('(?=.*[A-Z].*[A-Z])');
 
-export const StrengthChecker = (password) => {
+export const checkPasswordStrength = (password) => {
   if (veryStrongPassword.test(password)) {
     return {
       valid: true,
