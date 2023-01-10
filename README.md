@@ -86,7 +86,7 @@ import {
 - [StepIndicator](./docs/stepindicator.md)
 - [PhoneNumberField](./docs/phonenumberfield.md)
 - [ZipcodeField](./docs/zipcodefield.md)
-- [ZipcodeField](./docs/passwordStrength.md)
+- [PasswordStrength](./docs/passwordStrength.md)
 
 ## Contributing
 
