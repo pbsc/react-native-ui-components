@@ -34,7 +34,6 @@ export const StrengthChecker = (password) => {
       warning: 'Ce mot de passe est similaire à un mot de passe commun.',
       suggestions: [
         'Ensure string has two digits.',
-        "Predictable substitutions like '@' instead of 'a' don't help very much.",
       ],
     };
   } else if (fairPassword.test(password)) {
@@ -43,8 +42,7 @@ export const StrengthChecker = (password) => {
       strength: 'FAIR',
       warning: 'Ce mot de passe est similaire à un mot de passe commun.',
       suggestions: [
-        'Ensure string has one special case letter.',
-        "Predictable substitutions like '@' instead of 'a' don't help very much.",
+        'Ensure string has one special case letter.'
       ],
     };
   } else {
@@ -53,8 +51,7 @@ export const StrengthChecker = (password) => {
       strength: 'WEAK',
       warning: 'Ce mot de passe est similaire à un mot de passe commun.',
       suggestions: [
-        'Ensure string has two uppercase letters.',
-        "Predictable substitutions like '@' instead of 'a' don't help very much.",
+        'Ensure string has two uppercase letters.'
       ],
     };
   }
