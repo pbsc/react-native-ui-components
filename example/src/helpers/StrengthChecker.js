@@ -32,27 +32,21 @@ export const StrengthChecker = (password) => {
       valid: true,
       strength: 'GOOD',
       warning: 'Ce mot de passe est similaire à un mot de passe commun.',
-      suggestions: [
-        'Ensure string has two digits.',
-      ],
+      suggestions: ['Ensure string has two digits.'],
     };
   } else if (fairPassword.test(password)) {
     return {
       valid: true,
       strength: 'FAIR',
       warning: 'Ce mot de passe est similaire à un mot de passe commun.',
-      suggestions: [
-        'Ensure string has one special case letter.'
-      ],
+      suggestions: ['Ensure string has one special case letter.'],
     };
   } else {
     return {
       valid: false,
       strength: 'WEAK',
       warning: 'Ce mot de passe est similaire à un mot de passe commun.',
-      suggestions: [
-        'Ensure string has two uppercase letters.'
-      ],
+      suggestions: ['Ensure string has two uppercase letters.'],
     };
   }
 };
