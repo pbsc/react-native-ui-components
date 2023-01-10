@@ -105,7 +105,7 @@ const HomeScreen = () => {
   const validateInputStrenghtApi = async (value) => {
     setPasswordStrengthValue(value);
 
-    const passwordWeakness = StrengthChecker(value);
+    const passwordWeakness = checkPasswordStrength(value);
 
     setPasswordStrengthValidation(passwordWeakness);
   };

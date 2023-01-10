@@ -1,42 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const baseFullColor = ['#DC2619', '#FFA114', '#76BC21', '#349724', '#287C1A']
+const greyColor = '#C4C4C4';
+const baseFullColor = ['#DC2619', '#FFA114', '#76BC21', '#349724', '#287C1A'];
 
 const strengthListDictionary = [
   {
     strength: 'EMPTY',
-    color: ['#C4C4C4', '#C4C4C4', '#C4C4C4', '#C4C4C4', '#C4C4C4'],
+    color: greyColor,
     strengthLevel: 0,
     suggestions: [],
   },
   {
     strength: 'WEAK',
-    color: ['#DC2619', '#C4C4C4', '#C4C4C4', '#C4C4C4', '#C4C4C4'],
+    color: '#DC2619',
     strengthLevel: 1,
     suggestions: [],
   },
   {
     strength: 'FAIR',
-    color: ['#DC2619', '#FFA114', '#C4C4C4', '#C4C4C4', '#C4C4C4'],
+    color: '#FFA114',
     strengthLevel: 2,
     suggestions: [],
   },
   {
     strength: 'GOOD',
-    color: ['#DC2619', '#FFA114', '#76BC21', '#C4C4C4', '#C4C4C4'],
+    color: '#76BC21',
     strengthLevel: 3,
     suggestions: [],
   },
   {
     strength: 'STRONG',
-    color: ['#DC2619', '#FFA114', '#76BC21', '#349724', '#C4C4C4'],
+    color: '#349724',
     strengthLevel: 4,
     suggestions: [],
   },
   {
     strength: 'VERY_STRONG',
-    color: ['#DC2619', '#FFA114', '#76BC21', '#349724', '#287C1A'],
+    color: '#287C1A',
     strengthLevel: 5,
     suggestions: [],
   },
@@ -99,14 +100,28 @@ const PBSCPasswordStrength = (props) => {
           {`(${passwordStrength.strengthLevel} ${fractionLabel} 5)`}
         </Text>
       </View>
+
       <View style={styles.strengthBarWrapper}>
-        {passwordStrength.color.map((color, index) => (
-          <View
-            testID={`passwordStrength-color-${index}`}
-            key={index}
-            style={{ backgroundColor: color, ...styles.strengthBar }}
-          />
-        ))}
+        {baseFullColor.map((color, index) => {
+          
+          let displayColor = color;
+
+          if((index + 1) === passwordStrength.strengthLevel) {
+            displayColor = passwordStrength.color;
+          }
+
+          if((index + 1) > passwordStrength.strengthLevel) {
+            displayColor = greyColor;
+          }
+
+          return (
+            <View
+              testID={`passwordStrength-color-${index}`}
+              key={index}
+              style={{ backgroundColor: displayColor, ...styles.strengthBar }}
+            />
+          )
+        })}
       </View>
       <View style={styles.suggestionsWrapper}>
         {passwordStrength.suggestions.map((suggestion) => (
