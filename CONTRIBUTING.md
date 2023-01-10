@@ -81,13 +81,6 @@ Some guidelines to follow when writting commit messages:
     - fix(PBSCDropdown)!: remvove a property  
   - provide a message in the footer that begins with 'BREAKING CHANGE:'
 
-If your changes introduce any breaking changes, make sure to specify 'BREAKING CHANGE' in the footer of your commit message. Refer to [commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format) for more details.
-
-Some guidelines to follow when writting commit messages:
-- use the present tense. For example, write: 'add new component' instead of 'added new component'
-- provide a message body that explains the changes you have made and why they are needed
-- provide a message footer when your change is a BREAKING CHANGE
-
 Our pre-commit hooks verify that your commit message matches this format when committing.
 
 When committing, you can use the 'commit' script to help you write your commit message
@@ -223,4 +216,3 @@ Community Impact Guidelines were inspired by [Mozilla's code of conduct enforcem
 
 For answers to common questions about this code of conduct, see the FAQ at
 https://www.contributor-covenant.org/faq. Translations are available at https://www.contributor-covenant.org/translations.
-
