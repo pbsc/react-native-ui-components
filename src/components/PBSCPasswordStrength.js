@@ -7,37 +7,31 @@ const baseFullColor = ['#DC2619', '#FFA114', '#76BC21', '#349724', '#287C1A'];
 const strengthListDictionary = [
   {
     strength: 'EMPTY',
-    color: greyColor,
     strengthLevel: 0,
     suggestions: [],
   },
   {
     strength: 'WEAK',
-    color: '#DC2619',
     strengthLevel: 1,
     suggestions: [],
   },
   {
     strength: 'FAIR',
-    color: '#FFA114',
     strengthLevel: 2,
     suggestions: [],
   },
   {
     strength: 'GOOD',
-    color: '#76BC21',
     strengthLevel: 3,
     suggestions: [],
   },
   {
     strength: 'STRONG',
-    color: '#349724',
     strengthLevel: 4,
     suggestions: [],
   },
   {
     strength: 'VERY_STRONG',
-    color: '#287C1A',
     strengthLevel: 5,
     suggestions: [],
   },
@@ -94,7 +88,7 @@ const PBSCPasswordStrength = (props) => {
         <Text>{`${strengthLabel} `}</Text>
         <Text
           style={{
-            color: passwordStrength.color[passwordStrength.strengthLevel - 1],
+            color: baseFullColor[passwordStrength.strengthLevel - 1],
           }}
         >
           {`(${passwordStrength.strengthLevel} ${fractionLabel} 5)`}
@@ -104,10 +98,6 @@ const PBSCPasswordStrength = (props) => {
       <View style={styles.strengthBarWrapper}>
         {baseFullColor.map((color, index) => {
           let displayColor = color;
-
-          if((index + 1) === passwordStrength.strengthLevel) {
-            displayColor = passwordStrength.color;
-          }
 
           if((index + 1) > passwordStrength.strengthLevel) {
             displayColor = greyColor;
