@@ -41,6 +41,7 @@ const validateInputStrenghtApi = async (value) => {
 />
 <PasswordStrength
     value={passwordStrengthValue}
+    isValid={() => {}}
     passwordStrengthValidation={passwordStrengthValidation}
 />
 ```
@@ -57,6 +58,8 @@ Return true if the value entered is valid
 ### passwordStrengthValidation
 Type: object <br/>
 A object that contain the current validation based on the text entered in the textField
+Value for strength: "VERY_STRONG", "STRONG", "GOOD", "FAIR", "WEAK".
+Suggestions: Text to specify how to get a higher password strength
 
 // ...
 {
