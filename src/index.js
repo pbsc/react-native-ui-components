@@ -6,3 +6,4 @@ export { default as StepIndicator } from './components/PBSCStepIndicator';
 export { default as Switch } from './components/PBSCSwitch';
 export { default as TextField } from './components/PBSCTextField';
 export { default as ZipcodeField } from './components/PBSCZipcodeField';
+export { default as PasswordStrength } from './components/PBSCPasswordStrength';
