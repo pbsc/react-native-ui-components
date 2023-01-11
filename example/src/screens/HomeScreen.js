@@ -13,6 +13,10 @@ import {
   ZipcodeField,
 } from '@pbsc/react-native-ui-components';
 
+import { PasswordStrength } from '../../../src/index';
+
+import { checkPasswordStrength } from '../helpers/StrengthChecker';
+
 const HomeScreen = () => {
   const [text, setText] = useState('');
   const [checked, setChecked] = useState(false);
@@ -25,6 +29,10 @@ const HomeScreen = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [postalCode, setPostalCode] = useState('');
+  const [passwordStrengthValue, setPasswordStrengthValue] = useState('');
+  const [passwordStrengthValidation, setPasswordStrengthValidation] = useState(
+    {}
+  );
 
   const dropdownItems = [
     {
@@ -91,6 +99,14 @@ const HomeScreen = () => {
   const handlePostalcodeSubmit = (value) => {
     setPostalCode(value);
     console.log(`PostalCode: ${value}`);
+  };
+
+  const validateInputStrenghtApi = async (value) => {
+    setPasswordStrengthValue(value);
+
+    const passwordWeakness = checkPasswordStrength(value);
+
+    setPasswordStrengthValidation(passwordWeakness);
   };
 
   return (
@@ -251,6 +267,16 @@ const HomeScreen = () => {
               style={{ width: 12, height: 12 }}
             />
           }
+        />
+        <TextField
+          label="Password Strenght Input"
+          value={passwordStrengthValue}
+          onChangeText={validateInputStrenghtApi}
+        />
+        <PasswordStrength
+          value={passwordStrengthValue}
+          isValid={() => {}}
+          passwordStrengthValidation={passwordStrengthValidation}
         />
       </View>
     </ScrollView>
