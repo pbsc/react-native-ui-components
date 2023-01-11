@@ -180,7 +180,7 @@
               "release": "patch"
             },
             {
-              "type": "feat",
+              "type": ":sparkles: feat",
               "release": "minor"
             },
             {
