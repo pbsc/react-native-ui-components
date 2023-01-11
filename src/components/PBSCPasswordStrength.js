@@ -70,18 +70,6 @@ const PBSCPasswordStrength = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
-  const getSuggestionsText = () => {
-    let suggestionsText = '';
-    passwordStrength.suggestions.map((suggestion) => {
-      if (suggestionsText === '') {
-        suggestionsText = suggestion;
-      } else {
-        suggestionsText = `${suggestionsText} ${suggestion}`;
-      }
-    });
-    return suggestionsText;
-  };
-
   return (
     <View style={[{ width }, style]}>
       <View style={styles.titleWrapper}>
