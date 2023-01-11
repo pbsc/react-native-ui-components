@@ -73,8 +73,8 @@ We follow the [Angular commits specification](https://github.com/angular/angular
 If your changes introduce any breaking changes, make sure to specify 'BREAKING CHANGE' in the footer of your commit message. Refer to [commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format) for more details.
 
 Some guidelines to follow when writting commit messages:
-- use the present tense. For example, write: 'add new component' instead of 'added new component'
-- provide a message body that explains the changes you have made and why they are needed
+- Commit message needs to start with a present tense verb. For example, write: 'add new component' instead of 'added new component'
+- Provide a message body that explains the changes you have made and why they are needed
 - when your change is a BREAKING CHANGE:
   - put an '!' mark right after the subject/scope. For example:
     - feat!: add a new feature 
