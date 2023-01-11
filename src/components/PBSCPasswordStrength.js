@@ -45,7 +45,7 @@ const PBSCPasswordStrength = (props) => {
     value,
     passwordStrengthValidation,
     strengthLabel = 'Password strength',
-    fractionLabel = 'of'
+    fractionLabel = 'of',
   } = props;
 
   const [passwordStrength, setPasswordStrength] = useState(
@@ -99,7 +99,7 @@ const PBSCPasswordStrength = (props) => {
         {baseFullColor.map((color, index) => {
           let displayColor = color;
 
-          if((index + 1) > passwordStrength.strengthLevel) {
+          if (index + 1 > passwordStrength.strengthLevel) {
             displayColor = greyColor;
           }
 
@@ -109,7 +109,7 @@ const PBSCPasswordStrength = (props) => {
               key={index}
               style={{ backgroundColor: displayColor, ...styles.strengthBar }}
             />
-          )
+          );
         })}
       </View>
       <View style={styles.suggestionsWrapper}>
