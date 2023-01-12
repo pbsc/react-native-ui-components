@@ -7,3 +7,4 @@ To validate commit messages, we use [commitlint](https://github.com/conventional
 To help developers write a good commit message, we use [commitizen](https://github.com/commitizen/cz-cli).
 
 Using husky, hooks are put in place to validate that the commit is in the right format before pushing to the repository. See .husky folderfor more details.
+
