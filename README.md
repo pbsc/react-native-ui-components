@@ -94,7 +94,7 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 ## CI/CD process 
 
-See the [CI/CD Process guide](CICDProcess.md) to learn about our CI/CD pipeline and tools that we use.
+See the [CI/CD Process guide](CICDProcess.md) to learn about our CI/CD pipeline and the tools that we use.
 
 ## License
 
