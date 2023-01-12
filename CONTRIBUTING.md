@@ -59,7 +59,7 @@ yarn test
 
 ### Commit message convention
 
-We follow the [Angular commits specification](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines) for our commit messages:
+We follow the [Conventional Commit convention](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) for our commit messages:
 
 - `fix`: bug fixes, e.g. fix crash due to deprecated method.
 - `feat`: new features, e.g. add new method to the module.
@@ -70,7 +70,7 @@ We follow the [Angular commits specification](https://github.com/angular/angular
 - `build`: changes to the build process.
 - `chore`: any chore project changes
 
-If your changes introduce any breaking changes, make sure to specify 'BREAKING CHANGE' in the footer of your commit message. Refer to [commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format) for more details.
+If your changes introduce any breaking changes, make sure to specify an exclamation point (!) after your commit type(scope) and  'BREAKING CHANGE' in the footer of your commit message. Refer to [Conventional Commit convention](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) for more details.
 
 Some guidelines to follow when writting commit messages:
 - Commit message needs to start with a present tense verb. For example, write: 'add new component' instead of 'added new component'
