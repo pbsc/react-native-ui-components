@@ -222,12 +222,6 @@
               "BREAKING CHANGES"
             ]
           },
-          "writerOpts": {
-            "commitsSort": [
-              "subject",
-              "scope"
-            ]
-          },
           "presetConfig": {
             "types": [
               {
@@ -257,16 +251,6 @@
               },
               {
                 "type": "chore",
-                "hidden": false,
-                "section": "Other"
-              },
-              {
-                "type": "ci",
-                "hidden": false,
-                "section": "Other"
-              },
-              {
-                "type": "revert",
                 "hidden": false,
                 "section": "Other"
               },
