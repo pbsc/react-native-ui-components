@@ -47,6 +47,14 @@ module.exports = {
     ':green_heart: ci',
   ],
   askForBreakingChangeFirst: false,
-  scopes: [{ name: 'ui' }, { name: 'android' }, { name: 'ios' }],
+  scopes: [
+    { name: 'ui' },
+    { name: 'style'},
+    { name: 'android' },
+    { name: 'ios' },
+    { name: 'unitTests' },
+    { name: 'documentation' },
+    { name: 'CI/CD' },
+  ],
   allowCustomScopes: true,
 };
