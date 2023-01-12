@@ -31,6 +31,10 @@ module.exports = {
             release: 'patch',
           },
           {
+            type: 'chore',
+            release: 'patch',
+          },
+          {
             type: 'build',
             release: 'patch',
           },
@@ -44,7 +48,7 @@ module.exports = {
           },
         ],
         parserOpts: {
-          headerPattern: /^(:\w:)?(\w*)(?:\(([\w\$\.\-\* ]*)\))?\: (.*)$/,
+          headerPattern: /^(:\w:)?\s?(\w*)(?:\(([\w\$\.\-\* ]*)\))?\: (.*)$/,
           noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
         },
       },
