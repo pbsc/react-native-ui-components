@@ -1,3 +1,5 @@
+require('debug').enable('semantic-release:*');
+
 module.exports = {
   branches: ['main'],
   plugins: [
@@ -49,6 +51,7 @@ module.exports = {
         ],
         parserOpts: {
           headerPattern: /^(:\w*:)?\s?(\w*)(?:\(([\w$.\-* ]*)\))?: (.*)$/,
+          headerCorrespondence: ['emoji', 'type', 'message'],
           noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
         },
       },
