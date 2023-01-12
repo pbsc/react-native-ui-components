@@ -225,6 +225,19 @@
               "subject",
               "scope"
             ]
+          },
+          "presetConfig": {
+            "types": [
+              {
+                "type": "docs",
+                "hidden": false,
+                "section": "docs"
+              },
+              {
+                "type": "feat",
+                "hidden": true
+              }
+            ]
           }
         }
       ],
