@@ -48,7 +48,7 @@ module.exports = {
           },
         ],
         parserOpts: {
-          // headerPattern: /^(:\w:)?\s?(\w*)(?:\(([\w\$\.\-\* ]*)\))?\: (.*)$/,
+          headerPattern: /^(:\w*:)?\s?(\w*)(?:\(([\w$.\-* ]*)\))?: (.*)$/,
           noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
         },
       },
