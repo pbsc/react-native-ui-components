@@ -56,7 +56,14 @@ module.exports = {
         },
       },
     ],
-    '@semantic-release/release-notes-generator',
+    [
+      '@semantic-release/release-notes-generator',
+      {
+        headerPattern: /^(:\w*:)?\s?(\w*)(?:\(([\w$.\-* ]*)\))?: (.*)$/,
+        headerCorrespondence: ['emoji', 'type', 'scope', 'message'],
+        noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
+      },
+    ],
     '@semantic-release/npm',
     '@semantic-release/git',
     '@semantic-release/github',
