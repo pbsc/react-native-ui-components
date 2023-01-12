@@ -67,6 +67,8 @@
     "babel-jest": "^28.1.0",
     "commitizen": "^4.2.6",
     "commitlint": "^11.0.0",
+    "conventional-changelog-angular": "^5.0.13",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^7.0.0",
@@ -163,7 +165,7 @@
       [
         "@semantic-release/commit-analyzer",
         {
-          "preset": "angular",
+          "preset": "conventionalcommits",
           "releaseRules": [
             {
               "type": "docs",
@@ -213,7 +215,7 @@
       [
         "@semantic-release/release-notes-generator",
         {
-          "preset": "angular",
+          "preset": "conventionalcommits",
           "parserOpts": {
             "noteKeywords": [
               "BREAKING CHANGE",
@@ -235,7 +237,18 @@
               },
               {
                 "type": "feat",
-                "hidden": true
+                "hidden": false,
+                "section": "New Features"
+              },
+              {
+                "type": "fix",
+                "hidden": true,
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "perf",
+                "hidden": false,
+                "section": "Performance"
               }
             ]
           }
