@@ -233,22 +233,47 @@
               {
                 "type": "docs",
                 "hidden": false,
-                "section": "docs"
+                "section": "Documentation"
               },
               {
                 "type": "feat",
                 "hidden": false,
-                "section": "New Features"
+                "section": "Features"
               },
               {
                 "type": "fix",
-                "hidden": true,
+                "hidden": false,
                 "section": "Bug Fixes"
               },
               {
                 "type": "perf",
                 "hidden": false,
                 "section": "Performance"
+              },
+              {
+                "type": "ci",
+                "hidden": false,
+                "section": "Other"
+              },
+              {
+                "type": "chore",
+                "hidden": false,
+                "section": "Other"
+              },
+              {
+                "type": "ci",
+                "hidden": false,
+                "section": "Other"
+              },
+              {
+                "type": "revert",
+                "hidden": false,
+                "section": "Other"
+              },
+              {
+                "type": "revert",
+                "hidden": false,
+                "section": "Other"
               }
             ]
           }

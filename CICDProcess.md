@@ -1,5 +1,5 @@
 We use [semantic-release](https://github.com/semantic-release/semantic-release) and Github Actions to automatically handle the release creation. 
-We use the Angular commit convention to write commit messages that can be parsed by semantic-release.
+We use the [Conventional Commit convention](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) to write commit messages that can be parsed by semantic-release.
 The semantic-release config can be viewed in the package.json under "release".
 
 To validate commit messages, we use [commitlint](https://github.com/conventional-changelog/commitlint). See commitlint.config.js for the config file.
