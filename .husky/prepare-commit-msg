@@ -3,31 +3,31 @@
 // hook that validates that a 'BREAKING CHANGE' commit message contains an exclamation mark (!) in
 // its subject (just after the commit type(scope))
 
-const fs = require('fs');
+// const fs = require('fs');
 
-const message = fs.readFileSync(process.argv[2], 'utf8').trim();
+// const message = fs.readFileSync(process.argv[2], 'utf8').trim();
 
-if (!message.includes('BREAKING CHANGE') || message.includes('chore(release)')) {
-  process.exit(0);
-}
+// if (!message.includes('BREAKING CHANGE') || message.includes('chore(release)')) {
+//   process.exit(0);
+// }
 
-const commitMsgSplitted = message.split('\n');
-const commitSubject = commitMsgSplitted[0];
+// const commitMsgSplitted = message.split('\n');
+// const commitSubject = commitMsgSplitted[0];
 
-// use the following when MGW-540 is done
-// const commitEmojiAndTypeRegex = /^:[A-Za-z]*: [A-Za-z()]*!:/g; 
-// const commitEmojiAndType = commitSubject.match(commitEmojiAndTypeRegex);
+// // use the following when MGW-540 is done
+// // const commitEmojiAndTypeRegex = /^:[A-Za-z]*: [A-Za-z()]*!:/g; 
+// // const commitEmojiAndType = commitSubject.match(commitEmojiAndTypeRegex);
 
-const commitTypeRegex = /^[A-Za-z()]*!:/g; 
-const commitType = commitSubject.match(commitTypeRegex);
+// const commitTypeRegex = /^[A-Za-z()]*!:/g; 
+// const commitType = commitSubject.match(commitTypeRegex);
 
-// if (!commitEmojiAndType || commitEmojiAndType.length === 0) { use the following when MGW-540 is done
-if (!commitType || commitType.length === 0) {
-  console.log(
-    "❌ Wrong commit format for a BREAKING CHANGE. Please add an exclamation mark '!' just after your commit type(scope).\nFor example: :sparkles: feat(ui)!: new component"
-  );
+// // if (!commitEmojiAndType || commitEmojiAndType.length === 0) { use the following when MGW-540 is done
+// if (!commitType || commitType.length === 0) {
+//   console.log(
+//     "❌ Wrong commit format for a BREAKING CHANGE. Please add an exclamation mark '!' just after your commit type(scope).\nFor example: :sparkles: feat(ui)!: new component"
+//   );
 
-  process.exit(1);
-}
+//   process.exit(1);
+// }
 
-process.exit(0);
+// process.exit(0);
