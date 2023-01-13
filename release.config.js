@@ -43,6 +43,9 @@ module.exports = {
             release: 'patch',
           },
         ],
+        parserOpts: {
+          noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
+        },
       },
     ],
     [
