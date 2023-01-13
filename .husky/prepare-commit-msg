@@ -10,19 +10,30 @@ if (message.includes('chore(release)')) {
   process.exit(0);
 }
 
+const messageContainsBreakingChange =
+  message.includes('BREAKING CHANGE:') || message.includes('BREAKING CHANGES:');
+
 const commitMsgSplitted = message.split('\n');
 const commitSubject = commitMsgSplitted[0];
 
 const majorCommitTypeRegex = /^major[(a-zA-Z.)]*:/g;
 const majorCommitType = commitSubject.match(majorCommitTypeRegex);
 
-if (!majorCommitType || majorCommitType.length === 0) {
-  process.exit(0);
+if (
+  messageContainsBreakingChange &&
+  (!majorCommitType || majorCommitType.length === 0)
+) {
+  console.log(
+    "❌ Wrong commit format for a breaking change. Please make sure to specify 'major' as commit type."
+  );
+
+  process.exit(1);
 }
 
 if (
-  !message.includes('BREAKING CHANGE:') &&
-  !message.includes('BREAKING CHANGES:')
+  majorCommitType &&
+  majorCommitType.length > 0 &&
+  !messageContainsBreakingChange
 ) {
   console.log(
     "❌ Wrong commit format for a major change. Please mention 'BREAKING CHANGE:' at the beginning of the commit footer and explain the breaking change."
