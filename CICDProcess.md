@@ -7,3 +7,4 @@ This action validates that all tests are passing, then calls semantic-release to
 
 For semantic-release to work, commit messages must follow the [Conventional Commit convention](https://www.conventionalcommits.org/en/v1.0.0-beta.4/).
 [commitlint](https://github.com/conventional-changelog/commitlint) is used to enforce this commit format. See [commitlint.config.js](commitlint.config.js) for the config file.
+
