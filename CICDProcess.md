@@ -1,9 +1,9 @@
-We use [semantic-release](https://github.com/semantic-release/semantic-release) and Github Actions to automatically handle the release creation. 
-We use the [Conventional Commit convention](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) to write commit messages that can be parsed by semantic-release.
-The semantic-release config can be viewed in the package.json under "release".
+This repo uses Github Actions and [semantic-release](https://github.com/semantic-release/semantic-release) to automatically run tests and handle the release creation.
+When a new PR is merged into the main branch, a github action is automatically triggered (see [pullrequest action](.github/workflows/push-to-main.yml)).
+This action validates that all tests are passing, then calls semantic-release to handle the release process (see Release step in the pullrequest action):
+- semantic-release analyzes the new commit messages 
+- using the commits types and releaseRules listed in the config file [release.config.js](release.config.js), it determines if the current lib version should be incremented
+- if it finds that the lib version has changed, it generates a new release notes, then uploads the new lib to npm and writes those release notes to the github repository
 
-To validate commit messages, we use [commitlint](https://github.com/conventional-changelog/commitlint). See commitlint.config.js for the config file.
-
-To help developers write a good commit message, we use [commitizen](https://github.com/commitizen/cz-cli).
-
-Using husky, hooks are put in place to validate that the commit is in the right format before pushing to the repository. See .husky folderfor more details.
+For semantic-release to work, commit messages must follow the [Conventional Commit convention](https://www.conventionalcommits.org/en/v1.0.0-beta.4/).
+[commitlint](https://github.com/conventional-changelog/commitlint) is used to enforce this commit format. See [commitlint.config.js](commitlint.config.js) for the config file.
