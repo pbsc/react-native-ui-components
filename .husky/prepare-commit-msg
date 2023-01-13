@@ -1,30 +1,31 @@
 #!/usr/bin/env node
 
-// hook that validates that a 'BREAKING CHANGE' commit message contains an exclamation mark (!) in
-// its subject (just after the commit type(scope))
+// hook that validates that a major change commit contains the mention 'BREAKING CHANGE'
 
 const fs = require('fs');
 
 const message = fs.readFileSync(process.argv[2], 'utf8').trim();
 
-if (!message.includes('BREAKING CHANGE') || message.includes('chore(release)')) {
+if (message.includes('chore(release)')) {
   process.exit(0);
 }
 
 const commitMsgSplitted = message.split('\n');
 const commitSubject = commitMsgSplitted[0];
 
-// use the following when MGW-540 is done
-// const commitEmojiAndTypeRegex = /^:[A-Za-z]*: [A-Za-z()]*!:/g; 
-// const commitEmojiAndType = commitSubject.match(commitEmojiAndTypeRegex);
+const majorCommitTypeRegex = /^major[(a-zA-Z.)]*:/g;
+const majorCommitType = commitSubject.match(majorCommitTypeRegex);
 
-const commitTypeRegex = /^[A-Za-z()]*!:/g; 
-const commitType = commitSubject.match(commitTypeRegex);
+if (!majorCommitType || majorCommitType.length === 0) {
+  process.exit(0);
+}
 
-// if (!commitEmojiAndType || commitEmojiAndType.length === 0) { use the following when MGW-540 is done
-if (!commitType || commitType.length === 0) {
+if (
+  !message.includes('BREAKING CHANGE:') &&
+  !message.includes('BREAKING CHANGES:')
+) {
   console.log(
-    "❌ Wrong commit format for a BREAKING CHANGE. Please add an exclamation mark '!' just after your commit type(scope).\nFor example: :sparkles: feat(ui)!: new component"
+    "❌ Wrong commit format for a major change. Please mention 'BREAKING CHANGE:' at the beginning of the commit footer and explain the breaking change."
   );
 
   process.exit(1);

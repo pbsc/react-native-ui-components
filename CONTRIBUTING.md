@@ -70,15 +70,15 @@ We follow the [Conventional Commit convention](https://www.conventionalcommits.o
 - `build`: changes to the build process.
 - `chore`: any chore project changes
 
-If your changes introduce any breaking changes, make sure to specify an exclamation point (!) after your commit type(scope) and  'BREAKING CHANGE' in the footer of your commit message. Refer to [Conventional Commit convention](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) for more details.
+If your changes introduce any breaking changes, you have to specify 'major' as commit type.
 
 Some guidelines to follow when writting commit messages:
 - Commit message needs to start with a present tense verb. For example, write: 'add new component' instead of 'added new component'
 - Provide a message body that explains the changes you have made and why they are needed
 - when your change is a BREAKING CHANGE:
-  - put an '!' mark right after the subject/scope. For example:
-    - feat!: add a new feature 
-    - fix(PBSCDropdown)!: remvove a property  
+  - put 'major' as commit type. For example:
+    - major: add new component
+    - major(PBSCDropdown)!: remvove a property  
   - provide a message in the footer that begins with 'BREAKING CHANGE:'
 
 Our pre-commit hooks verify that your commit message matches this format when committing.

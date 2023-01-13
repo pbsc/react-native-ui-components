@@ -42,6 +42,10 @@ module.exports = {
             type: 'revert',
             release: 'patch',
           },
+          {
+            type: 'major',
+            release: 'major',
+          },
         ],
         parserOpts: {
           noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
