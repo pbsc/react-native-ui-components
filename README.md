@@ -8,6 +8,7 @@ It includes `TextField`, `Checkbox`, `Switch`, `Dropdown`, `DateTimePicker`, `St
 Before install this module, you will need `react-native-paper` (`react-native-vector-icons` as well), `react-native-reanimated` and `react-native-date-picker`.
 Please install them first if you don't have them in your project.
 
+
 ### Install react-native-paper
 
 ```sh
@@ -99,3 +100,4 @@ See the [CI/CD Process guide](CICDProcess.md) to learn about our CI/CD pipeline 
 ## License
 
 MIT
+
