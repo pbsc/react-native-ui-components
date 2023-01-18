@@ -105,8 +105,8 @@ module.exports = {
         },
       },
     ],
-    '@semantic-release/github',
     '@semantic-release/git',
+    '@semantic-release/github',
     '@semantic-release/npm',
   ],
 };
