@@ -9,6 +9,7 @@ const PBSCCheckbox = (props) => {
   const {
     id,
     label,
+    labelComponent,
     checked = false,
     onChange = () => {},
     helperText,
@@ -69,13 +70,17 @@ const PBSCCheckbox = (props) => {
             />
           )}
         </Pressable>
-        <Text
-          testID="checkbox-title"
-          style={[styles.title(labelColor, disabled), labelStyle]}
-          onPress={onLabelPress}
-        >
-          {label}
-        </Text>
+        {labelComponent ? (
+          labelComponent
+        ) : (
+          <Text
+            testID="checkbox-title"
+            style={[styles.title(labelColor, disabled), labelStyle]}
+            onPress={onLabelPress}
+          >
+            {label}
+          </Text>
+        )}
       </View>
       <View style={styles.helperTextContainer}>
         {hasHelperTextIcon && helperTextCustomIcon}

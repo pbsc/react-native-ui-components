@@ -44,6 +44,10 @@ const handleCheckboxChange = (value) => {
 Type: string <br/>
 The text to use for the label.
 
+### labelComponent
+Type: Component <br/>
+Label component to use as label. When defined, it would not use the label prop, and would render the component as a Label instead.
+
 ### checked
 Type: boolean <br/>
 Default value: false <br/>
@@ -124,4 +128,4 @@ A custom component (usually svg component or Image) to place icon before helperT
 
 ### onLabelPress
 Type: function <br/>
-Callback function invoked when the checkbox label is pressed.
+Callback function invoked when the checkbox label is pressed. If the labelComponent is defined, this would not be invoked. It is called only if the label prop is provided.

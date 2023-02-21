@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
-import { Image, ScrollView, View } from 'react-native';
+import { Image, ScrollView, View, Text, StyleSheet, Alert } from 'react-native';
 
 import {
   Checkbox,
@@ -240,6 +240,17 @@ const HomeScreen = () => {
               style={{ width: 12, height: 12 }}
             />
           }
+          onLabelPress={() => Alert.alert('Checkbox label pressed')}
+        />
+        <Checkbox
+          labelComponent={
+            <Text style={styles.checkboxLabel}>
+              This is Checkbox with
+              <Text style={{ color: 'green' }}> Nested Custom Styled </Text>Text
+            </Text>
+          }
+          checked={checked}
+          onChange={handleCheckboxChange}
         />
         <Switch
           label="This is Switch"
@@ -284,3 +295,9 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+const styles = StyleSheet.create({
+  checkboxLabel: {
+    marginStart: 10,
+  },
+});
