@@ -26,6 +26,7 @@ const PBSCCheckbox = (props) => {
     helperTextStyle,
     hasHelperTextIcon = false,
     helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
+    onLabelPress,
   } = props;
 
   const onCheckmarkPress = () => {
@@ -71,6 +72,7 @@ const PBSCCheckbox = (props) => {
         <Text
           testID="checkbox-title"
           style={[styles.title(labelColor, disabled), labelStyle]}
+          onPress={onLabelPress}
         >
           {label}
         </Text>

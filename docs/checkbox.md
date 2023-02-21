@@ -121,3 +121,7 @@ Enable custom component (ex: helperTextCustomIcon) to place before helperText
 ### helperTextCustomIcon
 Type: jsx component <br/>
 A custom component (usually svg component or Image) to place icon before helperText and can be used for errors as well.
+
+### onLabelPress
+Type: function <br/>
+Callback function invoked when the checkbox label is pressed.
