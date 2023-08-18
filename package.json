@@ -26,7 +26,6 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "husky install && bob build",
-    "postinstall": "npx jetify && patch-package",
     "release": "semantic-release",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
@@ -50,7 +49,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "patch-package": "^8.0.0",
     "postinstall-postinstall": "^2.1.0",
     "react-native-date-picker": "^4.1.3",
     "react-native-paper": "^4.0.1",
