@@ -101,8 +101,8 @@ const PBSCPasswordStrength = (props) => {
         })}
       </View>
       <View style={styles.suggestionsWrapper}>
-        {passwordStrength.suggestions.map((suggestion) => (
-          <Text>{`${suggestion}`}</Text>
+        {passwordStrength.suggestions.map((suggestion, index) => (
+          <Text key={index}>{`${suggestion}`}</Text>
         ))}
       </View>
     </View>
