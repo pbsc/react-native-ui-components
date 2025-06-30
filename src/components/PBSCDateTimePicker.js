@@ -44,6 +44,7 @@ const PBSCDateTimePicker = (props) => {
     helperTextStyle,
     hasHelperTextIcon = false,
     helperTextCustomIcon, // any svg icon component to show before helper text or error text goes here
+    pickerTheme = 'light', // 'light' or 'dark'
   } = props;
 
   const [selectingDate, setSelectingDate] = useState(value ? value : undefined);
@@ -176,6 +177,7 @@ const PBSCDateTimePicker = (props) => {
                 is24hourSource={is24hour}
                 date={selectingDate ? selectingDate : new Date()}
                 onDateChange={handleDateChange}
+                theme={pickerTheme}
               />
               <View style={styles.modalDatePickerView}>
                 <ModalButton
