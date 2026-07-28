@@ -2,13 +2,35 @@
 import 'react-native-gesture-handler/jestSetup';
 
 jest.mock('react-native-reanimated', () => {
-  const Reanimated = require('react-native-reanimated/mock');
+  const RN = require('react-native');
 
-  // The mock for `call` immediately calls the callback which is incorrect
-  // So we override it with a no-op
-  Reanimated.default.call = () => {};
+  const mockValue = (initialValue) => ({
+    value: initialValue,
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+    removeAllListeners: jest.fn(),
+  });
 
-  return Reanimated;
+  return {
+    __esModule: true,
+    default: {
+      createAnimatedComponent: jest.fn((Component) => Component),
+      call: () => {},
+      View: RN.View,
+      Text: RN.Text,
+      Image: RN.Image,
+      ScrollView: RN.ScrollView,
+    },
+    createAnimatedComponent: jest.fn((Component) => Component),
+    useSharedValue: jest.fn((initialValue) => mockValue(initialValue)),
+    useDerivedValue: jest.fn(() => mockValue(0)),
+    useAnimatedStyle: jest.fn(() => ({})),
+    interpolate: jest.fn(),
+    interpolateColor: jest.fn(),
+    withTiming: jest.fn((toValue) => toValue),
+    withSpring: jest.fn((toValue) => toValue),
+    Extrapolate: { CLAMP: 'clamp', EXTEND: 'extend', IDENTITY: 'identity' },
+  };
 });
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
